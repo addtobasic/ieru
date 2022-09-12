@@ -3,15 +3,33 @@ import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
 import { Message } from "types/message";
+import anonymusPng from "../../../../public/images/anonymus.png";
 
 interface ChatMessagesItemProps {
   message: Message;
 }
 
 const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
-  const { photoURL, user, timestamp } = message;
+  const { photoURL, user, timestamp, isAnonym } = message;
 
-  return (
+  return !isAnonym ? (
+    <StyledContainer>
+      <StyledImage
+        src={anonymusPng}
+        width={50}
+        height={50}
+        objectFit="contain"
+        alt="user"
+      />
+      <StyledContent>
+        <StyledInfo>
+          Anonymous Comment
+          <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
+        </StyledInfo>
+        <StyledMessage>{message.message}</StyledMessage>
+      </StyledContent>
+    </StyledContainer>
+  ) : (
     <StyledContainer>
       <StyledImage
         src={photoURL}

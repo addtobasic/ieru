@@ -124,6 +124,7 @@ class MessageStore {
         message: doc.data().message,
         user: doc.data().user,
         photoURL: doc.data().photoURL,
+        isAnonym: doc.data().isAnonym,
         timestamp: new Date(doc.data().timestamp?.toDate()),
       } as Message;
 
@@ -147,6 +148,7 @@ class MessageStore {
       message,
       user: user.displayName,
       photoURL: user.photoURL,
+      isAnonym: user.isAnonym,
       timestamp: serverTimestamp(),
     });
 

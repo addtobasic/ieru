@@ -3,5 +3,6 @@ export interface Message {
   message: string;
   user: string;
   photoURL: string;
+  isAnonym: boolean;
   timestamp: Date;
 }

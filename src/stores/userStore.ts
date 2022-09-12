@@ -44,6 +44,7 @@ class UserStore {
       this.user = {
         displayName: user.displayName!,
         photoURL: user.photoURL!,
+        isAnonym: user.isAnonymous!,
       };
     } else {
       this.user = null;
