@@ -3,6 +3,13 @@ import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
 import { Message } from "types/message";
+import { MdOutlinePeopleAlt } from "react-icons/md";
+
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "config/firebase";
+import { toast } from "react-toastify";
+import { store } from "../../../stores/store";
+
 import anonymusPng from "../../../../public/images/anonymus.png";
 
 interface ChatMessagesItemProps {
@@ -12,7 +19,22 @@ interface ChatMessagesItemProps {
 const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   const { photoURL, user, timestamp, isAnonym } = message;
 
-  return !isAnonym ? (
+  const handleChangeAnonym = () => {
+    const channel = store.channelStore.selectedChannel;
+    if (!user || !channel) {
+      toast.error("An error occurred. Please try again.");
+      return false;
+    }
+
+    const messagesRef = doc(db, "channels", channel.id, "messages", message.id);
+    updateDoc(messagesRef, {
+      isAnonym: !isAnonym,
+    });
+
+    return true;
+  };
+
+  return isAnonym ? (
     <StyledContainer>
       <StyledImage
         src={anonymusPng}
@@ -25,6 +47,9 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
         <StyledInfo>
           Anonymous Comment
           <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
+          <StyledAnonymButton>
+            <MdOutlinePeopleAlt onClick={handleChangeAnonym} />
+          </StyledAnonymButton>
         </StyledInfo>
         <StyledMessage>{message.message}</StyledMessage>
       </StyledContent>
@@ -42,6 +67,9 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
         <StyledInfo>
           {user}
           <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
+          <StyledAnonymButton>
+            <MdOutlinePeopleAlt onClick={handleChangeAnonym} />
+          </StyledAnonymButton>
         </StyledInfo>
         <StyledMessage>{message.message}</StyledMessage>
       </StyledContent>
@@ -72,6 +100,10 @@ const StyledMessage = styled.p``;
 const StyledDate = styled.span`
   color: gray;
   font-weight: 300;
-  margin-left: 0.25rem;
+  margin-left: 0.5rem;
   font-size: 0.6rem;
+`;
+
+const StyledAnonymButton = styled.button`
+  margin-left: 0.5rem;
 `;
