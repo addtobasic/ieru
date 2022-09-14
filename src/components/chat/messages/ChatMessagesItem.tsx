@@ -1,10 +1,9 @@
+import React, { useState } from "react";
 import moment from "moment";
 import Image from "next/image";
-import React from "react";
 import styled from "styled-components";
 import { Message } from "types/message";
 import { MdOutlinePeopleAlt } from "react-icons/md";
-
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "config/firebase";
 import { toast } from "react-toastify";
@@ -17,9 +16,10 @@ interface ChatMessagesItemProps {
 }
 
 const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
-  const { photoURL, user, timestamp, isAnonym } = message;
+  const [isAnonym, setIsAnonym] = useState(message.isAnonym);
+  const { photoURL, user, timestamp } = message;
 
-  const handleChangeAnonym = () => {
+  const handleChangeAnonym = async () => {
     const channel = store.channelStore.selectedChannel;
     if (!user || !channel) {
       toast.error("An error occurred. Please try again.");
@@ -27,10 +27,11 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
     }
 
     const messagesRef = doc(db, "channels", channel.id, "messages", message.id);
-    updateDoc(messagesRef, {
+    await updateDoc(messagesRef, {
       isAnonym: !isAnonym,
     });
 
+    setIsAnonym(!isAnonym);
     return true;
   };
 
