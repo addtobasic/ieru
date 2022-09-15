@@ -18,10 +18,10 @@ interface ChatMessagesItemProps {
 const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   const [isAnonym, setIsAnonym] = useState(message.isAnonym);
   const { photoURL, user, timestamp } = message;
-  const displayName = useStore().userStore.user?.displayName;
+  const displayImage = useStore().userStore.user?.photoURL;
 
-  // コメントのユーザーとログインユーザーが一致した場合にアイコンを表示する
-  const showButton = displayName === user;
+  // コメントのユーザーの画像のURLとログインユーザーの画像のURLが一致した場合にアイコンを表示する
+  const showButton = displayImage === photoURL;
 
   const handleChangeAnonym = async () => {
     const channel = store.channelStore.selectedChannel;
