@@ -1,5 +1,5 @@
 import { NoSsr } from "@material-ui/core";
-import Image from "next/image";
+// import Image from "next/image";
 import ClipLoader from "react-spinners/ClipLoader";
 import styled from "styled-components";
 
@@ -7,15 +7,15 @@ const Loading = () => (
   <NoSsr>
     <StyledWrapper>
       <StyledContainer>
-        {/* <StyledImageContainer>
-          <Image
+        <StyledImageContainer>
+          {/* <Image
             src="/images/logo.png"
             height={100}
             width={100}
             objectFit="contain"
             alt="logo"
-          />
-        </StyledImageContainer> */}
+          /> */}
+        </StyledImageContainer>
 
         <ClipLoader color="purple" size={60} />
       </StyledContainer>
