@@ -4,10 +4,10 @@
 
 html,
 body {
-  --slack-color: #3f0f40;
-  --header-search-color: #421f44;
-  --sidebar-color: #49274b;
-  --sidebar-option-color: #340e36;
+  --slack-color: #007ab7;
+  --header-search-color: #ffffff;
+  --sidebar-color: #97d3e3;
+  --sidebar-option-color: #42aac7;
 
   padding: 0;
   margin: 0;
