@@ -7,7 +7,7 @@ import { MdOutlinePeopleAlt } from "react-icons/md";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "config/firebase";
 import { toast } from "react-toastify";
-import { store } from "../../../stores/store";
+import { useStore, store } from "stores/store";
 
 import anonymusPng from "../../../../public/images/anonymus.png";
 
@@ -18,6 +18,10 @@ interface ChatMessagesItemProps {
 const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   const [isAnonym, setIsAnonym] = useState(message.isAnonym);
   const { photoURL, user, timestamp } = message;
+  const displayName = useStore().userStore.user?.displayName;
+
+  // コメントのユーザーとログインユーザーが一致した場合にアイコンを表示する
+  const showButton = displayName === user;
 
   const handleChangeAnonym = async () => {
     const channel = store.channelStore.selectedChannel;
@@ -48,9 +52,11 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
         <StyledInfo>
           Anonymous Comment
           <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
-          <StyledAnonymButton>
-            <MdOutlinePeopleAlt onClick={handleChangeAnonym} />
-          </StyledAnonymButton>
+          {showButton && (
+            <StyledAnonymButton>
+              <MdOutlinePeopleAlt onClick={handleChangeAnonym} />
+            </StyledAnonymButton>
+          )}
         </StyledInfo>
         <StyledMessage>{message.message}</StyledMessage>
       </StyledContent>
@@ -68,9 +74,11 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
         <StyledInfo>
           {user}
           <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
-          <StyledAnonymButton>
-            <MdOutlinePeopleAlt onClick={handleChangeAnonym} />
-          </StyledAnonymButton>
+          {showButton && (
+            <StyledAnonymButton>
+              <MdOutlinePeopleAlt onClick={handleChangeAnonym} />
+            </StyledAnonymButton>
+          )}
         </StyledInfo>
         <StyledMessage>{message.message}</StyledMessage>
       </StyledContent>
