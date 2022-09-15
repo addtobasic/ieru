@@ -7,7 +7,7 @@ const Loading = () => (
   <NoSsr>
     <StyledWrapper>
       <StyledContainer>
-        <StyledImageContainer>
+        {/* <StyledImageContainer>
           <Image
             src="/images/logo.png"
             height={100}
@@ -15,7 +15,7 @@ const Loading = () => (
             objectFit="contain"
             alt="logo"
           />
-        </StyledImageContainer>
+        </StyledImageContainer> */}
 
         <ClipLoader color="purple" size={60} />
       </StyledContainer>

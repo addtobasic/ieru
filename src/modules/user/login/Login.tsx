@@ -5,13 +5,13 @@ import LoginSignInButton from "./LoginSignInButton";
 const Login = () => (
   <StyledWrapper>
     <StyledContainer>
-      <Image
+      {/* <Image
         src="/images/logo.png"
         height={100}
         width={100}
         objectFit="contain"
         alt="logo"
-      />
+      /> */}
       <StyledTitle>Sign in now</StyledTitle>
       <LoginSignInButton />
     </StyledContainer>

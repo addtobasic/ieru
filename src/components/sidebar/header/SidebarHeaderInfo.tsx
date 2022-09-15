@@ -7,7 +7,7 @@ const SidebarHeaderInfo = () => {
 
   return (
     <StyledContainer>
-      <StyledGroupTitle>MartsTech HQ</StyledGroupTitle>
+      <StyledGroupTitle>test group</StyledGroupTitle>
       <StyledDisplayName>
         <StyledStatus />
         {user?.displayName}
