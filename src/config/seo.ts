@@ -3,7 +3,7 @@ import { DefaultSeoProps } from "next-seo";
 export const baseUrl = "https://slack-clone-martstech.vercel.app";
 
 export const defaultSEO: DefaultSeoProps = {
-  title: "Slack Clone",
+  title: "ieta",
   description:
     "Slack is a new way to communicate with your team. It’s faster, better organized, and more secure than email.",
   openGraph: {
