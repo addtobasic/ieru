@@ -14,7 +14,7 @@ const StyledButton = styled(Button)`
   &&& {
     margin-top: 1rem;
     text-transform: inherit;
-    background: #0a8d48;
+    background: var(--slack-color);
     color: white;
   }
 `;
