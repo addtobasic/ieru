@@ -125,7 +125,7 @@ class MessageStore {
         user: doc.data().user,
         photoURL: doc.data().photoURL,
         isAnonym: doc.data().isAnonym,
-        timestamp: new Date(doc.data().timestamp?.toDate()),
+        timestamp: doc.data().timestamp?.toDate(),
       } as Message;
 
       this.messagesRegistery.set(message.id, message);
