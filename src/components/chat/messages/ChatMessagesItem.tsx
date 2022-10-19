@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 import Image from "next/image";
 import styled from "styled-components";
 import { Message } from "types/message";
 import { MdOutlinePeopleAlt } from "react-icons/md";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc, onSnapshot } from "firebase/firestore";
 import { db } from "config/firebase";
-import { toast } from "react-toastify";
 import { useStore, store } from "stores/store";
 
 import anonymusPng from "../../../../public/images/anonymus.png";
@@ -23,20 +22,22 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   // コメントのユーザーの画像のURLとログインユーザーの画像のURLが一致した場合にアイコンを表示する
   const showButton = displayImage === photoURL;
 
-  const handleChangeAnonym = async () => {
-    const channel = store.channelStore.selectedChannel;
-    if (!user || !channel) {
-      toast.error("An error occurred. Please try again.");
-      return false;
-    }
+  const channel = store.channelStore.selectedChannel;
+  const messagesRef = doc(db, "channels", channel!.id, "messages", message.id);
 
-    const messagesRef = doc(db, "channels", channel.id, "messages", message.id);
+  // チャットごとの匿名, 顕名を検知しリアルタイム同期をする
+  useEffect(() => {
+    onSnapshot(messagesRef, (doc) => {
+      setIsAnonym(doc.data()?.isAnonym);
+    });
+  }, [messagesRef]);
+
+  const handleChangeAnonym = async () => {
     await updateDoc(messagesRef, {
       isAnonym: !isAnonym,
     });
 
     setIsAnonym(!isAnonym);
-    return true;
   };
 
   return isAnonym ? (
