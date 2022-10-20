@@ -75,14 +75,14 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
         <StyledInfo>
           {user}
           <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
-          {showButton && (
-            <StyledAnonymButton>
-              <MdOutlinePeopleAlt onClick={handleChangeAnonym} />
-            </StyledAnonymButton>
-          )}
         </StyledInfo>
         <StyledMessage>{message.message}</StyledMessage>
       </StyledContent>
+      {showButton && (
+        <StyledAnonymButton>
+          <MdOutlinePeopleAlt onClick={handleChangeAnonym} />
+        </StyledAnonymButton>
+      )}
     </StyledContainer>
   );
 };
@@ -90,9 +90,13 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
 export default ChatMessagesItem;
 
 const StyledContainer = styled.div`
-  display: flex;
-  align-items: center;
+  // display: flex;
+  // align-items: center;
   padding: 1.25rem;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  position: relative;
 `;
 
 const StyledImage = styled(Image)`
@@ -115,5 +119,7 @@ const StyledDate = styled.span`
 `;
 
 const StyledAnonymButton = styled.button`
-  margin-left: 0.5rem;
+  margin-right: 10rem;
+  position: absolute;
+  right: 0;
 `;
