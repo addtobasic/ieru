@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useStore } from "stores/store";
 import styled from "styled-components";
 
+import ChatAnonymState from "./ChatAnonymState";
+
 const ChatInput = () => {
   const { selectedChannel } = useStore().channelStore;
   const { sendMessage } = useStore().messageStore;
@@ -34,6 +36,7 @@ const ChatInput = () => {
       <button hidden type="submit" onClick={handleSendMessage}>
         Send Message
       </button>
+      <ChatAnonymState />
     </StyledContainer>
   );
 };
