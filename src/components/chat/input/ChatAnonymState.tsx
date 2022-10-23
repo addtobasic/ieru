@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 interface ChatAnonymStateProps {
-  // isDefaultAnonym: boolean;
+  isDefaultAnonym: boolean;
+  setIsDefaultAnonym: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface AnonymizeProps {
   isAnonymize: boolean;
 }
 
-const ChatAnonymState: React.FC<ChatAnonymStateProps> = () => {
-  const [isDefaultAnonym, setIsDefaultAnonym] = useState(true);
-
+const ChatAnonymState: React.FC<ChatAnonymStateProps> = ({
+  isDefaultAnonym,
+  setIsDefaultAnonym,
+}) => {
   const handleChangeDefaultAnonym = () => {
     setIsDefaultAnonym(!isDefaultAnonym);
   };

@@ -9,6 +9,7 @@ const ChatInput = () => {
   const { selectedChannel } = useStore().channelStore;
   const { sendMessage } = useStore().messageStore;
   const [input, setInput] = useState("");
+  const [isDefaultAnonym, setIsDefaultAnonym] = useState(false);
 
   const handleSendMessage = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -18,7 +19,7 @@ const ChatInput = () => {
     if (input === "") {
       return;
     }
-    const success = sendMessage(input);
+    const success = sendMessage(input, isDefaultAnonym);
 
     if (success) {
       setInput("");
@@ -36,7 +37,10 @@ const ChatInput = () => {
       <button hidden type="submit" onClick={handleSendMessage}>
         Send Message
       </button>
-      <ChatAnonymState />
+      <ChatAnonymState
+        isDefaultAnonym={isDefaultAnonym}
+        setIsDefaultAnonym={setIsDefaultAnonym}
+      />
     </StyledContainer>
   );
 };
