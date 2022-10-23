@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-interface ChatAnonymStateProps {
+interface ChatDefaultAnonymStateButtonProps {
   isDefaultAnonym: boolean;
   setIsDefaultAnonym: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -10,7 +10,7 @@ interface AnonymizeProps {
   isAnonymize: boolean;
 }
 
-const ChatAnonymState: React.FC<ChatAnonymStateProps> = ({
+const ChatAnonymState: React.FC<ChatDefaultAnonymStateButtonProps> = ({
   isDefaultAnonym,
   setIsDefaultAnonym,
 }) => {
@@ -20,24 +20,20 @@ const ChatAnonymState: React.FC<ChatAnonymStateProps> = ({
 
   return (
     <>
-      <StyledContainer>
-        <StyledAnonymizeButton
-          isAnonymize={isDefaultAnonym}
-          onClick={handleChangeDefaultAnonym}
-          type="button"
-        >
-          {isDefaultAnonym ? "匿名ON" : "匿名OFF"}
-        </StyledAnonymizeButton>
-      </StyledContainer>
+      <StyledDefaultAnonymizeButton
+        isAnonymize={isDefaultAnonym}
+        onClick={handleChangeDefaultAnonym}
+        type="button"
+      >
+        {isDefaultAnonym ? "匿名ON" : "匿名OFF"}
+      </StyledDefaultAnonymizeButton>
     </>
   );
 };
 
 export default ChatAnonymState;
 
-const StyledContainer = styled.div``;
-
-const StyledAnonymizeButton = styled.button<AnonymizeProps>`
+const StyledDefaultAnonymizeButton = styled.button<AnonymizeProps>`
   background: ${(props) => (props.isAnonymize ? "white" : "white")};
   color: ${(props) => (props.isAnonymize ? "#007ab7" : "black")};
 `;
