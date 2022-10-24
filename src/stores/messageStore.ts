@@ -132,7 +132,7 @@ class MessageStore {
     });
   };
 
-  sendMessage = (message: string) => {
+  sendMessage = (message: string, isDefaultAnonym: boolean) => {
     const { user } = store.userStore;
     const channel = store.channelStore.selectedChannel;
 
@@ -148,7 +148,7 @@ class MessageStore {
       message,
       user: user.displayName,
       photoURL: user.photoURL,
-      isAnonym: user.isAnonym,
+      isAnonym: isDefaultAnonym,
       timestamp: serverTimestamp(),
     });
 

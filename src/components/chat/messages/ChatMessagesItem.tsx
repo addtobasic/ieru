@@ -79,8 +79,8 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
         <StyledMessage>{message.message}</StyledMessage>
       </StyledContent>
       {showButton && (
-        <StyledAnonymButton>
-          <MdOutlinePeopleAlt onClick={handleChangeAnonym} />
+        <StyledAnonymButton onClick={handleChangeAnonym}>
+          <MdOutlinePeopleAlt />
         </StyledAnonymButton>
       )}
     </StyledContainer>
