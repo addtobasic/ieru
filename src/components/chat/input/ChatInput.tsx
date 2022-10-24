@@ -28,38 +28,48 @@ const ChatInput = () => {
 
   return (
     <StyledContainer>
-      <StyledInput
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder={`Message #${selectedChannel?.name || ""}`}
-        type="text"
-      />
-      <button hidden type="submit" onClick={handleSendMessage}>
-        Send Message
-      </button>
-      <ChatDefaultAnonymStateButton
-        isDefaultAnonym={isDefaultAnonym}
-        setIsDefaultAnonym={setIsDefaultAnonym}
-      />
+      <StyledContent>
+        <ChatDefaultAnonymStateButton
+          isDefaultAnonym={isDefaultAnonym}
+          setIsDefaultAnonym={setIsDefaultAnonym}
+        />
+        <StyledInput
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder={`Message #${selectedChannel?.name || ""}`}
+          type="text"
+        />
+        <button hidden type="submit" onClick={handleSendMessage}>
+          Send Message
+        </button>
+      </StyledContent>
     </StyledContainer>
   );
 };
 
+
 export default observer(ChatInput);
 
+
 const StyledContainer = styled.form`
-  border-radius: 1.25rem;
-  position: relative;
   display: flex;
   justify-content: center;
+  width: 100%;
+`;
+
+const StyledContent = styled.div`
+  text-align: right;
+  position: relative;
+  bottom: 2rem;
+  width: 75%;
 `;
 
 const StyledInput = styled.input`
-  position: fixed;
-  bottom: 2rem;
-  width: 60%;
+  display: block;
   border: 1px solid gray;
   border-radius: 3px;
   padding: 1.25rem;
   outline: none;
+  width: 100%;
+
 `;

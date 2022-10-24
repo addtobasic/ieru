@@ -34,6 +34,9 @@ const ChatAnonymState: React.FC<ChatDefaultAnonymStateButtonProps> = ({
 export default ChatAnonymState;
 
 const StyledDefaultAnonymizeButton = styled.button<AnonymizeProps>`
+  cursor: pointer;
+  border: none;
+  outline: none;
   background: ${(props) => (props.isAnonymize ? "white" : "white")};
   color: ${(props) => (props.isAnonymize ? "#007ab7" : "black")};
 `;
