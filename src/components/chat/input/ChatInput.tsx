@@ -47,9 +47,7 @@ const ChatInput = () => {
   );
 };
 
-
 export default observer(ChatInput);
-
 
 const StyledContainer = styled.form`
   display: flex;
@@ -71,5 +69,4 @@ const StyledInput = styled.input`
   padding: 1.25rem;
   outline: none;
   width: 100%;
-
 `;
