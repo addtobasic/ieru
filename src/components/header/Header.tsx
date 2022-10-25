@@ -22,6 +22,6 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   width: 100%;
   padding: 0.75rem 0;
-  background-color: var(--ieta-color);
+  background-color: var(--ieru-color);
   color: white;
 `;
