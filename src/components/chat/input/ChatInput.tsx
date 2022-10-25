@@ -11,18 +11,25 @@ const ChatInput = () => {
   const [input, setInput] = useState("");
   const [isDefaultAnonym, setIsDefaultAnonym] = useState(false);
 
-  const handleSendMessage = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    e.preventDefault();
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  };
+
+  const handleSendMessage = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+    }
 
     if (input === "") {
       return;
     }
-    const success = sendMessage(input, isDefaultAnonym);
 
-    if (success) {
-      setInput("");
+    if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+      const success = sendMessage(input, isDefaultAnonym);
+
+      if (success) {
+        setInput("");
+      }
     }
   };
 
@@ -35,13 +42,11 @@ const ChatInput = () => {
         />
         <StyledInput
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={handleChangeInput}
+          onKeyDown={handleSendMessage}
           placeholder={`Message #${selectedChannel?.name || ""}`}
           type="text"
         />
-        <button hidden type="submit" onClick={handleSendMessage}>
-          Send Message
-        </button>
       </StyledContent>
     </StyledContainer>
   );
