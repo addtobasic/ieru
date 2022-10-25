@@ -14,7 +14,7 @@ const StyledButton = styled(Button)`
   &&& {
     margin-top: 1rem;
     text-transform: inherit;
-    background: var(--ieta-color);
+    background: var(--ieru-color);
     color: white;
   }
 `;
