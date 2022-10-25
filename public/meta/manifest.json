@@ -1,6 +1,6 @@
 {
-  "name": "ieta",
-  "short_name": "ieta",
+  "name": "ieru",
+  "short_name": "ieru",
   "icons": [
     {
       "src": "/meta/google-touch-icon.png",
@@ -10,5 +10,5 @@
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "display": "standalone",
-  "start_url": "https://slack-clone-martstech.vercel.app"
+  "start_url": "https://ieru.life"
 }
