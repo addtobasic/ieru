@@ -18,7 +18,7 @@ export default Sidebar;
 const StyledContainer = styled.section`
   width: 16rem;
   color: white;
-  background-color: var(--ieta-color);
+  background-color: var(--ieru-color);
   border-top: 1px solid var(--sidebar-color);
   overflow: scroll;
 
