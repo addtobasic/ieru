@@ -2,4 +2,6 @@
 
 ## Reporting a Vulnerability
 
-DM me on the contacts provided in my profile page: https://github.com/MartsTech
+Please DM the contact information listed below.
+- [GitHub](https://github.com/addtobasic)
+- [Twitter](https://twitter.com/addtobasic)
