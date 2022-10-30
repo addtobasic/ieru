@@ -1,17 +1,17 @@
-// import Image from "next/image";
+import Image from "next/image";
 import styled from "styled-components";
 import LoginSignInButton from "./LoginSignInButton";
 
 const Login = () => (
   <StyledWrapper>
     <StyledContainer>
-      {/* <Image
-        src="/images/logo.png"
-        height={100}
-        width={100}
+      <Image
+        src="/images/logo.svg"
+        height={150}
+        width={250}
         objectFit="contain"
         alt="logo"
-      /> */}
+      />
       <StyledTitle>Sign in now</StyledTitle>
       <LoginSignInButton />
     </StyledContainer>
