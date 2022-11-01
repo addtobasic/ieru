@@ -24,8 +24,7 @@ const Chat = () => {
 export default observer(Chat);
 
 const StyledContainer = styled.section`
-  flex: 0.7;
-  flex-grow: 1;
+  width: 100%;
   display: flex;
   flex-direction: column;
   overflow: scroll;
