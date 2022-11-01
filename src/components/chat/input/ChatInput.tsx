@@ -62,8 +62,6 @@ const StyledContainer = styled.form`
 
 const StyledContent = styled.div`
   text-align: right;
-  position: relative;
-  bottom: 2rem;
   width: 75%;
 `;
 
