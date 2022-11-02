@@ -11,6 +11,4 @@ const DefaultLayout: React.FC = ({ children }) => (
 
 export default DefaultLayout;
 
-const StyledWrapper = styled.div`
-
-`;
+const StyledWrapper = styled.div``;
