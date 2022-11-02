@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { useStore } from "stores/store";
 import styled from "styled-components";
-import ChatHeader from "./header/ChatHeader";
+// import ChatHeader from "./header/ChatHeader";
 import ChatInput from "./input/ChatInput";
 import ChatMessages from "./messages/ChatMessages";
 
@@ -14,7 +14,7 @@ const Chat = () => {
 
   return (
     <StyledContainer>
-      <ChatHeader />
+      {/* <ChatHeader /> */}
       <ChatMessages />
       <ChatInput />
     </StyledContainer>
