@@ -9,9 +9,6 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { observer } from "mobx-react-lite";
 
-// import ChatHeaderOptions from "./ChatHeaderOptions";
-// import ChatHeaderInfo from "./ChatHeaderInfo";
-
 const drawerWidth = 240;
 
 interface ChatHeaderProps {
@@ -28,7 +25,14 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ open, handleDrawerOpen }) => {
   const { selectedChannel } = useStore().channelStore;
 
   return (
-    <AppBar position="fixed" theme={theme} open={open}>
+    <AppBar
+      sx={{
+        backgroundColor: "var(--ieru-color)",
+      }}
+      position="fixed"
+      theme={theme}
+      open={open}
+    >
       <Toolbar>
         <IconButton
           color="inherit"

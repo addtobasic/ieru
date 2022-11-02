@@ -1,32 +1,3 @@
-// import styled from "styled-components";
-// import SidebarOptions from "./options/SidebarOptions";
-// import SidebarOptionsLoader from "./options/SidebarOptionsLoader";
-
-// const Sidebar = () => (
-//   <StyledContainer>
-//     <SidebarHeader />
-//     <SidebarOptions />
-//     <SidebarChannels />
-//     <SidebarOptionsLoader />
-//   </StyledContainer>
-// );
-
-// export default Sidebar;
-
-// const StyledContainer = styled.section`
-//   width: 16rem;
-//   color: white;
-//   background-color: var(--ieru-color);
-//   border-top: 1px solid var(--sidebar-color);
-//   overflow: scroll;
-
-//   ::-webkit-scrollbar {
-//     display: none;
-//   }
-//   -ms-overflow-style: none; /* IE and Edge */
-//   scrollbar-width: none; /* Firefox */
-// `;
-
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -59,7 +30,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
 }));
 
 const PersistentDrawerLeft: React.FC = ({ children }) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -78,6 +49,8 @@ const PersistentDrawerLeft: React.FC = ({ children }) => {
           width: drawerWidth,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
+            color: "white",
+            backgroundColor: "var(--ieru-color)",
             width: drawerWidth,
             boxSizing: "border-box",
           },
@@ -91,10 +64,7 @@ const PersistentDrawerLeft: React.FC = ({ children }) => {
         <SidebarChannels />
         <Divider />
       </Drawer>
-      <Main open={open}>
-        {/* <DrawerHeader /> */}
-        {children}
-      </Main>
+      <Main open={open}>{children}</Main>
     </Box>
   );
 };

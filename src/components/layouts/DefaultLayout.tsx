@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 const DefaultLayout: React.FC = ({ children }) => (
   <StyledWrapper>
-    {/* <Header /> */}
     <Sidebar>{children}</Sidebar>
   </StyledWrapper>
 );
@@ -13,7 +12,5 @@ const DefaultLayout: React.FC = ({ children }) => (
 export default DefaultLayout;
 
 const StyledWrapper = styled.div`
-  // display: flex;
-  // flex-direction: column;
-  // height: 100vh;
+
 `;
