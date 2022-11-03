@@ -3,10 +3,13 @@ import moment from "moment";
 import Image from "next/image";
 import styled from "styled-components";
 import { Message } from "types/message";
-import { MdOutlinePeopleAlt } from "react-icons/md";
 import { doc, updateDoc, onSnapshot } from "firebase/firestore";
 import { db } from "config/firebase";
 import { useStore, store } from "stores/store";
+
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import IconButton from "@mui/material/IconButton";
 
 import anonymusPng from "../../../../public/images/anonymus.png";
 
@@ -40,10 +43,10 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
     setIsAnonym(!isAnonym);
   };
 
-  return isAnonym ? (
+  return (
     <StyledContainer>
       <StyledImage
-        src={anonymusPng}
+        src={isAnonym ? anonymusPng : photoURL}
         width={50}
         height={50}
         objectFit="contain"
@@ -51,38 +54,24 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
       />
       <StyledContent>
         <StyledInfo>
-          Anonymous Comment
+          {isAnonym ? "Anonymous Comment" : user}
           <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
           {showButton && (
-            <StyledAnonymButton>
-              <MdOutlinePeopleAlt onClick={handleChangeAnonym} />
+            <StyledAnonymButton onClick={handleChangeAnonym} size="small">
+              {isAnonym ? (
+                <VisibilityIcon
+                  sx={{
+                    color: "var(--ieru-color)",
+                  }}
+                />
+              ) : (
+                <VisibilityOffIcon />
+              )}
             </StyledAnonymButton>
           )}
         </StyledInfo>
         <StyledMessage>{message.message}</StyledMessage>
       </StyledContent>
-    </StyledContainer>
-  ) : (
-    <StyledContainer>
-      <StyledImage
-        src={photoURL}
-        width={50}
-        height={50}
-        objectFit="contain"
-        alt="user"
-      />
-      <StyledContent>
-        <StyledInfo>
-          {user}
-          <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
-        </StyledInfo>
-        <StyledMessage>{message.message}</StyledMessage>
-      </StyledContent>
-      {showButton && (
-        <StyledAnonymButton onClick={handleChangeAnonym}>
-          <MdOutlinePeopleAlt />
-        </StyledAnonymButton>
-      )}
     </StyledContainer>
   );
 };
@@ -90,8 +79,6 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
 export default ChatMessagesItem;
 
 const StyledContainer = styled.div`
-  // display: flex;
-  // align-items: center;
   padding: 1.25rem;
   display: flex;
   justify-content: left;
@@ -118,8 +105,8 @@ const StyledDate = styled.span`
   font-size: 0.6rem;
 `;
 
-const StyledAnonymButton = styled.button`
-  margin-right: 10rem;
-  position: absolute;
-  right: 0;
-`;
+const StyledAnonymButton = styled(IconButton)({
+  marginRight: "1rem",
+  position: "absolute",
+  right: "0",
+});
