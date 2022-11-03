@@ -8,21 +8,16 @@ const ChatMessages = () => {
   const { messages, hasMore, loadMore } = useStore().messageStore;
 
   return (
-    <StyledContainer
-      id="scrollableDiv"
-      style={{
-        height: 800,
-        overflow: "auto",
-        display: "flex",
-        flexDirection: "column-reverse",
-      }}
-    >
+    <StyledContainer>
       <InfiniteScroll
         dataLength={messages.length}
         next={loadMore}
         hasMore={hasMore}
         loader={<h4>Loading...</h4>}
-        style={{ display: "flex", flexDirection: "column-reverse" }}
+        style={{
+          display: "flex",
+          flexDirection: "column-reverse",
+        }}
         inverse
         scrollableTarget="scrollableDiv"
       >
@@ -36,12 +31,13 @@ const ChatMessages = () => {
 
 export default observer(ChatMessages);
 
-const StyledContainer = styled.div`
-  padding-bottom: 5rem;
+const StyledContainer = styled("div")({
+  paddingTop: "4rem",
+  paddingBottom: "10rem",
 
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-`;
+  "&::-webkit-scrollbar": {
+    display: "none",
+  },
+  "&-ms-overflow-style": "none" /* IE and Edge */,
+  "&scrollbar-width": "none" /* Firefox */,
+});
