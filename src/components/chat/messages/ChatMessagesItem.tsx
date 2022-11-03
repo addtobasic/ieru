@@ -59,13 +59,13 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
           {showButton && (
             <StyledAnonymButton onClick={handleChangeAnonym} size="small">
               {isAnonym ? (
-                <VisibilityIcon
+                <VisibilityIcon />
+              ) : (
+                <VisibilityOffIcon
                   sx={{
                     color: "var(--ieru-color)",
                   }}
                 />
-              ) : (
-                <VisibilityOffIcon />
               )}
             </StyledAnonymButton>
           )}
