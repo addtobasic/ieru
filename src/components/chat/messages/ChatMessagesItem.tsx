@@ -43,10 +43,10 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
     setIsAnonym(!isAnonym);
   };
 
-  return isAnonym ? (
+  return (
     <StyledContainer>
       <StyledImage
-        src={anonymusPng}
+        src={isAnonym ? anonymusPng : photoURL}
         width={50}
         height={50}
         objectFit="contain"
@@ -54,44 +54,24 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
       />
       <StyledContent>
         <StyledInfo>
-          Anonymous Comment
+          {isAnonym ? "Anonymous Comment" : user}
           <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
           {showButton && (
             <StyledAnonymButton onClick={handleChangeAnonym} size="small">
-              <VisibilityIcon />
+              {isAnonym ? (
+                <VisibilityIcon
+                  sx={{
+                    color: "var(--ieru-color)",
+                  }}
+                />
+              ) : (
+                <VisibilityOffIcon />
+              )}
             </StyledAnonymButton>
           )}
         </StyledInfo>
         <StyledMessage>{message.message}</StyledMessage>
       </StyledContent>
-    </StyledContainer>
-  ) : (
-    <StyledContainer>
-      <StyledImage
-        src={photoURL}
-        width={50}
-        height={50}
-        objectFit="contain"
-        alt="user"
-      />
-      <StyledContent>
-        <StyledInfo>
-          {user}
-          <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
-        </StyledInfo>
-        <StyledMessage>{message.message}</StyledMessage>
-      </StyledContent>
-      {showButton && (
-        <StyledAnonymButton
-          sx={{
-            color: "var(--ieru-color)",
-          }}
-          onClick={handleChangeAnonym}
-          size="small"
-        >
-          <VisibilityOffIcon />
-        </StyledAnonymButton>
-      )}
     </StyledContainer>
   );
 };
