@@ -1,11 +1,16 @@
 import { observer } from "mobx-react-lite";
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { useStore } from "stores/store";
-import styled from "styled-components";
-
+import { styled } from "@mui/material/styles";
 import ChatDefaultAnonymStateButton from "./ChatDefaultAnonymStateButton";
 
-const ChatInput = () => {
+interface ChatInputProps {
+  open: boolean;
+}
+
+const drawerWidth = 240;
+
+const ChatInput: FC<ChatInputProps> = ({ open }) => {
   const { selectedChannel } = useStore().channelStore;
   const { sendMessage } = useStore().messageStore;
   const [input, setInput] = useState("");
@@ -34,7 +39,7 @@ const ChatInput = () => {
   };
 
   return (
-    <StyledContainer>
+    <StyledContainer open={open}>
       <StyledContent>
         <ChatDefaultAnonymStateButton
           isDefaultAnonym={isDefaultAnonym}
@@ -52,24 +57,37 @@ const ChatInput = () => {
   );
 };
 
+const StyledContainer = styled("form", {
+  shouldForwardProp: (prop) => prop !== "open",
+})<{ open?: boolean }>(({ theme, open }) => ({
+  width: "100%",
+  position: "fixed",
+  bottom: "0",
+  transition: theme.transitions.create(["margin", "width"], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(["margin", "width"], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+}));
+
+const StyledContent = styled("div")({
+  textAlign: "right",
+  width: "100%",
+});
+
+const StyledInput = styled("input")({
+  display: "block",
+  border: "1px solid #ccc",
+  borderRadius: "3px",
+  padding: "1.25rem",
+  width: "100%",
+  outline: "none",
+});
+
 export default observer(ChatInput);
-
-const StyledContainer = styled.form`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`;
-
-const StyledContent = styled.div`
-  text-align: right;
-  width: 75%;
-`;
-
-const StyledInput = styled.input`
-  display: block;
-  border: 1px solid gray;
-  border-radius: 3px;
-  padding: 1.25rem;
-  outline: none;
-  width: 100%;
-`;
