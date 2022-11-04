@@ -1,6 +1,6 @@
 import { TextField } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
 const HeaderSearch = () => (
   <StyledContainer>
@@ -14,33 +14,33 @@ const HeaderSearch = () => (
   </StyledContainer>
 );
 
+const StyledContainer = styled("div")({
+  display: "flex",
+  flex: "0.4",
+  alignItems: "center",
+  padding: "0 3rem",
+  borderRadius: "6px",
+  border: "1px gray solid",
+  backgroundColor: "var(--header-search-color)",
+  color: "gray",
+  opacity: 1,
+  textAlign: "center",
+});
+
+const StyledInput = styled(TextField)({
+  "&&&": {
+    minWidth: "100%",
+
+    "> label": {
+      color: "gray",
+    },
+
+    "> div > input": {
+      backgroundColor: "var(--header-search-color)",
+      color: "white",
+      border: "none",
+    },
+  },
+});
+
 export default HeaderSearch;
-
-const StyledContainer = styled.div`
-  flex: 0.4;
-  display: flex;
-  align-items: center;
-  padding: 0 3rem;
-  border-radius: 6px;
-  border: 1px gray solid;
-  background-color: var(--header-search-color);
-  color: gray;
-  opacity: 1;
-  text-align: center;
-`;
-
-const StyledInput = styled(TextField)`
-  &&& {
-    min-width: 100%;
-
-    > label {
-      color: gray;
-    }
-
-    > div > input {
-      background-color: var(--header-search-color);
-      color: white;
-      border: none;
-    }
-  }
-`;
