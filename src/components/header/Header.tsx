@@ -11,17 +11,16 @@ const Header = () => (
   </StyledHeader>
 );
 
-export default Header;
+const StyledHeader = styled("header")({
+  position: "sticky",
+  top: 0,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  width: "100%",
+  padding: "0.75rem 0",
+  backgroundColor: "var(--ieru-color)",
+  color: "white",
+});
 
-const StyledHeader = styled.header`
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0.75rem 0;
-  background-color: var(--ieru-color);
-  color: white;
-`;
+export default Header;
