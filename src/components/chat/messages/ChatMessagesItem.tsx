@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import Image from "next/image";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import { Message } from "types/message";
 import { doc, updateDoc, onSnapshot } from "firebase/firestore";
 import { db } from "config/firebase";
@@ -78,32 +78,32 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
 
 export default ChatMessagesItem;
 
-const StyledContainer = styled.div`
-  padding: 1.25rem;
-  display: flex;
-  justify-content: left;
-  align-items: left;
-  position: relative;
-`;
+const StyledContainer = styled("div")({
+  display: "flex",
+  padding: "1.25rem",
+  justifyContent: "left",
+  alignItems: "left",
+  position: "relative",
+});
 
-const StyledImage = styled(Image)`
-  border-radius: 0.5rem;
-`;
+const StyledImage = styled(Image)({
+  borderRadius: "0.5rem",
+});
 
-const StyledContent = styled.div`
-  padding-left: 0.5rem;
-`;
+const StyledContent = styled("div")({
+  paddingLeft: "0.5rem",
+});
 
-const StyledInfo = styled.h4``;
+const StyledInfo = styled("h4")({});
 
-const StyledMessage = styled.p``;
+const StyledMessage = styled("p")({});
 
-const StyledDate = styled.span`
-  color: gray;
-  font-weight: 300;
-  margin-left: 0.5rem;
-  font-size: 0.6rem;
-`;
+const StyledDate = styled("span")({
+  color: "gray",
+  fontWeight: "300",
+  fontSize: "0.6rem",
+  marginLeft: "0.5rem",
+});
 
 const StyledAnonymButton = styled(IconButton)({
   marginRight: "1rem",
