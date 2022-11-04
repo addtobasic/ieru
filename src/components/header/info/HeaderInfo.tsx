@@ -1,5 +1,5 @@
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import HeaderInfoAvatar from "./HeaderInfoAvatar";
 
 const HeaderInfo = () => (
@@ -9,16 +9,16 @@ const HeaderInfo = () => (
   </StyledContainer>
 );
 
+const StyledContainer = styled("div")({
+  flex: "0.3",
+  display: "flex",
+  alignItems: "center",
+  marginLeft: "1.25rem",
+
+  svg: {
+    marginLeft: "auto",
+    marginRight: "1.75rem",
+  },
+});
+
 export default HeaderInfo;
-
-const StyledContainer = styled.div`
-  flex: 0.3;
-  display: flex;
-  align-items: center;
-  margin-left: 1.25rem;
-
-  > svg {
-    margin-left: auto;
-    margin-right: 1.75rem;
-  }
-`;
