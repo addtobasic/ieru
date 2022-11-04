@@ -1,7 +1,6 @@
-// import Header from "components/header/Header";
 import Sidebar from "components/sidebar/Sidebar";
 import React from "react";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
 const DefaultLayout: React.FC = () => (
   <StyledWrapper>
@@ -9,6 +8,6 @@ const DefaultLayout: React.FC = () => (
   </StyledWrapper>
 );
 
-export default DefaultLayout;
+const StyledWrapper = styled("div")({});
 
-const StyledWrapper = styled.div``;
+export default DefaultLayout;
