@@ -1,5 +1,5 @@
 import HelpOutlinedIcon from "@material-ui/icons/HelpOutline";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
 const HeaderOptions = () => (
   <StyledContainer>
@@ -7,15 +7,15 @@ const HeaderOptions = () => (
   </StyledContainer>
 );
 
+const StyledContainer = styled("div")({
+  display: "flex",
+  flex: "0.3",
+  alignItems: "flex-end",
+
+  svg: {
+    maginLeft: "auto",
+    marginRight: "20px",
+  },
+});
+
 export default HeaderOptions;
-
-const StyledContainer = styled.div`
-  flex: 0.3;
-  display: flex;
-  align-items: flex-end;
-
-  > svg {
-    margin-left: auto;
-    margin-right: 20px;
-  }
-`;
