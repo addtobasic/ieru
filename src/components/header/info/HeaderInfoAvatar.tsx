@@ -1,4 +1,4 @@
-import { Avatar } from "@material-ui/core";
+import { Avatar } from "@mui/material";
 import { useStore } from "stores/store";
 import { styled } from "@mui/material/styles";
 

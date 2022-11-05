@@ -1,4 +1,4 @@
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { styled } from "@mui/material/styles";
 import HeaderInfoAvatar from "./HeaderInfoAvatar";
 

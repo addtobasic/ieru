@@ -1,4 +1,4 @@
-import { NoSsr } from "@material-ui/core";
+import { NoSsr } from "@mui/material";
 import Image from "next/image";
 import ClipLoader from "react-spinners/ClipLoader";
 import { styled } from "@mui/material/styles";

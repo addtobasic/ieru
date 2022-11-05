@@ -1,4 +1,4 @@
-import StarBorderOutlinedIcon from "@material-ui/icons/StarBorderOutlined";
+import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import { observer } from "mobx-react-lite";
 import { useStore } from "stores/store";
 import { styled } from "@mui/material/styles";

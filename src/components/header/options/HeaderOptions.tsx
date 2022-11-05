@@ -1,4 +1,4 @@
-import HelpOutlinedIcon from "@material-ui/icons/HelpOutline";
+import HelpOutlinedIcon from "@mui/icons-material/HelpOutline";
 import { styled } from "@mui/material/styles";
 
 const HeaderOptions = () => (
