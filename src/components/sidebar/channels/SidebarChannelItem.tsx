@@ -1,6 +1,6 @@
 import React from "react";
 import { useStore } from "stores/store";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import { Channel } from "types/channel";
 
 interface SidebarChannelItemProps {
@@ -21,26 +21,26 @@ const SidebarChannelItem: React.FC<SidebarChannelItemProps> = ({ channel }) => {
   );
 };
 
+const StyledContainer = styled("div")({
+  display: "flex",
+  alignItems: "center",
+  fontSize: "0.75rem",
+  paddingReft: "2px",
+  cursor: "pointer",
+
+  "&:hover": {
+    opacity: 0.9,
+    backgroundColor: "var(--sidebar-option-color)",
+  },
+});
+
+const StyledName = styled("h3")({
+  padding: "0.75rem 0",
+  fontWeight: 400,
+});
+
+const StyledHash = styled("span")({
+  padding: "1rem 1.1rem",
+});
+
 export default SidebarChannelItem;
-
-const StyledContainer = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 0.75rem;
-  padding-left: 2px;
-  cursor: pointer;
-
-  :hover {
-    opacity: 0.9;
-    background-color: var(--sidebar-option-color);
-  }
-`;
-
-const StyledName = styled.h3`
-  padding: 0.75rem 0;
-  font-weight: 400;
-`;
-
-const StyledHash = styled.span`
-  padding: 1rem;
-`;

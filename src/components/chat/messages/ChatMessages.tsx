@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useStore } from "stores/store";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import ChatMessagesItem from "./ChatMessagesItem";
 
 const ChatMessages = () => {

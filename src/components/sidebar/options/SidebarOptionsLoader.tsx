@@ -1,4 +1,4 @@
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { observer } from "mobx-react-lite";
 import { useStore } from "stores/store";
 import SidebarOptionsItem from "./SidebarOptionsItem";

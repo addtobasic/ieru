@@ -1,7 +1,7 @@
-import { SvgIconTypeMap } from "@material-ui/core";
-import { OverridableComponent } from "@material-ui/core/OverridableComponent";
+import { SvgIconTypeMap } from "@mui/material";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 import React from "react";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
 interface SidebarOptionsItemProps {
   title: string;
@@ -22,25 +22,25 @@ const SidebarOptionItem: React.FC<SidebarOptionsItemProps> = ({
   </StyledContainer>
 );
 
+const StyledContainer = styled("div")({
+  display: "flex",
+  alignItems: "center",
+  fontSize: "0.75rem",
+  paddingReft: "2px",
+  cursor: "pointer",
+
+  "&:hover": {
+    opacity: 0.9,
+    backgroundColor: "var(--sidebar-option-color)",
+  },
+});
+
+const StyledIconContainer = styled("div")({
+  margin: "0.75rem",
+});
+
+const StyledTitle = styled("h3")({
+  fontWeight: 500,
+});
+
 export default SidebarOptionItem;
-
-const StyledContainer = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 0.75rem;
-  padding-left: 2px;
-  cursor: pointer;
-
-  :hover {
-    opacity: 0.9;
-    background-color: var(--sidebar-option-color);
-  }
-`;
-
-const StyledIconContainer = styled.div`
-  margin: 0.75rem;
-`;
-
-const StyledTitle = styled.h3`
-  font-weight: 500;
-`;

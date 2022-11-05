@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { useStore } from "stores/store";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import SidebarChannelItem from "./SidebarChannelItem";
 import SidebarOptions from "../options/SidebarOptions";
 
@@ -19,4 +19,4 @@ const SidebarChannels = () => {
 
 export default observer(SidebarChannels);
 
-const StyledContainer = styled.div``;
+const StyledContainer = styled("div")({});

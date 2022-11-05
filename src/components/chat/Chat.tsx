@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { observer } from "mobx-react-lite";
 import { useStore } from "stores/store";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import ChatMessages from "./messages/ChatMessages";
 import ChatInput from "./input/ChatInput";
 

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
+import { styled } from "@mui/material/styles";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
 const ChatHeaderOptions = () => (
   <StyledContainer>
@@ -11,15 +11,15 @@ const ChatHeaderOptions = () => (
 
 export default ChatHeaderOptions;
 
-const StyledContainer = styled.div``;
+const StyledContainer = styled("div")({});
 
-const StyledOption = styled.p`
-  display: flex;
-  align-items: center;
-  font-size: 0.875rem;
+const StyledOption = styled("p")({
+  display: "flex",
+  alignItems: "center",
+  fontSize: "0.9rem",
 
-  > svg {
-    margin-right: 0.25rem;
-    font-size: 1rem;
-  }
-`;
+  svg: {
+    marginRight: "0.25rem",
+    fontSize: "1rem",
+  },
+});

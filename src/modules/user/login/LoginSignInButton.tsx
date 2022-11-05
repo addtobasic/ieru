@@ -1,6 +1,6 @@
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 import { useStore } from "stores/store";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
 const LoginSignInButton = () => {
   const { signIn } = useStore().userStore;
@@ -10,11 +10,11 @@ const LoginSignInButton = () => {
 
 export default LoginSignInButton;
 
-const StyledButton = styled(Button)`
-  &&& {
-    margin-top: 1rem;
-    text-transform: inherit;
-    background: var(--ieru-i-color);
-    color: white;
-  }
-`;
+const StyledButton = styled(Button)({
+  "&&&": {
+    marginTop: "1rem",
+    textTransform: "inherit",
+    backgroundColor: "var(--ieru-i-color)",
+    color: "white",
+  },
+});

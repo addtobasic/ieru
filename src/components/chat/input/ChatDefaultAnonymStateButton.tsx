@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
 interface ChatDefaultAnonymStateButtonProps {
   isDefaultAnonym: boolean;
@@ -33,11 +33,13 @@ const ChatAnonymState: React.FC<ChatDefaultAnonymStateButtonProps> = ({
 
 export default ChatAnonymState;
 
-const StyledDefaultAnonymizeButton = styled.button<AnonymizeProps>`
-  margin: 0.5rem;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  background: ${(props) => (props.isAnonymize ? "white" : "white")};
-  color: ${(props) => (props.isAnonymize ? "var(--ieru-color)" : "black")};
-`;
+const StyledDefaultAnonymizeButton = styled("button", {
+  shouldForwardProp: (prop) => prop !== "isAnonymize",
+})<AnonymizeProps>(({ isAnonymize }) => ({
+  margin: "0.5rem",
+  cursor: "pointer",
+  border: "none",
+  outline: "none",
+  backgroundColor: "white",
+  color: isAnonymize ? "var(--ieru-color)" : "black",
+}));
