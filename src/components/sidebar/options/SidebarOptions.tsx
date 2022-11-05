@@ -1,15 +1,15 @@
-import AddIcon from "@material-ui/icons/Add";
-import AppsIcon from "@material-ui/icons/Apps";
-import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
-import DraftsIcon from "@material-ui/icons/Drafts";
-import ExpandLessIcon from "@material-ui/icons/ExpandLess";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import FileCopyIcon from "@material-ui/icons/FileCopy";
-import InboxIcon from "@material-ui/icons/Inbox";
-import InsertCommentIcon from "@material-ui/icons/InsertComment";
-import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
+import AddIcon from "@mui/icons-material/Add";
+import AppsIcon from "@mui/icons-material/Apps";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import DraftsIcon from "@mui/icons-material/Drafts";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import FileCopyIcon from "@mui/icons-material/FileCopy";
+import InboxIcon from "@mui/icons-material/Inbox";
+import InsertCommentIcon from "@mui/icons-material/InsertComment";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import { useStore } from "stores/store";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import SidebarOptionItem from "./SidebarOptionsItem";
 
 const SidebarOptions = () => {
@@ -37,11 +37,11 @@ const SidebarOptions = () => {
   );
 };
 
+const StyledContainer = styled("div")({});
+
+const StyledSeparator = styled("hr")({
+  margin: "0.75rem 0",
+  border: "1px solid var(--sidebar-color)",
+});
+
 export default SidebarOptions;
-
-const StyledContainer = styled.div``;
-
-const StyledSeparator = styled.hr`
-  margin: 0.75rem 0;
-  border: 1px solid var(--sidebar-color);
-`;
