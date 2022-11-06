@@ -13,9 +13,22 @@ const SidebarHeader: React.FC<SideBarHeaderProps> = ({ handleDrawerClose }) => {
   const theme = useTheme();
 
   return (
-    <DrawerHeader>
-      <IconButton onClick={handleDrawerClose}>
-        {theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+    <DrawerHeader theme={theme}>
+      <IconButton
+        sx={[
+          {
+            "&:hover": {
+              backgroundColor: "var(--sidebar-color)",
+            },
+          },
+        ]}
+        onClick={handleDrawerClose}
+      >
+        {theme.direction === "ltr" ? (
+          <ChevronLeftIcon sx={[{ color: "white" }]} />
+        ) : (
+          <ChevronRightIcon />
+        )}
       </IconButton>
     </DrawerHeader>
   );

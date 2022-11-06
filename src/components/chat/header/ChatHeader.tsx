@@ -39,7 +39,14 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ open, handleDrawerOpen }) => {
           aria-label="open drawer"
           onClick={handleDrawerOpen}
           edge="start"
-          sx={{ mr: 2, ...(open && { display: "none" }) }}
+          sx={[
+            { mr: 2, ...(open && { display: "none" }) },
+            {
+              "&:hover": {
+                backgroundColor: "var(--sidebar-color)",
+              },
+            },
+          ]}
         >
           <MenuIcon />
         </IconButton>
