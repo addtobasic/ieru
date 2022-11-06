@@ -36,7 +36,7 @@ export default ChatAnonymState;
 const StyledDefaultAnonymizeButton = styled("button", {
   shouldForwardProp: (prop) => prop !== "isAnonymize",
 })<AnonymizeProps>(({ isAnonymize }) => ({
-  margin: "0.5rem",
+  padding: "0.5rem",
   cursor: "pointer",
   border: "none",
   outline: "none",
