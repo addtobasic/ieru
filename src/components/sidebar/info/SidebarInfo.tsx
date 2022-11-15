@@ -19,6 +19,9 @@ const StyledContainer = styled("div")({
   height: "4.5rem",
   display: "flex",
   alignItems: "center",
+  width: "100%",
+  position: "fixed",
+  bottom: "0",
 });
 
 const StyledButton = styled("button")({
