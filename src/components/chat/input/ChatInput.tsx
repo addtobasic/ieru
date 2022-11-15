@@ -88,6 +88,7 @@ const StyledInput = styled("input")({
   padding: "1.25rem",
   width: "100%",
   outline: "none",
+  height: "4rem",
 });
 
 export default observer(ChatInput);
