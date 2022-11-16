@@ -1,16 +1,43 @@
+import * as React from "react";
 import { styled } from "@mui/material/styles";
 import { useStore } from "stores/store";
 import SidebarInfoAvatar from "./SidebarInfoAvatar";
+import SidebarInfoMenu from "./SidebarInfoMenu";
 
 const SidebarInfo = () => {
   const { user } = useStore().userStore;
 
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef<HTMLButtonElement>(null);
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  // return focus to the button when we transitioned from !open -> open
+  const prevOpen = React.useRef(open);
+  React.useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current!.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
+
   return (
     <StyledContainer>
-      <StyledButton>
+      <StyledButton
+        ref={anchorRef}
+        id="composition-button"
+        aria-controls={open ? "composition-menu" : undefined}
+        aria-expanded={open ? "true" : undefined}
+        aria-haspopup="true"
+        onClick={handleToggle}
+      >
         <SidebarInfoAvatar />
         <StyledName>{user?.displayName}</StyledName>
       </StyledButton>
+      <SidebarInfoMenu anchorRef={anchorRef} open={open} setOpen={setOpen} />
     </StyledContainer>
   );
 };
