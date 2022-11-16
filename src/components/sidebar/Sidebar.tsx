@@ -7,6 +7,7 @@ import Divider from "@mui/material/Divider";
 import Chat from "components/chat/Chat";
 import SidebarChannels from "./channels/SidebarChannels";
 import SidebarHeader from "./header/SidebarHeader";
+import SidebarInfo from "./info/SidebarInfo";
 import ChatHeader from "../chat/header/ChatHeader";
 
 const drawerWidth = 240;
@@ -44,6 +45,7 @@ const PersistentDrawerLeft: React.FC = () => {
         <SidebarHeader handleDrawerClose={handleDrawerClose} />
         <Divider />
         <SidebarChannels />
+        <SidebarInfo />
         <Divider />
       </Drawer>
       <Main open={open}>
