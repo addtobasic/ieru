@@ -7,6 +7,7 @@ import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Stack from "@mui/material/Stack";
+import { useStore } from "stores/store";
 
 interface MenuListCompositionProps {
   anchorRef: React.RefObject<HTMLButtonElement>;
@@ -19,6 +20,8 @@ const MenuListComposition: FC<MenuListCompositionProps> = ({
   open,
   setOpen,
 }) => {
+  const { signOut } = useStore().userStore;
+
   const handleClose = (event: Event | React.SyntheticEvent) => {
     if (
       anchorRef.current &&
@@ -68,7 +71,7 @@ const MenuListComposition: FC<MenuListCompositionProps> = ({
                   >
                     <MenuItem onClick={handleClose}>Profile</MenuItem>
                     <MenuItem onClick={handleClose}>My account</MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    <MenuItem onClick={signOut}>Logout</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
