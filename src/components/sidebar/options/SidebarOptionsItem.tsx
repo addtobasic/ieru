@@ -1,7 +1,7 @@
 import { SvgIconTypeMap } from "@mui/material";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
-import React from "react";
 import { styled } from "@mui/material/styles";
+import React from "react";
 
 interface SidebarOptionsItemProps {
   title: string;

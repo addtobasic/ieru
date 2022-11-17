@@ -1,5 +1,6 @@
-import Image from "next/image";
 import { styled } from "@mui/material/styles";
+import Image from "next/image";
+
 import LoginSignInButton from "./LoginSignInButton";
 
 const Login = () => (

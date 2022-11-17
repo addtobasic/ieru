@@ -1,5 +1,5 @@
-import { styled } from "@mui/material/styles";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import { styled } from "@mui/material/styles";
 
 const ChatHeaderOptions = () => (
   <StyledContainer>

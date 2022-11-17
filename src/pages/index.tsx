@@ -1,6 +1,7 @@
+import { useEffect } from "react";
+
 import IsAuth from "modules/auth/IsAuth";
 import Home from "modules/home/Home";
-import { useEffect } from "react";
 import { useStore } from "stores/store";
 
 const HomePage = () => {

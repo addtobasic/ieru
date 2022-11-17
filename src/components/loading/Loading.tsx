@@ -1,7 +1,7 @@
 import { NoSsr } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import Image from "next/image";
 import ClipLoader from "react-spinners/ClipLoader";
-import { styled } from "@mui/material/styles";
 
 const Loading = () => (
   <NoSsr>

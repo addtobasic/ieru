@@ -1,8 +1,10 @@
-import { observer } from "mobx-react-lite";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { useStore } from "stores/store";
 import { styled } from "@mui/material/styles";
-import { useRef, useEffect } from "react";
+import { observer } from "mobx-react-lite";
+import { useEffect, useRef } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+
+import { useStore } from "stores/store";
+
 import ChatMessagesItem from "./ChatMessagesItem";
 
 const ChatMessages = () => {

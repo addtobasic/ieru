@@ -1,8 +1,10 @@
-import { observer } from "mobx-react-lite";
-import { useStore } from "stores/store";
 import { styled } from "@mui/material/styles";
-import SidebarChannelItem from "./SidebarChannelItem";
+import { observer } from "mobx-react-lite";
+
+import { useStore } from "stores/store";
+
 import SidebarOptions from "../options/SidebarOptions";
+import SidebarChannelItem from "./SidebarChannelItem";
 
 const SidebarChannels = () => {
   const { channels } = useStore().channelStore;

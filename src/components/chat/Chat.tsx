@@ -1,9 +1,11 @@
-import { FC } from "react";
-import { observer } from "mobx-react-lite";
-import { useStore } from "stores/store";
 import { styled } from "@mui/material/styles";
-import ChatMessages from "./messages/ChatMessages";
+import { observer } from "mobx-react-lite";
+import { FC } from "react";
+
+import { useStore } from "stores/store";
+
 import ChatInput from "./input/ChatInput";
+import ChatMessages from "./messages/ChatMessages";
 
 interface ChatProps {
   open: boolean;

@@ -1,13 +1,13 @@
-import React from "react";
-import { styled, useTheme } from "@mui/material/styles";
-import { useStore } from "stores/store";
-
+import MenuIcon from "@mui/icons-material/Menu";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
+import IconButton from "@mui/material/IconButton";
+import { styled, useTheme } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import { observer } from "mobx-react-lite";
+import React from "react";
+
+import { useStore } from "stores/store";
 
 const drawerWidth = 240;
 

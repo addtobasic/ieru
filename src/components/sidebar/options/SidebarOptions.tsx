@@ -1,7 +1,9 @@
 import AddIcon from "@mui/icons-material/Add";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useStore } from "stores/store";
 import { styled } from "@mui/material/styles";
+
+import { useStore } from "stores/store";
+
 import SidebarOptionItem from "./SidebarOptionsItem";
 
 const SidebarOptions = () => {

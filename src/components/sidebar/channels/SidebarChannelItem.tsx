@@ -1,6 +1,7 @@
-import React from "react";
-import { useStore } from "stores/store";
 import { styled } from "@mui/material/styles";
+import React from "react";
+
+import { useStore } from "stores/store";
 import { Channel } from "types/channel";
 
 interface SidebarChannelItemProps {

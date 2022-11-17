@@ -1,14 +1,16 @@
-import * as React from "react";
-import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
+import { styled } from "@mui/material/styles";
+import * as React from "react";
+
 import Chat from "components/chat/Chat";
+
+import ChatHeader from "../chat/header/ChatHeader";
 import SidebarChannels from "./channels/SidebarChannels";
 import SidebarHeader from "./header/SidebarHeader";
 import SidebarInfo from "./info/SidebarInfo";
-import ChatHeader from "../chat/header/ChatHeader";
 
 const drawerWidth = 240;
 

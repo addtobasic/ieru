@@ -1,6 +1,8 @@
-import * as React from "react";
 import { styled } from "@mui/material/styles";
+import * as React from "react";
+
 import { useStore } from "stores/store";
+
 import SidebarInfoAvatar from "./SidebarInfoAvatar";
 import SidebarInfoMenu from "./SidebarInfoMenu";
 
