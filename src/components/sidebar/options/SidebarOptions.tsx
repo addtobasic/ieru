@@ -25,8 +25,10 @@ const SidebarOptions = () => {
 const StyledContainer = styled("div")({});
 
 const StyledSeparator = styled("hr")({
-  margin: "0.75rem 0",
-  border: "1px solid var(--sidebar-color)",
+  "": {
+    margin: "0.75rem 0",
+    border: "1px solid var(--sidebar-color)",
+  },
 });
 
 export default SidebarOptions;

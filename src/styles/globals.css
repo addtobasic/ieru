@@ -7,14 +7,14 @@ body {
   --ieru-color: #007ab7;
   --ieru-i-color: #4839b8;
   --ieru-eru-color: #4dadfb;
-  --header-search-color: #ffffff;
+  --header-search-color: #fff;
   --sidebar-color: #97d3e3;
   --sidebar-option-color: #42aac7;
 
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 a {

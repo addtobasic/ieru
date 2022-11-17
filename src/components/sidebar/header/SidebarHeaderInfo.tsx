@@ -17,28 +17,34 @@ const SidebarHeaderInfo = () => {
   );
 };
 const StyledContainer = styled("div")({
-  flex: 1,
+  "": {
+    flex: 1,
+  },
 });
 
 const StyledGroupTitle = styled("h2")({
-  fontSize: "1rem",
-  fontWeight: 900,
-  marginBottom: "0.25rem",
+  "": {
+    marginBottom: "0.25rem",
+    fontSize: "1rem",
+    fontWeight: 900,
+  },
 });
 
 const StyledDisplayName = styled("h3")({
-  display: "flex",
-  alignItems: "center",
-  fontSize: "0.9rem",
-  fontWeight: 400,
+  "": {
+    display: "flex",
+    alignItems: "center",
+    fontSize: "0.9rem",
+    fontWeight: 400,
+  },
 });
 
 const StyledStatus = styled(FiberMenualRecordIcon)({
   "&&&": {
-    fontSize: "0.875rem",
     marginTop: "1px",
-    margintRight: "2px",
+    fontSize: "0.875rem",
     color: "green",
+    margintRight: "2px",
   },
 });
 

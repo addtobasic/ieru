@@ -23,25 +23,31 @@ const SidebarChannelItem: React.FC<SidebarChannelItemProps> = ({ channel }) => {
 };
 
 const StyledContainer = styled("div")({
-  display: "flex",
-  alignItems: "center",
-  fontSize: "0.75rem",
-  paddingReft: "2px",
-  cursor: "pointer",
+  "": {
+    display: "flex",
+    alignItems: "center",
+    fontSize: "0.75rem",
+    paddingReft: "2px",
+    cursor: "pointer",
 
-  "&:hover": {
-    opacity: 0.9,
-    backgroundColor: "var(--sidebar-option-color)",
+    "&:hover": {
+      backgroundColor: "var(--sidebar-option-color)",
+      opacity: 0.9,
+    },
   },
 });
 
 const StyledName = styled("h3")({
-  padding: "0.75rem 0",
-  fontWeight: 400,
+  "": {
+    padding: "0.75rem 0",
+    fontWeight: 400,
+  },
 });
 
 const StyledHash = styled("span")({
-  padding: "1rem 1.1rem",
+  "": {
+    padding: "1rem 1.1rem",
+  },
 });
 
 export default SidebarChannelItem;

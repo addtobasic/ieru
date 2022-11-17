@@ -14,8 +14,10 @@ const SidebarInfoAvatar = () => {
 };
 
 const StyledAvatar = styled(Avatar)({
-  cursor: "pointer",
-  textTransform: "capitalize",
+  "": {
+    textTransform: "capitalize",
+    cursor: "pointer",
+  },
 });
 
 export default SidebarInfoAvatar;

@@ -14,11 +14,13 @@ const HeaderInfoAvatar = () => {
 };
 
 const StyledAvatar = styled(Avatar)({
-  cursor: "pointer",
-  textTransform: "capitalize",
+  "": {
+    textTransform: "capitalize",
+    cursor: "pointer",
 
-  "&:hover": {
-    opacity: 0.8,
+    "&:hover": {
+      opacity: 0.8,
+    },
   },
 });
 

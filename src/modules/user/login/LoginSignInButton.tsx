@@ -14,8 +14,8 @@ export default LoginSignInButton;
 const StyledButton = styled(Button)({
   "&&&": {
     marginTop: "1rem",
+    color: "white",
     textTransform: "inherit",
     backgroundColor: "var(--ieru-i-color)",
-    color: "white",
   },
 });

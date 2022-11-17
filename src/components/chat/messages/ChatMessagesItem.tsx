@@ -99,14 +99,18 @@ const StyledInfo = styled("h4")({});
 const StyledMessage = styled("p")({});
 
 const StyledDate = styled("span")({
-  color: "gray",
-  fontWeight: "300",
-  fontSize: "0.6rem",
-  marginLeft: "0.5rem",
+  "": {
+    marginLeft: "0.5rem",
+    fontSize: "0.6rem",
+    fontWeight: "300",
+    color: "gray",
+  },
 });
 
 const StyledAnonymButton = styled(IconButton)({
-  marginRight: "1rem",
-  position: "absolute",
-  right: "0",
+  "": {
+    position: "absolute",
+    right: "0",
+    marginRight: "1rem",
+  },
 });

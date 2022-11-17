@@ -14,12 +14,14 @@ export default ChatHeaderOptions;
 const StyledContainer = styled("div")({});
 
 const StyledOption = styled("p")({
-  display: "flex",
-  alignItems: "center",
-  fontSize: "0.9rem",
+  "": {
+    display: "flex",
+    alignItems: "center",
+    fontSize: "0.9rem",
 
-  svg: {
-    marginRight: "0.25rem",
-    fontSize: "1rem",
+    svg: {
+      marginRight: "0.25rem",
+      fontSize: "1rem",
+    },
   },
 });

@@ -79,18 +79,22 @@ const StyledContainer = styled("form", {
 }));
 
 const StyledContent = styled("div")({
-  textAlign: "right",
-  width: "100%",
+  "": {
+    width: "100%",
+    textAlign: "right",
+  },
 });
 
 const StyledInput = styled("input")({
-  display: "block",
-  border: "1px solid #ccc",
-  borderRadius: "3px",
-  padding: "1.25rem",
-  width: "100%",
-  outline: "none",
-  height: "4rem",
+  "": {
+    display: "block",
+    width: "100%",
+    height: "4rem",
+    padding: "1.25rem",
+    border: "1px solid #ccc",
+    borderRadius: "3px",
+    outline: "none",
+  },
 });
 
 export default observer(ChatInput);

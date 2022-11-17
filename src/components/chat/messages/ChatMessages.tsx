@@ -41,12 +41,15 @@ const ChatMessages = () => {
 export default observer(ChatMessages);
 
 const StyledContainer = styled("div")({
-  paddingTop: "4rem",
-  paddingBottom: "10rem",
+  "": {
+    paddingTop: "4rem",
+    paddingBottom: "10rem",
 
-  "&::-webkit-scrollbar": {
-    display: "none",
+    "&::-webkit-scrollbar": {
+      display: "none",
+    },
+
+    "&msOverflowStyle": "none", // IE and Edge
+    "&scrollbarWidth": "none", // Firefox
   },
-  "&-ms-overflow-style": "none" /* IE and Edge */,
-  "&scrollbar-width": "none" /* Firefox */,
 });
