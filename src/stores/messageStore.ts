@@ -1,4 +1,3 @@
-import { db } from "config/firebase";
 import {
   addDoc,
   collection,
@@ -16,7 +15,10 @@ import {
 } from "firebase/firestore";
 import { makeAutoObservable } from "mobx";
 import { toast } from "react-toastify";
+
+import { db } from "config/firebase";
 import { Message } from "types/message";
+
 import { store } from "./store";
 
 class MessageStore {

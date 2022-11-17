@@ -1,6 +1,7 @@
-import { auth } from "config/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import React, { useEffect } from "react";
+
+import { auth } from "config/firebase";
 import { useStore } from "stores/store";
 
 const AuthProvider: React.FC = ({ children }) => {

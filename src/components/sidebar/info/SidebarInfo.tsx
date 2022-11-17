@@ -1,6 +1,8 @@
-import * as React from "react";
 import { styled } from "@mui/material/styles";
+import * as React from "react";
+
 import { useStore } from "stores/store";
+
 import SidebarInfoAvatar from "./SidebarInfoAvatar";
 import SidebarInfoMenu from "./SidebarInfoMenu";
 
@@ -43,34 +45,40 @@ const SidebarInfo = () => {
 };
 
 const StyledContainer = styled("div")({
-  height: "4.5rem",
-  display: "flex",
-  alignItems: "center",
-  width: "100%",
-  position: "fixed",
-  bottom: "0",
+  "": {
+    position: "fixed",
+    bottom: "0",
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    height: "4.5rem",
+  },
 });
 
 const StyledButton = styled("button")({
-  display: "flex",
-  alignItems: "center",
-  height: "3.5rem",
-  marginLeft: "1rem",
-  border: "none",
-  cursor: "pointer",
-  borderRadius: "1rem",
-  outline: "none",
-  backgroundColor: "var(--ieru-color)",
+  "": {
+    display: "flex",
+    alignItems: "center",
+    height: "3.5rem",
+    marginLeft: "1rem",
+    cursor: "pointer",
+    backgroundColor: "var(--ieru-color)",
+    border: "none",
+    borderRadius: "1rem",
+    outline: "none",
 
-  "&:hover": {
-    backgroundColor: "var(--sidebar-option-color)",
+    "&:hover": {
+      backgroundColor: "var(--sidebar-option-color)",
+    },
   },
 });
 
 const StyledName = styled("h4")({
-  marginLeft: "0.5rem",
-  fontSize: "16px",
-  color: "white",
+  "": {
+    marginLeft: "0.5rem",
+    fontSize: "16px",
+    color: "white",
+  },
 });
 
 export default SidebarInfo;

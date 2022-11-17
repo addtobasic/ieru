@@ -1,7 +1,9 @@
 import AddIcon from "@mui/icons-material/Add";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useStore } from "stores/store";
 import { styled } from "@mui/material/styles";
+
+import { useStore } from "stores/store";
+
 import SidebarOptionItem from "./SidebarOptionsItem";
 
 const SidebarOptions = () => {
@@ -23,8 +25,10 @@ const SidebarOptions = () => {
 const StyledContainer = styled("div")({});
 
 const StyledSeparator = styled("hr")({
-  margin: "0.75rem 0",
-  border: "1px solid var(--sidebar-color)",
+  "": {
+    margin: "0.75rem 0",
+    border: "1px solid var(--sidebar-color)",
+  },
 });
 
 export default SidebarOptions;

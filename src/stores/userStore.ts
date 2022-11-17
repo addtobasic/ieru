@@ -1,4 +1,3 @@
-import { auth } from "config/firebase";
 import {
   GoogleAuthProvider,
   signInWithPopup,
@@ -6,7 +5,10 @@ import {
 } from "firebase/auth";
 import { makeAutoObservable } from "mobx";
 import { toast } from "react-toastify";
+
+import { auth } from "config/firebase";
 import { User } from "types/user";
+
 import { resetStore } from "./store";
 
 class UserStore {

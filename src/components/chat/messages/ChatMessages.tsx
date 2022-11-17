@@ -1,8 +1,10 @@
-import { observer } from "mobx-react-lite";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { useStore } from "stores/store";
 import { styled } from "@mui/material/styles";
-import { useRef, useEffect } from "react";
+import { observer } from "mobx-react-lite";
+import { useEffect, useRef } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+
+import { useStore } from "stores/store";
+
 import ChatMessagesItem from "./ChatMessagesItem";
 
 const ChatMessages = () => {
@@ -39,12 +41,15 @@ const ChatMessages = () => {
 export default observer(ChatMessages);
 
 const StyledContainer = styled("div")({
-  paddingTop: "4rem",
-  paddingBottom: "10rem",
+  "": {
+    paddingTop: "4rem",
+    paddingBottom: "10rem",
 
-  "&::-webkit-scrollbar": {
-    display: "none",
+    "&::-webkit-scrollbar": {
+      display: "none",
+    },
+
+    "&msOverflowStyle": "none", // IE and Edge
+    "&scrollbarWidth": "none", // Firefox
   },
-  "&-ms-overflow-style": "none" /* IE and Edge */,
-  "&scrollbar-width": "none" /* Firefox */,
 });

@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import moment from "moment";
-import Image from "next/image";
-import { styled } from "@mui/material/styles";
-import { Message } from "types/message";
-import { doc, updateDoc, onSnapshot } from "firebase/firestore";
-import { db } from "config/firebase";
-import { useStore, store } from "stores/store";
-
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import IconButton from "@mui/material/IconButton";
+import { styled } from "@mui/material/styles";
+import { doc, onSnapshot, updateDoc } from "firebase/firestore";
+import moment from "moment";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+
+import { db } from "config/firebase";
+import { store, useStore } from "stores/store";
+import { Message } from "types/message";
 
 import anonymusPng from "../../../../public/images/anonymus.png";
 
@@ -99,14 +99,18 @@ const StyledInfo = styled("h4")({});
 const StyledMessage = styled("p")({});
 
 const StyledDate = styled("span")({
-  color: "gray",
-  fontWeight: "300",
-  fontSize: "0.6rem",
-  marginLeft: "0.5rem",
+  "": {
+    marginLeft: "0.5rem",
+    fontSize: "0.6rem",
+    fontWeight: "300",
+    color: "gray",
+  },
 });
 
 const StyledAnonymButton = styled(IconButton)({
-  marginRight: "1rem",
-  position: "absolute",
-  right: "0",
+  "": {
+    position: "absolute",
+    right: "0",
+    marginRight: "1rem",
+  },
 });

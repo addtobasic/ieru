@@ -8,13 +8,15 @@ const HeaderOptions = () => (
 );
 
 const StyledContainer = styled("div")({
-  display: "flex",
-  flex: "0.3",
-  alignItems: "flex-end",
+  "": {
+    display: "flex",
+    flex: "0.3",
+    alignItems: "flex-end",
 
-  svg: {
-    maginLeft: "auto",
-    marginRight: "20px",
+    svg: {
+      maginLeft: "auto",
+      marginRight: "20px",
+    },
   },
 });
 

@@ -1,12 +1,13 @@
-import * as React from "react";
-import { FC } from "react";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
-import Paper from "@mui/material/Paper";
-import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
+import Paper from "@mui/material/Paper";
+import Popper from "@mui/material/Popper";
 import Stack from "@mui/material/Stack";
+import { FC } from "react";
+import * as React from "react";
+
 import { useStore } from "stores/store";
 
 interface MenuListCompositionProps {

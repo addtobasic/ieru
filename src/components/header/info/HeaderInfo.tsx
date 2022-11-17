@@ -1,5 +1,6 @@
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { styled } from "@mui/material/styles";
+
 import HeaderInfoAvatar from "./HeaderInfoAvatar";
 
 const HeaderInfo = () => (
@@ -10,14 +11,16 @@ const HeaderInfo = () => (
 );
 
 const StyledContainer = styled("div")({
-  flex: "0.3",
-  display: "flex",
-  alignItems: "center",
-  marginLeft: "1.25rem",
+  "": {
+    display: "flex",
+    flex: "0.3",
+    alignItems: "center",
+    marginLeft: "1.25rem",
 
-  svg: {
-    marginLeft: "auto",
-    marginRight: "1.75rem",
+    svg: {
+      marginRight: "1.75rem",
+      marginLeft: "auto",
+    },
   },
 });
 

@@ -1,6 +1,7 @@
-import Sidebar from "components/sidebar/Sidebar";
-import React from "react";
 import { styled } from "@mui/material/styles";
+import React from "react";
+
+import Sidebar from "components/sidebar/Sidebar";
 
 const DefaultLayout: React.FC = () => (
   <StyledWrapper>

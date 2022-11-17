@@ -1,6 +1,7 @@
 import { Avatar } from "@mui/material";
-import { useStore } from "stores/store";
 import { styled } from "@mui/material/styles";
+
+import { useStore } from "stores/store";
 
 const HeaderInfoAvatar = () => {
   const { user, signOut } = useStore().userStore;
@@ -13,11 +14,13 @@ const HeaderInfoAvatar = () => {
 };
 
 const StyledAvatar = styled(Avatar)({
-  cursor: "pointer",
-  textTransform: "capitalize",
+  "": {
+    textTransform: "capitalize",
+    cursor: "pointer",
 
-  "&:hover": {
-    opacity: 0.8,
+    "&:hover": {
+      opacity: 0.8,
+    },
   },
 });
 

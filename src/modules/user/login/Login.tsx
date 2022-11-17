@@ -1,5 +1,6 @@
-import Image from "next/image";
 import { styled } from "@mui/material/styles";
+import Image from "next/image";
+
 import LoginSignInButton from "./LoginSignInButton";
 
 const Login = () => (
@@ -26,11 +27,13 @@ const StyledWrapper = styled("div")({
 });
 
 const StyledContainer = styled("div")({
-  padding: "6.25rem",
-  textAlign: "center",
-  backgroundColor: "white",
-  borderRadius: "0.75rem",
-  boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
+  "": {
+    padding: "6.25rem",
+    textAlign: "center",
+    backgroundColor: "white",
+    borderRadius: "0.75rem",
+    boxShadow: "0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%)",
+  },
 });
 
 const StyledTitle = styled("h1")({});

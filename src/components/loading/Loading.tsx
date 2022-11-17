@@ -1,7 +1,7 @@
 import { NoSsr } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import Image from "next/image";
 import ClipLoader from "react-spinners/ClipLoader";
-import { styled } from "@mui/material/styles";
 
 const Loading = () => (
   <NoSsr>
@@ -24,20 +24,26 @@ const Loading = () => (
 );
 
 const StyledWrapper = styled("div")({
-  display: "grid",
-  height: "100vh",
-  placeItems: "center",
+  "": {
+    display: "grid",
+    placeItems: "center",
+    height: "100vh",
+  },
 });
 
 const StyledContainer = styled("div")({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  paddingBottom: "6.25rem",
+  "": {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    paddingBottom: "6.25rem",
+  },
 });
 
 const StyledImageContainer = styled("div")({
-  marginBottom: "1rem",
+  "": {
+    marginBottom: "1rem",
+  },
 });
 
 export default Loading;
