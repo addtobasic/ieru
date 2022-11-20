@@ -9,37 +9,41 @@ import SidebarInfoMenu from "./SidebarInfoMenu";
 const SidebarInfo = () => {
   const { user } = useStore().userStore;
 
-  const [open, setOpen] = React.useState(false);
+  const [isUserInfoOpen, setIsUserInfoOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
   const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
+    setIsUserInfoOpen((prevOpen) => !prevOpen);
   };
 
   // return focus to the button when we transitioned from !open -> open
-  const prevOpen = React.useRef(open);
+  const prevOpen = React.useRef(isUserInfoOpen);
   React.useEffect(() => {
-    if (prevOpen.current === true && open === false) {
+    if (prevOpen.current === true && isUserInfoOpen === false) {
       anchorRef.current!.focus();
     }
 
-    prevOpen.current = open;
-  }, [open]);
+    prevOpen.current = isUserInfoOpen;
+  }, [isUserInfoOpen]);
 
   return (
     <StyledContainer>
       <StyledButton
         ref={anchorRef}
         id="composition-button"
-        aria-controls={open ? "composition-menu" : undefined}
-        aria-expanded={open ? "true" : undefined}
+        aria-controls={isUserInfoOpen ? "composition-menu" : undefined}
+        aria-expanded={isUserInfoOpen ? "true" : undefined}
         aria-haspopup="true"
         onClick={handleToggle}
       >
         <SidebarInfoAvatar />
         <StyledName>{user?.displayName}</StyledName>
       </StyledButton>
-      <SidebarInfoMenu anchorRef={anchorRef} open={open} setOpen={setOpen} />
+      <SidebarInfoMenu
+        anchorRef={anchorRef}
+        open={isUserInfoOpen}
+        setOpen={setIsUserInfoOpen}
+      />
     </StyledContainer>
   );
 };
@@ -50,7 +54,6 @@ const StyledContainer = styled("div")({
     bottom: "0",
     display: "flex",
     alignItems: "center",
-    width: "100%",
     height: "4.5rem",
   },
 });

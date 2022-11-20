@@ -15,20 +15,20 @@ import SidebarInfo from "./info/SidebarInfo";
 const drawerWidth = 240;
 
 const PersistentDrawerLeft: React.FC = () => {
-  const [open, setOpen] = React.useState(true);
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
-    setOpen(true);
+    setIsDrawerOpen(true);
   };
 
   const handleDrawerClose = () => {
-    setOpen(false);
+    setIsDrawerOpen(false);
   };
 
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <ChatHeader open={open} handleDrawerOpen={handleDrawerOpen} />
+      <ChatHeader open={isDrawerOpen} handleDrawerOpen={handleDrawerOpen} />
       <Drawer
         sx={{
           width: drawerWidth,
@@ -42,7 +42,7 @@ const PersistentDrawerLeft: React.FC = () => {
         }}
         variant="persistent"
         anchor="left"
-        open={open}
+        open={isDrawerOpen}
       >
         <SidebarHeader handleDrawerClose={handleDrawerClose} />
         <Divider />
@@ -50,8 +50,8 @@ const PersistentDrawerLeft: React.FC = () => {
         <SidebarInfo />
         <Divider />
       </Drawer>
-      <Main open={open}>
-        <Chat open={open} />
+      <Main open={isDrawerOpen}>
+        <Chat open={isDrawerOpen} />
       </Main>
     </Box>
   );
