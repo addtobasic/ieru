@@ -16,7 +16,15 @@ const ChatMessages = () => {
   });
 
   return (
-    <StyledContainer>
+    <StyledContainer
+      id="scrollableDiv"
+      style={{
+        height: "100vh",
+        overflow: "auto",
+        display: "flex",
+        flexDirection: "column-reverse",
+      }}
+    >
       <InfiniteScroll
         dataLength={messages.length}
         next={loadMore}
@@ -33,7 +41,6 @@ const ChatMessages = () => {
           <ChatMessagesItem key={message.id} message={message} />
         ))}
       </InfiniteScroll>
-      <div style={{ float: "left", clear: "both" }} ref={scrollBottomRef} />
     </StyledContainer>
   );
 };

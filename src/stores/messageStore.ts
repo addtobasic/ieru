@@ -104,22 +104,7 @@ class MessageStore {
         return;
       }
 
-      if (!this.lastMessageTimestamp) {
-        this.lastMessageTimestamp = doc.data().timestamp;
-      } else {
-        const lastTimestamp = new Date(
-          // @ts-ignore
-          this.lastMessageTimestamp?.toDate()
-        ).getTime();
-
-        const currentTimestamp = new Date(
-          doc.data().timestamp?.toDate()
-        ).getTime();
-
-        if (currentTimestamp < lastTimestamp) {
-          this.lastMessageTimestamp = doc.data().timestamp;
-        }
-      }
+      this.lastMessageTimestamp = doc.data().timestamp;
 
       const message = {
         id: doc.id,
