@@ -140,6 +140,6 @@ const StyledAnonymButton = styled(IconButton)({
 const StyledPopper = styled("div")({
   position: "absolute",
   right: "0",
-  marginTop: "-1.5rem",
+  marginTop: "-2rem",
   marginRight: "1rem",
 });
