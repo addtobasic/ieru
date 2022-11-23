@@ -1,7 +1,7 @@
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
-// import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Popper from "@mui/material/Popper";
@@ -14,10 +14,14 @@ import ChatMessagesItemMenu from "./ChatMessagesItemMenu";
 
 interface ChatMessagesItemHoverProps {
   isLoginUser: boolean;
+  isAnonym: boolean;
+  handleChangeAnonym: () => void;
 }
 
 const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
   isLoginUser,
+  isAnonym,
+  handleChangeAnonym,
 }) => {
   // moreアイコンを押したときにメニューを表示する
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -47,9 +51,13 @@ const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
           </StyledButton>
         </Tooltip>
         {isLoginUser && (
-          <Tooltip title="匿名化" placement="top">
+          <Tooltip
+            title={isAnonym ? "顕名化" : "匿名化"}
+            placement="top"
+            onClick={handleChangeAnonym}
+          >
             <StyledButton>
-              <VisibilityOffIcon />
+              {isAnonym ? <VisibilityIcon /> : <VisibilityOffIcon />}
             </StyledButton>
           </Tooltip>
         )}
@@ -61,6 +69,8 @@ const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
       </ButtonGroup>
       <Popper id={id} open={open} anchorEl={anchorEl} placement="left-start">
         <ChatMessagesItemMenu
+          isAnonym={isAnonym}
+          handleChangeAnonym={handleChangeAnonym}
           isLoginUser={isLoginUser}
           handleMenuClose={handleMenuClose}
         />

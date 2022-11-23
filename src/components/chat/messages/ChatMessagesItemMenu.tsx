@@ -2,9 +2,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
-// import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-// import ClickAwayListener from "@mui/material/ClickAwayListener";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Divider from "@mui/material/Divider";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -16,11 +15,15 @@ import * as React from "react";
 import { FC } from "react";
 
 interface ChatMessagesItemMenuProps {
+  isAnonym: boolean;
+  handleChangeAnonym: () => void;
   isLoginUser: boolean;
   handleMenuClose: any;
 }
 
 const ChatMessagesItemMenu: FC<ChatMessagesItemMenuProps> = ({
+  isAnonym,
+  handleChangeAnonym,
   isLoginUser,
   handleMenuClose,
 }) => (
@@ -42,10 +45,14 @@ const ChatMessagesItemMenu: FC<ChatMessagesItemMenuProps> = ({
         {isLoginUser && (
           <>
             <Divider />
-            <MenuItem>
-              <ListItemText>匿名化</ListItemText>
+            <MenuItem onClick={handleChangeAnonym}>
+              <ListItemText>{isAnonym ? "顕名化" : "匿名化"}</ListItemText>
               <ListItemIcon>
-                <VisibilityOffIcon fontSize="small" />
+                {isAnonym ? (
+                  <VisibilityIcon fontSize="small" />
+                ) : (
+                  <VisibilityOffIcon fontSize="small" />
+                )}
               </ListItemIcon>
             </MenuItem>
             <MenuItem>

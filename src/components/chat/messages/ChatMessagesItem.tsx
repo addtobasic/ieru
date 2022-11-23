@@ -89,7 +89,13 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
           <StyledMessage>{message.message}</StyledMessage>
         </StyledContent>
         <StyledPopper>
-          {isHover && <ChatMessagesItemHover isLoginUser={isLoginUser} />}
+          {isHover && (
+            <ChatMessagesItemHover
+              isLoginUser={isLoginUser}
+              isAnonym={isAnonym}
+              handleChangeAnonym={handleChangeAnonym}
+            />
+          )}
         </StyledPopper>
       </StyledContainer>
     </>
@@ -135,13 +141,16 @@ const StyledAnonymButton = styled(IconButton)({
   "": {
     position: "absolute",
     right: "0",
-    marginRight: "1rem",
+    marginTop: "1rem",
+    marginRight: "1.5rem",
   },
 });
 
 const StyledPopper = styled("div")({
-  position: "absolute",
-  right: "0",
-  marginTop: "-2rem",
-  marginRight: "1rem",
+  "": {
+    position: "absolute",
+    right: "0",
+    marginTop: "-1.5rem",
+    marginRight: "1.5rem",
+  },
 });
