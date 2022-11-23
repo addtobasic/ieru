@@ -12,7 +12,7 @@ import { store, useStore } from "stores/store";
 import { Message } from "types/message";
 
 import anonymusPng from "../../../../public/images/anonymus.png";
-import ChatMessagesItemMenu from "./ChatMessagesItemMenu";
+import ChatMessagesItemHover from "./ChatMessagesItemHover";
 
 interface ChatMessagesItemProps {
   message: Message;
@@ -88,7 +88,7 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
           </StyledInfo>
           <StyledMessage>{message.message}</StyledMessage>
         </StyledContent>
-        <StyledPopper>{isHover && <ChatMessagesItemMenu />}</StyledPopper>
+        <StyledPopper>{isHover && <ChatMessagesItemHover />}</StyledPopper>
       </StyledContainer>
     </>
   );
