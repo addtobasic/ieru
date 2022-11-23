@@ -1,5 +1,5 @@
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorder";
+// import FavoriteOutlinedIcon from "@mui/icons-material/Favorite";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
@@ -72,19 +72,9 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
           <StyledInfo>
             {isAnonym ? "Anonymous Comment" : user}
             <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
-            {isLoginUser && (
-              <StyledAnonymButton onClick={handleChangeAnonym} size="small">
-                {isAnonym ? (
-                  <VisibilityIcon />
-                ) : (
-                  <VisibilityOffIcon
-                    sx={{
-                      color: "var(--ieru-color)",
-                    }}
-                  />
-                )}
-              </StyledAnonymButton>
-            )}
+            <StyledGoodButton size="small">
+              <FavoriteBorderOutlinedIcon />
+            </StyledGoodButton>
           </StyledInfo>
           <StyledMessage>{message.message}</StyledMessage>
         </StyledContent>
@@ -137,7 +127,7 @@ const StyledDate = styled("span")({
   },
 });
 
-const StyledAnonymButton = styled(IconButton)({
+const StyledGoodButton = styled(IconButton)({
   "": {
     position: "absolute",
     right: "0",
