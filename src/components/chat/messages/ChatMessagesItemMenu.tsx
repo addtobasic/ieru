@@ -12,8 +12,15 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Paper from "@mui/material/Paper";
 import * as React from "react";
+import { FC } from "react";
 
-const ChatMessagesItemMenu = () => (
+interface ChatMessagesItemMenuProps {
+  isLoginUser: boolean;
+}
+
+const ChatMessagesItemMenu: FC<ChatMessagesItemMenuProps> = ({
+  isLoginUser,
+}) => (
   <Paper sx={{ width: 200, maxWidth: "100%" }}>
     {/* <ClickAwayListener> */}
     <MenuList>
@@ -29,25 +36,29 @@ const ChatMessagesItemMenu = () => (
           <ThumbDownAltIcon fontSize="small" />
         </ListItemIcon>
       </MenuItem>
-      <Divider />
-      <MenuItem>
-        <ListItemText>匿名化</ListItemText>
-        <ListItemIcon>
-          <VisibilityOffIcon fontSize="small" />
-        </ListItemIcon>
-      </MenuItem>
-      <MenuItem>
-        <ListItemText>チャットの修正</ListItemText>
-        <ListItemIcon>
-          <EditIcon fontSize="small" />
-        </ListItemIcon>
-      </MenuItem>
-      <MenuItem>
-        <ListItemText>チャットの削除</ListItemText>
-        <ListItemIcon>
-          <DeleteIcon fontSize="small" />
-        </ListItemIcon>
-      </MenuItem>
+      {isLoginUser && (
+        <>
+          <Divider />
+          <MenuItem>
+            <ListItemText>匿名化</ListItemText>
+            <ListItemIcon>
+              <VisibilityOffIcon fontSize="small" />
+            </ListItemIcon>
+          </MenuItem>
+          <MenuItem>
+            <ListItemText>チャットの修正</ListItemText>
+            <ListItemIcon>
+              <EditIcon fontSize="small" />
+            </ListItemIcon>
+          </MenuItem>
+          <MenuItem>
+            <ListItemText>チャットの削除</ListItemText>
+            <ListItemIcon>
+              <DeleteIcon fontSize="small" />
+            </ListItemIcon>
+          </MenuItem>
+        </>
+      )}
     </MenuList>
   </Paper>
 );

@@ -8,10 +8,17 @@ import Popper from "@mui/material/Popper";
 import { styled } from "@mui/material/styles";
 import Tooltip from "@mui/material/Tooltip";
 import * as React from "react";
+import { FC } from "react";
 
 import ChatMessagesItemMenu from "./ChatMessagesItemMenu";
 
-const ChatMessagesItemHover = () => {
+interface ChatMessagesItemHoverProps {
+  isLoginUser: boolean;
+}
+
+const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
+  isLoginUser,
+}) => {
   // moreアイコンを押したときにメニューを表示する
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -35,11 +42,13 @@ const ChatMessagesItemHover = () => {
             <ThumbDownAltIcon />
           </StyledButton>
         </Tooltip>
-        <Tooltip title="匿名化" placement="top">
-          <StyledButton>
-            <VisibilityOffIcon />
-          </StyledButton>
-        </Tooltip>
+        {isLoginUser && (
+          <Tooltip title="匿名化" placement="top">
+            <StyledButton>
+              <VisibilityOffIcon />
+            </StyledButton>
+          </Tooltip>
+        )}
         <Tooltip title="その他" placement="top">
           <StyledButton onClick={handleMenuOpen}>
             <MoreHorizIcon />
@@ -47,7 +56,7 @@ const ChatMessagesItemHover = () => {
         </Tooltip>
       </ButtonGroup>
       <Popper id={id} open={open} anchorEl={anchorEl} placement="left-start">
-        <ChatMessagesItemMenu />
+        <ChatMessagesItemMenu isLoginUser={isLoginUser} />
       </Popper>
     </>
   );

@@ -24,7 +24,7 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   const displayImage = useStore().userStore.user?.photoURL;
 
   // コメントのユーザーの画像のURLとログインユーザーの画像のURLが一致した場合にアイコンを表示する
-  const showButton = displayImage === photoURL;
+  const isLoginUser = displayImage === photoURL;
 
   const channel = store.channelStore.selectedChannel;
   const messagesRef = doc(db, "channels", channel!.id, "messages", message.id);
@@ -72,7 +72,7 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
           <StyledInfo>
             {isAnonym ? "Anonymous Comment" : user}
             <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
-            {showButton && (
+            {isLoginUser && (
               <StyledAnonymButton onClick={handleChangeAnonym} size="small">
                 {isAnonym ? (
                   <VisibilityIcon />
@@ -88,7 +88,9 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
           </StyledInfo>
           <StyledMessage>{message.message}</StyledMessage>
         </StyledContent>
-        <StyledPopper>{isHover && <ChatMessagesItemHover />}</StyledPopper>
+        <StyledPopper>
+          {isHover && <ChatMessagesItemHover isLoginUser={isLoginUser} />}
+        </StyledPopper>
       </StyledContainer>
     </>
   );
