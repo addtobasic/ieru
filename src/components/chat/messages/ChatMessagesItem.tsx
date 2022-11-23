@@ -1,7 +1,6 @@
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import IconButton from "@mui/material/IconButton";
-import Popper from "@mui/material/Popper";
 import { styled } from "@mui/material/styles";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import moment from "moment";
@@ -23,7 +22,6 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   const [isAnonym, setIsAnonym] = useState(message.isAnonym);
   const { photoURL, user, timestamp } = message;
   const displayImage = useStore().userStore.user?.photoURL;
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   // コメントのユーザーの画像のURLとログインユーザーの画像のURLが一致した場合にアイコンを表示する
   const showButton = displayImage === photoURL;
@@ -47,19 +45,21 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   };
 
   // マウスオーバーでメニュ－アイコンを表示する
-  const handlePopper = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(anchorEl ? null : event.currentTarget);
+  const [isHover, setIsHover] = React.useState(false);
+
+  const handlePopoverOpen = () => {
+    setIsHover(true);
   };
 
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popper" : undefined;
+  const handlePopoverClose = () => {
+    setIsHover(false);
+  };
 
   return (
     <>
       <StyledContainer
-        aria-describedby={id}
-        onMouseOver={handlePopper}
-        onMouseOut={handlePopper}
+        onMouseEnter={handlePopoverOpen}
+        onMouseLeave={handlePopoverClose}
       >
         <StyledImage
           src={isAnonym ? anonymusPng : photoURL}
@@ -88,10 +88,8 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
           </StyledInfo>
           <StyledMessage>{message.message}</StyledMessage>
         </StyledContent>
+        <StyledPopper>{isHover && <ChatMessagesItemMenu />}</StyledPopper>
       </StyledContainer>
-      <Popper id={id} open={open} anchorEl={anchorEl}>
-        <ChatMessagesItemMenu />
-      </Popper>
     </>
   );
 };
@@ -104,6 +102,10 @@ const StyledContainer = styled("div")({
   justifyContent: "left",
   alignItems: "left",
   position: "relative",
+
+  "&:hover": {
+    backgroundColor: "#f1f1f1",
+  },
 });
 
 const StyledImage = styled(Image)({
@@ -133,4 +135,11 @@ const StyledAnonymButton = styled(IconButton)({
     right: "0",
     marginRight: "1rem",
   },
+});
+
+const StyledPopper = styled("div")({
+  position: "absolute",
+  right: "0",
+  marginTop: "-1.5rem",
+  marginRight: "1rem",
 });
