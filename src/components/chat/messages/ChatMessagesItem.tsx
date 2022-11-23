@@ -1,5 +1,5 @@
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorder";
+// import FavoriteOutlinedIcon from "@mui/icons-material/Favorite";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
@@ -12,6 +12,7 @@ import { store, useStore } from "stores/store";
 import { Message } from "types/message";
 
 import anonymusPng from "../../../../public/images/anonymus.png";
+import ChatMessagesItemHover from "./ChatMessagesItemHover";
 
 interface ChatMessagesItemProps {
   message: Message;
@@ -23,7 +24,7 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   const displayImage = useStore().userStore.user?.photoURL;
 
   // コメントのユーザーの画像のURLとログインユーザーの画像のURLが一致した場合にアイコンを表示する
-  const showButton = displayImage === photoURL;
+  const isLoginUser = displayImage === photoURL;
 
   const channel = store.channelStore.selectedChannel;
   const messagesRef = doc(db, "channels", channel!.id, "messages", message.id);
@@ -43,36 +44,51 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
     setIsAnonym(!isAnonym);
   };
 
+  // マウスオーバーでメニュ－アイコンを表示する
+  const [isHover, setIsHover] = React.useState(false);
+
+  const handlePopoverOpen = () => {
+    setIsHover(true);
+  };
+
+  const handlePopoverClose = () => {
+    setIsHover(false);
+  };
+
   return (
-    <StyledContainer>
-      <StyledImage
-        src={isAnonym ? anonymusPng : photoURL}
-        width={50}
-        height={50}
-        objectFit="contain"
-        alt="user"
-      />
-      <StyledContent>
-        <StyledInfo>
-          {isAnonym ? "Anonymous Comment" : user}
-          <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
-          {showButton && (
-            <StyledAnonymButton onClick={handleChangeAnonym} size="small">
-              {isAnonym ? (
-                <VisibilityIcon />
-              ) : (
-                <VisibilityOffIcon
-                  sx={{
-                    color: "var(--ieru-color)",
-                  }}
-                />
-              )}
-            </StyledAnonymButton>
+    <>
+      <StyledContainer
+        onMouseEnter={handlePopoverOpen}
+        onMouseLeave={handlePopoverClose}
+      >
+        <StyledImage
+          src={isAnonym ? anonymusPng : photoURL}
+          width={50}
+          height={50}
+          objectFit="contain"
+          alt="user"
+        />
+        <StyledContent>
+          <StyledInfo>
+            {isAnonym ? "Anonymous Comment" : user}
+            <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
+            <StyledGoodButton size="small">
+              <FavoriteBorderOutlinedIcon />
+            </StyledGoodButton>
+          </StyledInfo>
+          <StyledMessage>{message.message}</StyledMessage>
+        </StyledContent>
+        <StyledPopper>
+          {isHover && (
+            <ChatMessagesItemHover
+              isLoginUser={isLoginUser}
+              isAnonym={isAnonym}
+              handleChangeAnonym={handleChangeAnonym}
+            />
           )}
-        </StyledInfo>
-        <StyledMessage>{message.message}</StyledMessage>
-      </StyledContent>
-    </StyledContainer>
+        </StyledPopper>
+      </StyledContainer>
+    </>
   );
 };
 
@@ -84,6 +100,10 @@ const StyledContainer = styled("div")({
   justifyContent: "left",
   alignItems: "left",
   position: "relative",
+
+  "&:hover": {
+    backgroundColor: "#f1f1f1",
+  },
 });
 
 const StyledImage = styled(Image)({
@@ -107,10 +127,20 @@ const StyledDate = styled("span")({
   },
 });
 
-const StyledAnonymButton = styled(IconButton)({
+const StyledGoodButton = styled(IconButton)({
   "": {
     position: "absolute",
     right: "0",
-    marginRight: "1rem",
+    marginTop: "1rem",
+    marginRight: "1.5rem",
+  },
+});
+
+const StyledPopper = styled("div")({
+  "": {
+    position: "absolute",
+    right: "0",
+    marginTop: "-1.5rem",
+    marginRight: "1.5rem",
   },
 });
