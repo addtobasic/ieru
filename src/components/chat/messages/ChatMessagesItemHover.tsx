@@ -26,6 +26,10 @@ const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
 
+  const handleMenuClose = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+
   const open = Boolean(anchorEl);
   const id = open ? "simple-popper" : undefined;
 
@@ -56,7 +60,10 @@ const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
         </Tooltip>
       </ButtonGroup>
       <Popper id={id} open={open} anchorEl={anchorEl} placement="left-start">
-        <ChatMessagesItemMenu isLoginUser={isLoginUser} />
+        <ChatMessagesItemMenu
+          isLoginUser={isLoginUser}
+          handleMenuClose={handleMenuClose}
+        />
       </Popper>
     </>
   );
