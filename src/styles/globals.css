@@ -4,15 +4,15 @@
 
 html,
 body {
-  --ieru-color: #1684de;
+  --ieru-color: #0096fa;
   --ieru-i-color: #4839b8;
   --ieru-eru-color: #4dadfb;
   --sidebar-separate-color: #97d3e3;
-  --hover-background-color: #59a2de;
+  --hover-background-color: #4bb4fa;
 
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystXemFont, "Segoe UI", Roboto, Oxygen,
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
