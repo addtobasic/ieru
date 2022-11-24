@@ -84,4 +84,9 @@ export default ChatMessagesItemHover;
 const StyledButton = styled("div")({
   padding: "0.2rem",
   cursor: "pointer",
+  color: "#757575",
+
+  "&:hover": {
+    color: "#4bb4fa",
+  },
 });
