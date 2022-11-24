@@ -72,7 +72,7 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
           <StyledInfo>
             {isAnonym ? "Anonymous Comment" : user}
             <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
-            <StyledGoodButton size="small">
+            <StyledGoodButton size="small" color="primary">
               <FavoriteBorderOutlinedIcon />
             </StyledGoodButton>
           </StyledInfo>

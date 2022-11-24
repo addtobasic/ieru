@@ -23,7 +23,7 @@ import { store } from "./store";
 
 class MessageStore {
   messagesRegistery = new Map<string, Message>();
-  messagesLimit = 10;
+  messagesLimit = 20;
   hasMore = false;
   lastMessageTimestamp: FieldValue | null = null;
   unsubscribeMessagesSnapshot?: () => void;
@@ -34,7 +34,7 @@ class MessageStore {
 
   reset = () => {
     this.messagesRegistery.clear();
-    this.messagesLimit = 10;
+    this.messagesLimit = 20;
     this.hasMore = false;
     this.lastMessageTimestamp = null;
 

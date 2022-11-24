@@ -4,12 +4,11 @@
 
 html,
 body {
-  --ieru-color: #007ab7;
+  --ieru-color: #0096fa;
   --ieru-i-color: #4839b8;
   --ieru-eru-color: #4dadfb;
-  --header-search-color: #fff;
-  --sidebar-color: #97d3e3;
-  --sidebar-option-color: #42aac7;
+  --sidebar-separate-color: #97d3e3;
+  --hover-background-color: #4bb4fa;
 
   padding: 0;
   margin: 0;

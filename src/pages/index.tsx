@@ -1,8 +1,20 @@
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useEffect } from "react";
 
 import IsAuth from "modules/auth/IsAuth";
 import Home from "modules/home/Home";
 import { useStore } from "stores/store";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#0096fa",
+    },
+    secondary: {
+      main: "#757575",
+    },
+  },
+});
 
 const HomePage = () => {
   const { channels, loadChannels } = useStore().channelStore;
@@ -15,7 +27,9 @@ const HomePage = () => {
 
   return (
     <IsAuth>
-      <Home />
+      <ThemeProvider theme={theme}>
+        <Home />
+      </ThemeProvider>
     </IsAuth>
   );
 };

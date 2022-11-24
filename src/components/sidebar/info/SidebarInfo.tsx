@@ -71,7 +71,7 @@ const StyledButton = styled("button")({
     outline: "none",
 
     "&:hover": {
-      backgroundColor: "var(--sidebar-option-color)",
+      backgroundColor: "var(--hover-background-color)",
     },
   },
 });
