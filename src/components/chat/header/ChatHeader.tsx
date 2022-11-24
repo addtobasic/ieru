@@ -43,7 +43,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ open, handleDrawerOpen }) => {
             { mr: 2, ...(open && { display: "none" }) },
             {
               "&:hover": {
-                backgroundColor: "var(--sidebar-color)",
+                backgroundColor: "var(--hover-background-color)",
               },
             },
           ]}

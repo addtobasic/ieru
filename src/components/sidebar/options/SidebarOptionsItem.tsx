@@ -31,7 +31,7 @@ const StyledContainer = styled("div")({
     cursor: "pointer",
 
     "&:hover": {
-      backgroundColor: "var(--sidebar-option-color)",
+      backgroundColor: "var(--hover-background-color)",
       opacity: 0.9,
     },
   },

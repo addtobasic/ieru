@@ -18,7 +18,7 @@ const SidebarHeader: React.FC<SideBarHeaderProps> = ({ handleDrawerClose }) => {
         sx={[
           {
             "&:hover": {
-              backgroundColor: "var(--sidebar-color)",
+              backgroundColor: "var(--hover-background-color)",
             },
           },
         ]}
