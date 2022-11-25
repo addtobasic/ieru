@@ -32,13 +32,23 @@ const ChatSendButton: FC<ChatSendButtonProps> = ({
 
   return (
     <Stack direction="row" spacing={1}>
-      <IconButton
-        color="primary"
-        aria-label="send message"
-        onClick={handleSendMessage}
-      >
-        <SendIcon />
-      </IconButton>
+      {input !== "" ? (
+        <IconButton
+          color="primary"
+          sx={{
+            "&:hover": {
+              color: "#008ae6",
+            },
+          }}
+          onClick={handleSendMessage}
+        >
+          <SendIcon />
+        </IconButton>
+      ) : (
+        <IconButton color="secondary">
+          <SendIcon />
+        </IconButton>
+      )}
     </Stack>
   );
 };
