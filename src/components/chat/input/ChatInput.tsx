@@ -5,6 +5,7 @@ import React, { FC, useState } from "react";
 import { useStore } from "stores/store";
 
 import ChatDefaultAnonymStateButton from "./ChatDefaultAnonymStateButton";
+import ChatSendButton from "./ChatSendButton";
 
 interface ChatInputProps {
   open: boolean;
@@ -47,13 +48,20 @@ const ChatInput: FC<ChatInputProps> = ({ open }) => {
           isDefaultAnonym={isDefaultAnonym}
           setIsDefaultAnonym={setIsDefaultAnonym}
         />
-        <StyledInput
-          value={input}
-          onChange={handleChangeInput}
-          onKeyDown={handleSendMessage}
-          placeholder={`Message #${selectedChannel?.name || ""}`}
-          type="text"
-        />
+        <StyledDiv>
+          <StyledInput
+            value={input}
+            onChange={handleChangeInput}
+            onKeyDown={handleSendMessage}
+            placeholder={`Message #${selectedChannel?.name || ""}`}
+            type="text"
+          />
+          <ChatSendButton
+            input={input}
+            setInput={setInput}
+            isDefaultAnonym={isDefaultAnonym}
+          />
+        </StyledDiv>
       </StyledContent>
     </StyledContainer>
   );
@@ -80,8 +88,18 @@ const StyledContainer = styled("form", {
 
 const StyledContent = styled("div")({
   "": {
-    width: "100%",
+    // width: "100%",
     textAlign: "right",
+    padding: "5px",
+  },
+});
+
+const StyledDiv = styled("div")({
+  "": {
+    display: "flex",
+    padding: "0 5px",
+    border: "2px solid #ccc",
+    borderRadius: "5px",
   },
 });
 
@@ -89,10 +107,10 @@ const StyledInput = styled("input")({
   "": {
     display: "block",
     width: "100%",
-    height: "4rem",
-    padding: "1.25rem",
-    border: "1px solid #ccc",
-    borderRadius: "3px",
+    fontSize: "15px",
+    // height: "4rem",
+    // padding: "1px",
+    border: "none",
     outline: "none",
   },
 });
