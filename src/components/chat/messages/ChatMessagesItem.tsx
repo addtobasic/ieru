@@ -61,23 +61,27 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
       >
-        <StyledImage
-          src={isAnonym ? anonymusPng : photoURL}
-          width={50}
-          height={50}
-          objectFit="contain"
-          alt="user"
-        />
+        <StyledImageDiv>
+          <StyledImage
+            src={isAnonym ? anonymusPng : photoURL}
+            width={50}
+            height={50}
+            objectFit="contain"
+            alt="user"
+          />
+        </StyledImageDiv>
         <StyledContent>
           <StyledInfo>
             {isAnonym ? "Anonymous Comment" : user}
             <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
-            <StyledGoodButton size="small" color="primary">
-              <FavoriteBorderOutlinedIcon />
-            </StyledGoodButton>
           </StyledInfo>
           <StyledMessage>{message.message}</StyledMessage>
         </StyledContent>
+        <StyledButtonDiv>
+          <IconButton size="small" color="primary">
+            <FavoriteBorderOutlinedIcon />
+          </IconButton>
+        </StyledButtonDiv>
         <StyledPopper>
           {isHover && (
             <ChatMessagesItemHover
@@ -96,14 +100,16 @@ export default ChatMessagesItem;
 
 const StyledContainer = styled("div")({
   display: "flex",
-  padding: "1.25rem",
-  justifyContent: "left",
-  alignItems: "left",
+  padding: "1rem 1.5rem",
   position: "relative",
 
   "&:hover": {
     backgroundColor: "#f1f1f1",
   },
+});
+
+const StyledImageDiv = styled("div")({
+  minWidth: "50px",
 });
 
 const StyledImage = styled(Image)({
@@ -116,7 +122,11 @@ const StyledContent = styled("div")({
 
 const StyledInfo = styled("h4")({});
 
-const StyledMessage = styled("p")({});
+const StyledMessage = styled("p")({
+  maxWidth: "95%",
+  whiteSpace: "pre-wrap",
+  wordBreak: "break-all",
+});
 
 const StyledDate = styled("span")({
   "": {
@@ -127,12 +137,12 @@ const StyledDate = styled("span")({
   },
 });
 
-const StyledGoodButton = styled(IconButton)({
+const StyledButtonDiv = styled("div")({
   "": {
-    position: "absolute",
-    right: "0",
-    marginTop: "1rem",
-    marginRight: "1.5rem",
+    display: "flex",
+    alignItems: "end",
+    marginRight: "0",
+    marginLeft: "auto",
   },
 });
 

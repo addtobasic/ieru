@@ -1,3 +1,6 @@
+import FormControl from "@mui/material/FormControl";
+import InputAdornment from "@mui/material/InputAdornment";
+import OutlinedInput from "@mui/material/OutlinedInput";
 import { styled } from "@mui/material/styles";
 import { observer } from "mobx-react-lite";
 import React, { FC, useState } from "react";
@@ -24,10 +27,6 @@ const ChatInput: FC<ChatInputProps> = ({ open }) => {
   };
 
   const handleSendMessage = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-    }
-
     if (input === "") {
       return;
     }
@@ -49,18 +48,28 @@ const ChatInput: FC<ChatInputProps> = ({ open }) => {
           setIsDefaultAnonym={setIsDefaultAnonym}
         />
         <StyledDiv>
-          <StyledInput
-            value={input}
-            onChange={handleChangeInput}
-            onKeyDown={handleSendMessage}
-            placeholder={`Message #${selectedChannel?.name || ""}`}
-            type="text"
-          />
-          <ChatSendButton
-            input={input}
-            setInput={setInput}
-            isDefaultAnonym={isDefaultAnonym}
-          />
+          <FormControl fullWidth variant="outlined">
+            <OutlinedInput
+              multiline
+              maxRows={10}
+              onChange={handleChangeInput}
+              onKeyDown={handleSendMessage}
+              placeholder={`Message #${selectedChannel?.name || ""}`}
+              id="outlined-adornment-password"
+              type="text"
+              value={input}
+              color="primary"
+              endAdornment={
+                <InputAdornment position="end">
+                  <ChatSendButton
+                    input={input}
+                    setInput={setInput}
+                    isDefaultAnonym={isDefaultAnonym}
+                  />
+                </InputAdornment>
+              }
+            />
+          </FormControl>
         </StyledDiv>
       </StyledContent>
     </StyledContainer>
@@ -88,30 +97,14 @@ const StyledContainer = styled("form", {
 
 const StyledContent = styled("div")({
   "": {
-    // width: "100%",
     textAlign: "right",
-    padding: "5px",
   },
 });
 
 const StyledDiv = styled("div")({
   "": {
-    display: "flex",
-    padding: "0 5px",
-    border: "2px solid #ccc",
-    borderRadius: "5px",
-  },
-});
-
-const StyledInput = styled("input")({
-  "": {
-    display: "block",
-    width: "100%",
-    fontSize: "15px",
-    // height: "4rem",
-    // padding: "1px",
-    border: "none",
-    outline: "none",
+    padding: "10px",
+    backgroundColor: "#fff",
   },
 });
 
