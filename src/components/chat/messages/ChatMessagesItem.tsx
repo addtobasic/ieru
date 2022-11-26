@@ -116,7 +116,11 @@ const StyledContent = styled("div")({
 
 const StyledInfo = styled("h4")({});
 
-const StyledMessage = styled("p")({});
+const StyledMessage = styled("p")({
+  // maxWidth: "800px",
+  whiteSpace: "pre-wrap",
+  // wordBreak: "break-all",
+});
 
 const StyledDate = styled("span")({
   "": {
