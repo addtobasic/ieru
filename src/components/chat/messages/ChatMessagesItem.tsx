@@ -118,6 +118,7 @@ const StyledImage = styled(Image)({
 
 const StyledContent = styled("div")({
   paddingLeft: "0.5rem",
+  width: "100%",
 });
 
 const StyledInfo = styled("h4")({});
