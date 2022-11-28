@@ -1,4 +1,5 @@
 import MenuIcon from "@mui/icons-material/Menu";
+import TagIcon from "@mui/icons-material/Tag";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import IconButton from "@mui/material/IconButton";
 import { styled, useTheme } from "@mui/material/styles";
@@ -50,8 +51,9 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ open, handleDrawerOpen }) => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" noWrap component="div">
-          #{selectedChannel?.name}
+        <TagIcon />
+        <Typography ml={0.5} mb={0.3} variant="h6" noWrap component="div">
+          {selectedChannel?.name}
         </Typography>
       </Toolbar>
     </AppBar>
