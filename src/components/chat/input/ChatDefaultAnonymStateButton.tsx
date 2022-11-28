@@ -1,4 +1,5 @@
 import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
 import React from "react";
 
 interface ChatDefaultAnonymStateButtonProps {
@@ -25,7 +26,7 @@ const ChatAnonymState: React.FC<ChatDefaultAnonymStateButtonProps> = ({
         onClick={handleChangeDefaultAnonym}
         type="button"
       >
-        {isDefaultAnonym ? "匿名ON" : "匿名OFF"}
+        <Typography>{isDefaultAnonym ? "匿名ON" : "匿名OFF"}</Typography>
       </StyledDefaultAnonymizeButton>
     </>
   );
@@ -36,7 +37,7 @@ export default ChatAnonymState;
 const StyledDefaultAnonymizeButton = styled("button", {
   shouldForwardProp: (prop) => prop !== "isAnonymize",
 })<AnonymizeProps>(({ isAnonymize }) => ({
-  padding: "0.5rem",
+  paddingRight: "11px",
   cursor: "pointer",
   border: "none",
   outline: "none",
