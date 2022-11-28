@@ -1,4 +1,7 @@
 import { SvgIconTypeMap } from "@mui/material";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 import { styled } from "@mui/material/styles";
 import React from "react";
@@ -15,37 +18,24 @@ const SidebarOptionItem: React.FC<SidebarOptionsItemProps> = ({
   onClick,
 }) => (
   <StyledContainer onClick={onClick}>
-    <StyledIconContainer>
-      <Icon fontSize="small" />
-    </StyledIconContainer>
-    <StyledTitle>{title}</StyledTitle>
+    <ListItemButton>
+      <ListItemIcon
+        sx={{
+          color: "#fff",
+        }}
+      >
+        <Icon />
+      </ListItemIcon>
+      <ListItemText primary={title} />
+    </ListItemButton>
   </StyledContainer>
 );
 
 const StyledContainer = styled("div")({
   "": {
-    display: "flex",
-    alignItems: "center",
-    fontSize: "0.75rem",
-    paddingReft: "2px",
-    cursor: "pointer",
-
     "&:hover": {
       backgroundColor: "var(--hover-background-color)",
-      opacity: 0.9,
     },
-  },
-});
-
-const StyledIconContainer = styled("div")({
-  "": {
-    margin: "0.75rem",
-  },
-});
-
-const StyledTitle = styled("h3")({
-  "": {
-    fontWeight: 500,
   },
 });
 

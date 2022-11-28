@@ -1,3 +1,7 @@
+import TagIcon from "@mui/icons-material/Tag";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
 import { styled } from "@mui/material/styles";
 import React from "react";
 
@@ -14,39 +18,25 @@ const SidebarChannelItem: React.FC<SidebarChannelItemProps> = ({ channel }) => {
 
   return (
     <StyledContainer onClick={() => selectChannel(id)}>
-      <StyledName>
-        <StyledHash>#</StyledHash>
-        {name}
-      </StyledName>
+      <ListItemButton>
+        <ListItemIcon
+          sx={{
+            color: "#fff",
+          }}
+        >
+          <TagIcon />
+        </ListItemIcon>
+        <ListItemText primary={name} />
+      </ListItemButton>
     </StyledContainer>
   );
 };
 
 const StyledContainer = styled("div")({
   "": {
-    display: "flex",
-    alignItems: "center",
-    fontSize: "0.75rem",
-    paddingReft: "2px",
-    cursor: "pointer",
-
     "&:hover": {
       backgroundColor: "var(--hover-background-color)",
-      opacity: 0.9,
     },
-  },
-});
-
-const StyledName = styled("h3")({
-  "": {
-    padding: "0.75rem 0",
-    fontWeight: 400,
-  },
-});
-
-const StyledHash = styled("span")({
-  "": {
-    padding: "1rem 1.1rem",
   },
 });
 

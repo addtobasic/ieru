@@ -1,4 +1,5 @@
 import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
 import * as React from "react";
 
 import { useStore } from "stores/store";
@@ -76,11 +77,12 @@ const StyledButton = styled("button")({
   },
 });
 
-const StyledName = styled("h4")({
+const StyledName = styled(Typography)({
   "": {
     marginLeft: "0.5rem",
     fontSize: "16px",
     color: "white",
+    fontWeight: "500",
   },
 });
 

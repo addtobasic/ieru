@@ -14,6 +14,17 @@ const theme = createTheme({
       main: "#757575",
     },
   },
+
+  typography: {
+    fontFamily: [
+      "system-ui",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      "Roboto",
+      '"Segoe UI"',
+      "sans-serif",
+    ].join(","),
+  },
 });
 
 const HomePage = () => {
