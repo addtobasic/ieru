@@ -2,6 +2,7 @@ import FormControl from "@mui/material/FormControl";
 import InputAdornment from "@mui/material/InputAdornment";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
 import { observer } from "mobx-react-lite";
 import React, { FC, useState } from "react";
 
@@ -101,7 +102,7 @@ const StyledContent = styled("div")({
   },
 });
 
-const StyledDiv = styled("div")({
+const StyledDiv = styled(Typography)({
   "": {
     padding: "10px",
     backgroundColor: "#fff",
