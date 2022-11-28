@@ -24,7 +24,7 @@ const SidebarOptionItem: React.FC<SidebarOptionsItemProps> = ({
           color: "#fff",
         }}
       >
-        <Icon fontSize="small" />
+        <Icon />
       </ListItemIcon>
       <ListItemText primary={title} />
     </ListItemButton>
