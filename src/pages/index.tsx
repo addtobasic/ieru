@@ -25,6 +25,25 @@ const theme = createTheme({
       "sans-serif",
     ].join(","),
   },
+
+  components: {
+    MuiListItemButton: {
+      styleOverrides: {
+        root: {
+          ":hover": {
+            backgroundColor: "var(--hover-background-color)",
+          },
+          "&.Mui-selected": {
+            "&:hover": {
+              backgroundColor: "var(--hover-background-color)",
+            },
+
+            backgroundColor: "var(--hover-background-color)",
+          },
+        },
+      },
+    },
+  },
 });
 
 const HomePage = () => {
