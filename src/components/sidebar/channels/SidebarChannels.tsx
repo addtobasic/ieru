@@ -47,10 +47,4 @@ const SidebarChannels = () => {
 
 export default observer(SidebarChannels);
 
-const StyledContainer = styled("div")({
-  "": {
-    "&:hover": {
-      backgroundColor: "var(--hover-background-color)",
-    },
-  },
-});
+const StyledContainer = styled("div")({});

@@ -30,7 +30,14 @@ const theme = createTheme({
     MuiListItemButton: {
       styleOverrides: {
         root: {
+          ":hover": {
+            backgroundColor: "var(--hover-background-color)",
+          },
           "&.Mui-selected": {
+            "&:hover": {
+              backgroundColor: "var(--hover-background-color)",
+            },
+
             backgroundColor: "var(--hover-background-color)",
           },
         },
