@@ -23,7 +23,9 @@ const ChatSendButton: FC<ChatSendButtonProps> = ({
       return;
     }
 
-    const success = sendMessage(input, isDefaultAnonym);
+    // inputから改行や空白を取り除く
+    const trimmedInput = input.trim();
+    const success = sendMessage(trimmedInput, isDefaultAnonym);
 
     if (success) {
       setInput("");
