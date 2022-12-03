@@ -33,7 +33,9 @@ const ChatInput: FC<ChatInputProps> = ({ open }) => {
     }
 
     if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
-      const success = sendMessage(input, isDefaultAnonym);
+      // inputから改行や空白を取り除く
+      const trimmedInput = input.trim();
+      const success = sendMessage(trimmedInput, isDefaultAnonym);
 
       if (success) {
         setInput("");
