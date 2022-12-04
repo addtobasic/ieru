@@ -81,8 +81,8 @@ const StyledName = styled(Typography)({
   "": {
     marginLeft: "0.5rem",
     fontSize: "16px",
-    color: "white",
     fontWeight: "500",
+    color: "white",
   },
 });
 
