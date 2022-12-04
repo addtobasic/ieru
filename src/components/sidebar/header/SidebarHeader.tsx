@@ -18,14 +18,14 @@ const SidebarHeader: React.FC<SideBarHeaderProps> = ({ handleDrawerClose }) => {
         sx={[
           {
             "&:hover": {
-              backgroundColor: "var(--hover-background-color)",
+              backgroundColor: "var(--ieru-color-hover)",
             },
           },
         ]}
         onClick={handleDrawerClose}
       >
         {theme.direction === "ltr" ? (
-          <ChevronLeftIcon sx={[{ color: "white" }]} />
+          <ChevronLeftIcon sx={{ color: "var(--white)" }} />
         ) : (
           <ChevronRightIcon />
         )}

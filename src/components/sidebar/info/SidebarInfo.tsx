@@ -72,7 +72,7 @@ const StyledButton = styled("button")({
     outline: "none",
 
     "&:hover": {
-      backgroundColor: "var(--hover-background-color)",
+      backgroundColor: "var(--ieru-color-hover)",
     },
   },
 });
@@ -81,8 +81,8 @@ const StyledName = styled(Typography)({
   "": {
     marginLeft: "0.5rem",
     fontSize: "16px",
-    color: "white",
     fontWeight: "500",
+    color: "var(--white)",
   },
 });
 

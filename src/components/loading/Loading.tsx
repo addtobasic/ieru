@@ -38,7 +38,7 @@ const StyledContainer = styled("div")({
     alignItems: "center",
     padding: "6.25rem",
     textAlign: "center",
-    backgroundColor: "white",
+    backgroundColor: "var(--white)",
     borderRadius: "0.75rem",
     boxShadow: "0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%)",
   },

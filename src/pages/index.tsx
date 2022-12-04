@@ -8,7 +8,7 @@ import { useStore } from "stores/store";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#0096fa",
+      main: "#1491fa",
     },
     secondary: {
       main: "#757575",
@@ -31,14 +31,14 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           ":hover": {
-            backgroundColor: "var(--hover-background-color)",
+            backgroundColor: "var(--ieru-color-hover)",
           },
           "&.Mui-selected": {
             "&:hover": {
-              backgroundColor: "var(--hover-background-color)",
+              backgroundColor: "var(--ieru-color-hover)",
             },
 
-            backgroundColor: "var(--hover-background-color)",
+            backgroundColor: "var(--ieru-color-hover)",
           },
         },
       },

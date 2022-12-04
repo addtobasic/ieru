@@ -32,7 +32,7 @@ const SidebarChannels = () => {
           >
             <ListItemIcon
               sx={{
-                color: "#fff",
+                color: "var(--white)",
               }}
             >
               <TagIcon />
