@@ -4,11 +4,17 @@
 
 html,
 body {
-  --ieru-color: #0096fa;
+  /* Primary Brand Color */
+  --ieru-color: #1491fa;
+  --ieru-color-hover: #64b6fa;
   --ieru-i-color: #4839b8;
   --ieru-eru-color: #4dadfb;
+
+  /* Secondary Brand Colors */
+  --white: #fff;
+  --white-hover: #f8f8f8;
+  --brack: #23221f;
   --sidebar-separate-color: #97d3e3;
-  --hover-background-color: #4bb4fa;
 
   padding: 0;
   margin: 0;

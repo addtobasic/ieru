@@ -72,7 +72,7 @@ const StyledButton = styled("button")({
     outline: "none",
 
     "&:hover": {
-      backgroundColor: "var(--hover-background-color)",
+      backgroundColor: "var(--ieru-color-hover)",
     },
   },
 });

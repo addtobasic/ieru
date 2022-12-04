@@ -31,14 +31,14 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           ":hover": {
-            backgroundColor: "var(--hover-background-color)",
+            backgroundColor: "var(--ieru-color-hover)",
           },
           "&.Mui-selected": {
             "&:hover": {
-              backgroundColor: "var(--hover-background-color)",
+              backgroundColor: "var(--ieru-color-hover)",
             },
 
-            backgroundColor: "var(--hover-background-color)",
+            backgroundColor: "var(--ieru-color-hover)",
           },
         },
       },

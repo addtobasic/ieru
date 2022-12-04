@@ -34,7 +34,7 @@ const SidebarOptionItem: React.FC<SidebarOptionsItemProps> = ({
 const StyledContainer = styled("div")({
   "": {
     "&:hover": {
-      backgroundColor: "var(--hover-background-color)",
+      backgroundColor: "var(--ieru-color-hover)",
     },
   },
 });
