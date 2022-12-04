@@ -6,7 +6,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta name="description" content="ieru created using Next.JS" />
-          <meta name="theme-color" content="#ffffff" />
+          <meta name="theme-color" content="var(--white)" />
           <link rel="icon" href="/meta/favicon.ico" />
           <link href="/meta/favicon.ico" />
           <link href="/meta/mask-icon.svg" color="#000000" />

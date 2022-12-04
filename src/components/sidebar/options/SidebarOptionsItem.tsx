@@ -21,7 +21,7 @@ const SidebarOptionItem: React.FC<SidebarOptionsItemProps> = ({
     <ListItemButton>
       <ListItemIcon
         sx={{
-          color: "#fff",
+          color: "var(--white)",
         }}
       >
         <Icon />

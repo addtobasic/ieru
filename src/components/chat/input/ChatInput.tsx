@@ -109,7 +109,7 @@ const StyledContent = styled("div")({
 const StyledDiv = styled(Typography)({
   "": {
     padding: "10px",
-    backgroundColor: "#fff",
+    backgroundColor: "var(--white)",
   },
 });
 
