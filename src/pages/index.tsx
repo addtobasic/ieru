@@ -8,7 +8,7 @@ import { useStore } from "stores/store";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#0096fa",
+      main: "#1491fa",
     },
     secondary: {
       main: "#757575",

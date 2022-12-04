@@ -61,7 +61,9 @@ const ChatInput: FC<ChatInputProps> = ({ open }) => {
               id="outlined-adornment-password"
               type="text"
               value={input}
-              color="primary"
+              sx={{
+                color: "var(--black)",
+              }}
               endAdornment={
                 <InputAdornment position="end">
                   <ChatSendButton

@@ -125,6 +125,7 @@ const StyledContent = styled("div")({
 const StyledInfo = styled(Typography)({
   fontSize: "17px",
   fontWeight: "500",
+  color: "var(--black)",
 });
 
 const StyledMessage = styled(Typography)({
@@ -132,6 +133,7 @@ const StyledMessage = styled(Typography)({
   whiteSpace: "pre-wrap",
   wordBreak: "break-all",
   fontSize: "17px",
+  color: "var(--black)",
 });
 
 const StyledDate = styled("span")({
@@ -139,7 +141,7 @@ const StyledDate = styled("span")({
     marginLeft: "0.5rem",
     fontSize: "0.7rem",
     fontWeight: "400",
-    color: "gray",
+    color: "var(--text-date-color)",
   },
 });
 

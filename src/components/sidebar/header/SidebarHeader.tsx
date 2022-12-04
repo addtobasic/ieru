@@ -25,7 +25,7 @@ const SidebarHeader: React.FC<SideBarHeaderProps> = ({ handleDrawerClose }) => {
         onClick={handleDrawerClose}
       >
         {theme.direction === "ltr" ? (
-          <ChevronLeftIcon sx={[{ color: "white" }]} />
+          <ChevronLeftIcon sx={{ color: "var(--white)" }} />
         ) : (
           <ChevronRightIcon />
         )}

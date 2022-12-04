@@ -41,6 +41,6 @@ const StyledDefaultAnonymizeButton = styled("button", {
   cursor: "pointer",
   border: "none",
   outline: "none",
-  backgroundColor: "white",
-  color: isAnonymize ? "var(--ieru-color)" : "black",
+  backgroundColor: "var(--white)",
+  color: isAnonymize ? "var(--ieru-color)" : "var(--black)",
 }));

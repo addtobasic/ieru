@@ -87,6 +87,6 @@ const StyledButton = styled("div")({
   color: "#757575",
 
   "&:hover": {
-    color: "#4bb4fa",
+    color: "#64b6fa",
   },
 });

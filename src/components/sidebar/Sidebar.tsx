@@ -34,7 +34,7 @@ const PersistentDrawerLeft: React.FC = () => {
           width: drawerWidth,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            color: "white",
+            color: "var(--white)",
             backgroundColor: "var(--ieru-color)",
             width: drawerWidth,
             boxSizing: "border-box",
