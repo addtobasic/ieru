@@ -24,10 +24,11 @@ const SidebarOptions = () => {
 
 const StyledContainer = styled("div")({});
 
-const StyledSeparator = styled("hr")({
+const StyledSeparator = styled("div")({
   "": {
+    height: "2px",
     margin: "0.75rem 0",
-    border: "1px solid var(--sidebar-separate-color)",
+    backgroundColor: "var(--sidebar-separate-color)",
   },
 });
 
