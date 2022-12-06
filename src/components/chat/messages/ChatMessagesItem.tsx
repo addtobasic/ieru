@@ -158,7 +158,7 @@ const StyledPopper = styled("div")({
   "": {
     position: "absolute",
     right: "0",
-    marginTop: "-1.5rem",
+    marginTop: "-1.75rem",
     marginRight: "1.5rem",
   },
 });
