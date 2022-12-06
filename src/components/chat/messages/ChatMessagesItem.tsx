@@ -105,7 +105,7 @@ const StyledContainer = styled("div")({
   position: "relative",
 
   "&:hover": {
-    backgroundColor: "#f1f1f1",
+    backgroundColor: "var(--white-hover)",
   },
 });
 

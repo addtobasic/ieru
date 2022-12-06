@@ -39,7 +39,14 @@ const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
 
   return (
     <>
-      <ButtonGroup size="small" aria-label="small button group">
+      <ButtonGroup
+        sx={{
+          borderRadius: "4px",
+          boxShadow: "0 2px 5px rgba(0,0,0,0.26)",
+        }}
+        size="small"
+        aria-label="small button group"
+      >
         <Tooltip title="いいね" placement="top">
           <StyledButton>
             <ThumbUpAltIcon />
@@ -82,11 +89,17 @@ const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
 export default ChatMessagesItemHover;
 
 const StyledButton = styled("div")({
-  padding: "0.2rem",
-  cursor: "pointer",
-  color: "#757575",
+  "": {
+    display: "flex",
+    padding: "0.2rem",
+    color: "var(--black-icon)",
+    cursor: "pointer",
+    backgroundColor: "white",
+    borderRadius: "15%",
 
-  "&:hover": {
-    color: "#64b6fa",
+    "&:hover": {
+      color: "var(--ieru-color-hover)",
+      backgroundColor: "var(--white-hover)",
+    },
   },
 });
