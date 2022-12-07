@@ -50,6 +50,6 @@ export default observer(ChatMessages);
 const StyledContainer = styled("div")({
   "": {
     paddingTop: "4rem",
-    paddingBottom: "10rem",
+    paddingBottom: "8.4rem",
   },
 });

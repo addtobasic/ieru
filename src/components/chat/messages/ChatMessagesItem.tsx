@@ -107,6 +107,11 @@ const StyledContainer = styled("div")({
     marginTop: "0.8rem",
     marginBottom: "-0.8rem",
 
+    // column-reverseにより、最新のコメントが一番下に表示される
+    "&:first-child": {
+      marginBottom: "0.8rem",
+    },
+
     "&:hover": {
       backgroundColor: "var(--white-hover)",
     },
