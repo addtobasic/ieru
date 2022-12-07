@@ -39,9 +39,16 @@ const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
 
   return (
     <>
-      <ButtonGroup size="small" aria-label="small button group">
+      <ButtonGroup
+        sx={{
+          borderRadius: "4px",
+          boxShadow: "0 2px 5px rgba(0,0,0,0.26)",
+        }}
+        size="small"
+        aria-label="small button group"
+      >
         <Tooltip title="いいね" placement="top">
-          <StyledButton>
+          <StyledButton position="left">
             <ThumbUpAltIcon />
           </StyledButton>
         </Tooltip>
@@ -62,7 +69,7 @@ const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
           </Tooltip>
         )}
         <Tooltip title="その他" placement="top">
-          <StyledButton onClick={handleMenuOpen}>
+          <StyledButton position="right" onClick={handleMenuOpen}>
             <MoreHorizIcon />
           </StyledButton>
         </Tooltip>
@@ -81,12 +88,25 @@ const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
 
 export default ChatMessagesItemHover;
 
-const StyledButton = styled("div")({
-  padding: "0.2rem",
-  cursor: "pointer",
-  color: "#757575",
+const StyledButton = styled("div")<{ position?: string }>(({ position }) => ({
+  "": {
+    display: "flex",
+    padding: "0.2rem",
+    color: "var(--black-icon)",
+    cursor: "pointer",
+    backgroundColor: "white",
 
-  "&:hover": {
-    color: "#64b6fa",
+    ...(position === "left" && {
+      borderRadius: "15% 0 0 15%",
+    }),
+
+    ...(position === "right" && {
+      borderRadius: "0 15% 15% 0",
+    }),
+
+    "&:hover": {
+      color: "var(--ieru-color-hover)",
+      backgroundColor: "var(--white-hover)",
+    },
   },
-});
+}));

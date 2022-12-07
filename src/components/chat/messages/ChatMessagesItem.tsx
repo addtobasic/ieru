@@ -100,40 +100,54 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
 export default ChatMessagesItem;
 
 const StyledContainer = styled("div")({
-  display: "flex",
-  padding: "1rem 1.5rem",
-  position: "relative",
+  "": {
+    position: "relative",
+    display: "flex",
+    padding: "1rem 1.5rem",
+    marginTop: "0.8rem",
+    marginBottom: "-0.8rem",
 
-  "&:hover": {
-    backgroundColor: "#f1f1f1",
+    "&:hover": {
+      backgroundColor: "var(--white-hover)",
+    },
   },
 });
 
 const StyledImageDiv = styled("div")({
-  minWidth: "50px",
+  "": {
+    minWidth: "50px",
+  },
 });
 
 const StyledImage = styled(Image)({
-  borderRadius: "0.5rem",
+  "": {
+    borderRadius: "0.5rem",
+  },
 });
 
 const StyledContent = styled("div")({
-  paddingLeft: "0.5rem",
-  width: "100%",
+  "": {
+    width: "100%",
+    paddingLeft: "0.5rem",
+  },
 });
 
 const StyledInfo = styled(Typography)({
-  fontSize: "17px",
-  fontWeight: "500",
-  color: "var(--black)",
+  "": {
+    fontSize: "17px",
+    fontWeight: "500",
+    color: "var(--black)",
+  },
 });
 
 const StyledMessage = styled(Typography)({
-  maxWidth: "95%",
-  whiteSpace: "pre-wrap",
-  wordBreak: "break-all",
-  fontSize: "17px",
-  color: "var(--black)",
+  "": {
+    maxWidth: "95%",
+    fontSize: "17px",
+    color: "var(--black)",
+    wordBreak: "break-all",
+    whiteSpace: "pre-wrap",
+  },
 });
 
 const StyledDate = styled("span")({
@@ -158,7 +172,7 @@ const StyledPopper = styled("div")({
   "": {
     position: "absolute",
     right: "0",
-    marginTop: "-1.5rem",
+    marginTop: "-1.75rem",
     marginRight: "1.5rem",
   },
 });
