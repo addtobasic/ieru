@@ -78,11 +78,21 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
           </StyledInfo>
           <StyledMessage>{message.message}</StyledMessage>
         </StyledContent>
-        <StyledButtonDiv>
-          <IconButton size="small" color="primary">
-            <FavoriteBorderOutlinedIcon />
-          </IconButton>
-        </StyledButtonDiv>
+        <StyledDiv>
+          <StyledButtonDiv>
+            <IconButton size="small">
+              <FavoriteBorderOutlinedIcon />
+            </IconButton>
+            <Typography
+              sx={{
+                paddingLeft: "0.15rem",
+              }}
+            >
+              1
+            </Typography>
+          </StyledButtonDiv>
+        </StyledDiv>
+
         <StyledPopper>
           {isHover && (
             <ChatMessagesItemHover
@@ -164,12 +174,20 @@ const StyledDate = styled("span")({
   },
 });
 
-const StyledButtonDiv = styled("div")({
+const StyledDiv = styled("div")({
   "": {
     display: "flex",
     alignItems: "end",
     marginRight: "0",
     marginLeft: "auto",
+  },
+});
+
+const StyledButtonDiv = styled("div")({
+  "": {
+    display: "flex",
+    alignItems: "center",
+    color: "var(--black-icon)",
   },
 });
 
