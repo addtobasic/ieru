@@ -21,6 +21,7 @@ interface ChatMessagesItemProps {
 
 const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   const [isAnonym, setIsAnonym] = useState(message.isAnonym);
+  const [likedBy, setLikedBy] = useState(message.likedBy);
   const { photoURL, user, timestamp } = message;
   const displayImage = useStore().userStore.user?.photoURL;
 
@@ -30,19 +31,37 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   const channel = store.channelStore.selectedChannel;
   const messagesRef = doc(db, "channels", channel!.id, "messages", message.id);
 
-  // チャットごとの匿名, 顕名を検知しリアルタイム同期をする
+  // チャットのデータをリアルタイム同期する
   useEffect(() => {
-    onSnapshot(messagesRef, (doc) => {
+    const unsubscribe = onSnapshot(messagesRef, (doc) => {
       setIsAnonym(doc.data()?.isAnonym);
+      setLikedBy(doc.data()?.likedBy);
     });
+
+    return () => {
+      // Unmouting
+      unsubscribe();
+    };
   }, [messagesRef]);
 
+  // 匿名, 顕名を切り替えてfirestoreのデータを更新する関数
   const handleChangeAnonym = async () => {
     await updateDoc(messagesRef, {
       isAnonym: !isAnonym,
     });
 
     setIsAnonym(!isAnonym);
+  };
+
+  // firestoreのいいねのデータを更新する関数
+  const handleAddLike = async () => {
+    if (!likedBy.includes(displayImage || "")) {
+      await updateDoc(messagesRef, {
+        likedBy: [...likedBy, displayImage],
+      });
+
+      setLikedBy([...likedBy, displayImage || ""]);
+    }
   };
 
   // マウスオーバーでメニュ－アイコンを表示する
@@ -78,11 +97,20 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
           </StyledInfo>
           <StyledMessage>{message.message}</StyledMessage>
         </StyledContent>
-        <StyledButtonDiv>
-          <IconButton size="small" color="primary">
-            <FavoriteBorderOutlinedIcon />
-          </IconButton>
-        </StyledButtonDiv>
+        <StyledDiv>
+          <StyledButtonDiv>
+            <IconButton size="small" onClick={handleAddLike}>
+              <FavoriteBorderOutlinedIcon />
+            </IconButton>
+            <Typography
+              sx={{
+                paddingLeft: "0.15rem",
+              }}
+            >
+              {likedBy?.length || 0}
+            </Typography>
+          </StyledButtonDiv>
+        </StyledDiv>
         <StyledPopper>
           {isHover && (
             <ChatMessagesItemHover
@@ -164,12 +192,20 @@ const StyledDate = styled("span")({
   },
 });
 
-const StyledButtonDiv = styled("div")({
+const StyledDiv = styled("div")({
   "": {
     display: "flex",
     alignItems: "end",
     marginRight: "0",
     marginLeft: "auto",
+  },
+});
+
+const StyledButtonDiv = styled("div")({
+  "": {
+    display: "flex",
+    alignItems: "center",
+    color: "var(--black-icon)",
   },
 });
 

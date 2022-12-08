@@ -4,5 +4,6 @@ export interface Message {
   user: string;
   photoURL: string;
   isAnonym: boolean;
+  likedBy: string[];
   timestamp: Date;
 }

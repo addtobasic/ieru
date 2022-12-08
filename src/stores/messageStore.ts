@@ -112,6 +112,7 @@ class MessageStore {
         user: doc.data().user,
         photoURL: doc.data().photoURL,
         isAnonym: doc.data().isAnonym,
+        likedBy: doc.data().likedBy,
         timestamp: doc.data().timestamp?.toDate(),
       } as Message;
 
@@ -136,6 +137,7 @@ class MessageStore {
       user: user.displayName,
       photoURL: user.photoURL,
       isAnonym: isDefaultAnonym,
+      likedBy: [],
       timestamp: serverTimestamp(),
     });
 
