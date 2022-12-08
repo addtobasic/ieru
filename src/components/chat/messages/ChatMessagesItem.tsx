@@ -21,7 +21,7 @@ interface ChatMessagesItemProps {
 
 const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   const [isAnonym, setIsAnonym] = useState(message.isAnonym);
-  const [likedBy, setLikedBy] = useState(message.likedBy);
+  // const [likedBy, setLikedBy] = useState(message.likedBy);
   const { photoURL, user, timestamp } = message;
   const displayImage = useStore().userStore.user?.photoURL;
 
@@ -35,7 +35,7 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   useEffect(() => {
     const unsubscribe = onSnapshot(messagesRef, (doc) => {
       setIsAnonym(doc.data()?.isAnonym);
-      setLikedBy(doc.data()?.likedBy);
+      // setLikedBy(doc.data()?.likedBy);
     });
 
     return () => {
@@ -54,15 +54,15 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   };
 
   // firestoreのいいねのデータを更新する関数
-  const handleAddLike = async () => {
-    if (!likedBy.includes(displayImage || "")) {
-      await updateDoc(messagesRef, {
-        likedBy: [...likedBy, displayImage],
-      });
+  // const handleAddLike = async () => {
+  //   if (!likedBy.includes(displayImage || "")) {
+  //     await updateDoc(messagesRef, {
+  //       likedBy: [...likedBy, displayImage],
+  //     });
 
-      setLikedBy([...likedBy, displayImage || ""]);
-    }
-  };
+  //     setLikedBy([...likedBy, displayImage || ""]);
+  //   }
+  // };
 
   // マウスオーバーでメニュ－アイコンを表示する
   const [isHover, setIsHover] = React.useState(false);
@@ -99,7 +99,8 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
         </StyledContent>
         <StyledDiv>
           <StyledButtonDiv>
-            <IconButton size="small" onClick={handleAddLike}>
+            {/* <IconButton size="small" onClick={handleAddLike}> */}
+            <IconButton size="small">
               <FavoriteBorderOutlinedIcon />
             </IconButton>
             <Typography
@@ -107,7 +108,7 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
                 paddingLeft: "0.15rem",
               }}
             >
-              {likedBy?.length || 0}
+              {/* {likedBy?.length || 0} */}
             </Typography>
           </StyledButtonDiv>
         </StyledDiv>
