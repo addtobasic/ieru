@@ -21,7 +21,7 @@ interface ChatMessagesItemProps {
 
 const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   const [isAnonym, setIsAnonym] = useState(message.isAnonym);
-  // const [likedBy, setLikedBy] = useState(message.likedBy);
+  const [likedBy, setLikedBy] = useState(message.likedBy);
   const { photoURL, user, timestamp } = message;
   const displayImage = useStore().userStore.user?.photoURL;
 
@@ -33,16 +33,30 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
 
   // チャットのデータをリアルタイム同期する
   useEffect(() => {
-    const unsubscribe = onSnapshot(messagesRef, (doc) => {
-      setIsAnonym(doc.data()?.isAnonym);
-      // setLikedBy(doc.data()?.likedBy);
-    });
+    const messagesRef = doc(
+      db,
+      "channels",
+      channel!.id,
+      "messages",
+      message.id
+    );
 
-    return () => {
-      // Unmouting
-      unsubscribe();
-    };
-  }, [messagesRef]);
+    onSnapshot(messagesRef, (doc) => {
+      const values: string[] = [];
+      setIsAnonym(doc.data()?.isAnonym);
+
+      doc.data()?.likedBy.forEach((value: string) => {
+        values.push(value);
+      }, []);
+      // console.log(values);
+      setLikedBy(values);
+    });
+  }, []);
+
+  // const unsub = onSnapshot(messagesRef, (doc) => {
+  //   setIsAnonym(doc.data()?.isAnonym);
+  //   console.log(doc.data());
+  // });
 
   // 匿名, 顕名を切り替えてfirestoreのデータを更新する関数
   const handleChangeAnonym = async () => {
@@ -54,15 +68,20 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   };
 
   // firestoreのいいねのデータを更新する関数
-  // const handleAddLike = async () => {
-  //   if (!likedBy.includes(displayImage || "")) {
-  //     await updateDoc(messagesRef, {
-  //       likedBy: [...likedBy, displayImage],
-  //     });
+  const handleAddLike = async () => {
+    if (!likedBy.includes(displayImage || "")) {
+      await updateDoc(messagesRef, {
+        likedBy: [...likedBy, displayImage],
+      });
 
-  //     setLikedBy([...likedBy, displayImage || ""]);
-  //   }
-  // };
+      setLikedBy([...likedBy, displayImage || ""]);
+
+      onSnapshot(messagesRef, (doc) => {
+        console.log(doc.data()?.likedBy);
+        // setLikedBy(doc.data()?.likedBy);
+      });
+    }
+  };
 
   // マウスオーバーでメニュ－アイコンを表示する
   const [isHover, setIsHover] = React.useState(false);
@@ -99,8 +118,8 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
         </StyledContent>
         <StyledDiv>
           <StyledButtonDiv>
-            {/* <IconButton size="small" onClick={handleAddLike}> */}
-            <IconButton size="small">
+            <IconButton size="small" onClick={handleAddLike}>
+              {/* <IconButton size="small"> */}
               <FavoriteBorderOutlinedIcon />
             </IconButton>
             <Typography
@@ -108,7 +127,7 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
                 paddingLeft: "0.15rem",
               }}
             >
-              {/* {likedBy?.length || 0} */}
+              {likedBy?.length || 0}
             </Typography>
           </StyledButtonDiv>
         </StyledDiv>
