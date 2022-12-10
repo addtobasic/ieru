@@ -50,7 +50,11 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
 
   // firestoreのいいねのデータを更新する関数
   const handleAddLike = async () => {
-    if (!likedBy.includes(displayImage || "")) {
+    if (likedBy === undefined) {
+      await updateDoc(messagesRef, {
+        likedBy: [displayImage],
+      });
+    } else if (!likedBy.includes(displayImage || "")) {
       await updateDoc(messagesRef, {
         likedBy: [...likedBy, displayImage],
       });
