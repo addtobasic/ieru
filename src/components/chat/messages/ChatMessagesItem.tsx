@@ -33,30 +33,11 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
 
   // チャットのデータをリアルタイム同期する
   useEffect(() => {
-    const messagesRef = doc(
-      db,
-      "channels",
-      channel!.id,
-      "messages",
-      message.id
-    );
-
     onSnapshot(messagesRef, (doc) => {
-      const values: string[] = [];
       setIsAnonym(doc.data()?.isAnonym);
-
-      doc.data()?.likedBy.forEach((value: string) => {
-        values.push(value);
-      }, []);
-      // console.log(values);
-      setLikedBy(values);
+      setLikedBy(doc.data()?.likedBy);
     });
   }, []);
-
-  // const unsub = onSnapshot(messagesRef, (doc) => {
-  //   setIsAnonym(doc.data()?.isAnonym);
-  //   console.log(doc.data());
-  // });
 
   // 匿名, 顕名を切り替えてfirestoreのデータを更新する関数
   const handleChangeAnonym = async () => {
@@ -75,11 +56,6 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
       });
 
       setLikedBy([...likedBy, displayImage || ""]);
-
-      onSnapshot(messagesRef, (doc) => {
-        console.log(doc.data()?.likedBy);
-        // setLikedBy(doc.data()?.likedBy);
-      });
     }
   };
 
@@ -119,7 +95,6 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
         <StyledDiv>
           <StyledButtonDiv>
             <IconButton size="small" onClick={handleAddLike}>
-              {/* <IconButton size="small"> */}
               <FavoriteBorderOutlinedIcon />
             </IconButton>
             <Typography
