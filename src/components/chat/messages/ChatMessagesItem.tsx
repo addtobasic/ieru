@@ -1,5 +1,5 @@
+import FavoriteOutlinedIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorder";
-// import FavoriteOutlinedIcon from "@mui/icons-material/Favorite";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
@@ -98,12 +98,27 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
         </StyledContent>
         <StyledDiv>
           <StyledButtonDiv>
-            <IconButton size="small" onClick={handleAddLike}>
-              <FavoriteBorderOutlinedIcon />
+            <IconButton
+              size="small"
+              onClick={handleAddLike}
+              sx={{
+                color: likedBy?.includes(displayImage || "")
+                  ? "var(--like-color)"
+                  : "var(---color)",
+              }}
+            >
+              {likedBy?.includes(displayImage || "") ? (
+                <FavoriteOutlinedIcon />
+              ) : (
+                <FavoriteBorderOutlinedIcon />
+              )}
             </IconButton>
             <Typography
               sx={{
                 paddingLeft: "0.15rem",
+                color: likedBy?.includes(displayImage || "")
+                  ? "var(--like-color)"
+                  : "var(---color)",
               }}
             >
               {likedBy?.length || 0}
@@ -205,6 +220,10 @@ const StyledButtonDiv = styled("div")({
     display: "flex",
     alignItems: "center",
     color: "var(--black-icon)",
+
+    "&:hover": {
+      color: "var(--like-color)",
+    },
   },
 });
 
