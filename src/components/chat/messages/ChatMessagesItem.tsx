@@ -49,12 +49,24 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   };
 
   // firestoreのいいねのデータを更新する関数
-  const handleAddLike = async () => {
+  const handleChangeLike = async () => {
     if (likedBy === undefined) {
       await updateDoc(messagesRef, {
         likedBy: [displayImage],
       });
-    } else if (!likedBy.includes(displayImage || "")) {
+    }
+
+    // いいねをすでに押していたらいいねを取り消す
+    else if (likedBy.includes(displayImage || "")) {
+      await updateDoc(messagesRef, {
+        likedBy: likedBy.filter((like) => like !== displayImage),
+      });
+
+      setLikedBy(likedBy.filter((like) => like !== displayImage));
+    }
+
+    // いいねを押していなかったらいいねを押す
+    else {
       await updateDoc(messagesRef, {
         likedBy: [...likedBy, displayImage],
       });
@@ -100,7 +112,7 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
           <StyledButtonDiv>
             <IconButton
               size="small"
-              onClick={handleAddLike}
+              onClick={handleChangeLike}
               sx={{
                 color: likedBy?.includes(displayImage || "")
                   ? "var(--like-color)"
