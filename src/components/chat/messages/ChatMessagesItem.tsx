@@ -1,6 +1,3 @@
-import FavoriteOutlinedIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorder";
-import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
@@ -14,6 +11,7 @@ import { Message } from "types/message";
 
 import anonymusPng from "../../../../public/images/anonymus.png";
 import ChatMessagesItemHover from "./ChatMessagesItemHover";
+import ChatMessagesItemLiked from "./ChatMessagesItemLiked";
 
 interface ChatMessagesItemProps {
   message: Message;
@@ -48,35 +46,8 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
     setIsAnonym(!isAnonym);
   };
 
-  // firestoreのいいねのデータを更新する関数
-  const handleChangeLike = async () => {
-    if (likedBy === undefined) {
-      await updateDoc(messagesRef, {
-        likedBy: [displayImage],
-      });
-    }
-
-    // いいねをすでに押していたらいいねを取り消す
-    else if (likedBy.includes(displayImage || "")) {
-      await updateDoc(messagesRef, {
-        likedBy: likedBy.filter((like) => like !== displayImage),
-      });
-
-      setLikedBy(likedBy.filter((like) => like !== displayImage));
-    }
-
-    // いいねを押していなかったらいいねを押す
-    else {
-      await updateDoc(messagesRef, {
-        likedBy: [...likedBy, displayImage],
-      });
-
-      setLikedBy([...likedBy, displayImage || ""]);
-    }
-  };
-
   // マウスオーバーでメニュ－アイコンを表示する
-  const [isHover, setIsHover] = React.useState(false);
+  const [isHover, setIsHover] = useState(false);
 
   const handlePopoverOpen = () => {
     setIsHover(true);
@@ -108,35 +79,13 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
           </StyledInfo>
           <StyledMessage>{message.message}</StyledMessage>
         </StyledContent>
-        <StyledDiv>
-          <StyledButtonDiv>
-            <IconButton
-              size="small"
-              onClick={handleChangeLike}
-              sx={{
-                color: likedBy?.includes(displayImage || "")
-                  ? "var(--like-color)"
-                  : "var(---color)",
-              }}
-            >
-              {likedBy?.includes(displayImage || "") ? (
-                <FavoriteOutlinedIcon />
-              ) : (
-                <FavoriteBorderOutlinedIcon />
-              )}
-            </IconButton>
-            <Typography
-              sx={{
-                paddingLeft: "0.15rem",
-                color: likedBy?.includes(displayImage || "")
-                  ? "var(--like-color)"
-                  : "var(---color)",
-              }}
-            >
-              {likedBy?.length || 0}
-            </Typography>
-          </StyledButtonDiv>
-        </StyledDiv>
+
+        <ChatMessagesItemLiked
+          likedBy={likedBy}
+          setLikedBy={setLikedBy}
+          displayImage={displayImage}
+          messagesRef={messagesRef}
+        />
         <StyledPopper>
           {isHover && (
             <ChatMessagesItemHover
@@ -215,27 +164,6 @@ const StyledDate = styled("span")({
     fontSize: "0.7rem",
     fontWeight: "400",
     color: "var(--text-date-color)",
-  },
-});
-
-const StyledDiv = styled("div")({
-  "": {
-    display: "flex",
-    alignItems: "end",
-    marginRight: "0",
-    marginLeft: "auto",
-  },
-});
-
-const StyledButtonDiv = styled("div")({
-  "": {
-    display: "flex",
-    alignItems: "center",
-    color: "var(--black-icon)",
-
-    "&:hover": {
-      color: "var(--like-color)",
-    },
   },
 });
 
