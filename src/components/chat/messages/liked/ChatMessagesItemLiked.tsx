@@ -85,7 +85,11 @@ const ChatMessagesItemLiked: React.FC<ChatMessagesItemLikedProps> = ({
         >
           {likedBy?.length || 0}
         </Typography>
-        <ChatMessagesItemLikedHistory open={open} anchorEl={anchorEl} />
+        <ChatMessagesItemLikedHistory
+          open={open}
+          anchorEl={anchorEl}
+          likedBy={likedBy}
+        />
       </StyledButtonDiv>
     </StyledDiv>
   );
