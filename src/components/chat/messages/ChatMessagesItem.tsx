@@ -11,7 +11,7 @@ import { Message } from "types/message";
 
 import anonymusPng from "../../../../public/images/anonymus.png";
 import ChatMessagesItemHover from "./ChatMessagesItemHover";
-import ChatMessagesItemLiked from "./ChatMessagesItemLiked";
+import ChatMessagesItemLiked from "./liked/ChatMessagesItemLiked";
 
 interface ChatMessagesItemProps {
   message: Message;
