@@ -37,7 +37,7 @@ const StyledBox = styled(Box)({
     flexWrap: "wrap",
     maxWidth: "193px",
     backgroundColor: "var(--white)",
-    border: "1px solid var(--ieru-color)",
+    border: "2px solid var(--ieru-color)",
     borderRadius: "0.5rem",
   },
 });
