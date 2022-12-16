@@ -12,14 +12,14 @@ interface ChatMessagesItemLikedHistoryProps {
 
 const ChatMessagesItemLikedHistory: React.FC<ChatMessagesItemLikedHistoryProps> =
   ({ open, anchorEl, likedBy }) => (
-    <Popper open={open} anchorEl={anchorEl}>
-      <Box>
+    <Popper open={open} anchorEl={anchorEl} placement="bottom-end">
+      <StyledBox>
         {likedBy.map((likeImageUrl) => (
           <StyledSpan key={likeImageUrl}>
             <StyledImage src={likeImageUrl} width={35} height={35} />
           </StyledSpan>
         ))}
-      </Box>
+      </StyledBox>
     </Popper>
   );
 
@@ -31,6 +31,20 @@ const StyledImage = styled(Image)({
   },
 });
 
+const StyledBox = styled(Box)({
+  "": {
+    display: "flex",
+    flexWrap: "wrap",
+    maxWidth: "193px",
+    backgroundColor: "var(--white)",
+    border: "1px solid var(--ieru-color)",
+    borderRadius: "0.5rem",
+  },
+});
+
 const StyledSpan = styled("span")({
-  "": {},
+  "": {
+    display: "flex",
+    padding: "0.1rem",
+  },
 });
