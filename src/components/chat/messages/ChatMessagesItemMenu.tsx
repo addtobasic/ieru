@@ -19,6 +19,7 @@ interface ChatMessagesItemMenuProps {
   handleChangeAnonym: () => void;
   isLoginUser: boolean;
   handleMenuClose: any;
+  handleDeleteMessage: () => void;
 }
 
 const ChatMessagesItemMenu: FC<ChatMessagesItemMenuProps> = ({
@@ -26,6 +27,7 @@ const ChatMessagesItemMenu: FC<ChatMessagesItemMenuProps> = ({
   handleChangeAnonym,
   isLoginUser,
   handleMenuClose,
+  handleDeleteMessage,
 }) => (
   <Paper sx={{ width: 200, maxWidth: "100%" }}>
     <ClickAwayListener onClickAway={handleMenuClose}>
@@ -61,7 +63,7 @@ const ChatMessagesItemMenu: FC<ChatMessagesItemMenuProps> = ({
                 <EditIcon fontSize="small" />
               </ListItemIcon>
             </MenuItem>
-            <MenuItem>
+            <MenuItem onClick={handleDeleteMessage}>
               <ListItemText>チャットの削除</ListItemText>
               <ListItemIcon>
                 <DeleteIcon fontSize="small" />

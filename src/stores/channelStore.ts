@@ -24,7 +24,7 @@ import { store } from "./store";
 class ChannelStore {
   channelsRegistery = new Map<string, Channel>();
   selectedChannel: Channel | null = null;
-  channelsLimit = 6;
+  channelsLimit = 20;
   hasMore = false;
   lastChannelTimestamp: FieldValue | null = null;
   unsubscribeChannelsSnapshot?: () => void;
@@ -45,7 +45,7 @@ class ChannelStore {
   reset = () => {
     this.channelsRegistery.clear();
     this.selectedChannel = null;
-    this.channelsLimit = 6;
+    this.channelsLimit = 20;
     this.hasMore = false;
     this.lastChannelTimestamp = null;
 
