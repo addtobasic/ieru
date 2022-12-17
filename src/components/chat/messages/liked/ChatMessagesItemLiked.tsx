@@ -83,7 +83,7 @@ const ChatMessagesItemLiked: React.FC<ChatMessagesItemLikedProps> = ({
               : "var(---color)",
           }}
         >
-          {likedBy?.length || 0}
+          {likedBy?.length}
         </Typography>
         <ChatMessagesItemLikedHistory
           open={open}
