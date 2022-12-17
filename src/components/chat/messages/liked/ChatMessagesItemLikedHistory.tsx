@@ -10,10 +10,14 @@ interface ChatMessagesItemLikedHistoryProps {
   likedBy: string[];
 }
 
+interface isLikedNumEqualZeroProps {
+  isLikedNumEqualZero: boolean;
+}
+
 const ChatMessagesItemLikedHistory: React.FC<ChatMessagesItemLikedHistoryProps> =
   ({ open, anchorEl, likedBy }) => (
     <Popper open={open} anchorEl={anchorEl} placement="bottom-end">
-      <StyledBox>
+      <StyledBox isLikedNumEqualZero={!likedBy.length}>
         {likedBy.map((likeImageUrl) => (
           <StyledSpan key={likeImageUrl}>
             <StyledImage src={likeImageUrl} width={35} height={35} />
@@ -31,16 +35,18 @@ const StyledImage = styled(Image)({
   },
 });
 
-const StyledBox = styled(Box)({
-  "": {
-    display: "flex",
-    flexWrap: "wrap",
-    maxWidth: "220px",
-    backgroundColor: "var(--white)",
-    border: "2px solid var(--ieru-color)",
-    borderRadius: "0.5rem",
-  },
-});
+const StyledBox = styled(Box)<isLikedNumEqualZeroProps>(
+  ({ isLikedNumEqualZero }) => ({
+    "": {
+      display: "flex",
+      flexWrap: "wrap",
+      maxWidth: "220px",
+      backgroundColor: "var(--white)",
+      border: isLikedNumEqualZero ? "none" : "2px solid var(--ieru-color)",
+      borderRadius: "0.5rem",
+    },
+  })
+);
 
 const StyledSpan = styled("span")({
   "": {
