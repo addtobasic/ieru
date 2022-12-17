@@ -1,6 +1,6 @@
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import { doc, onSnapshot, updateDoc } from "firebase/firestore";
+import { doc, onSnapshot, updateDoc, deleteDoc } from "firebase/firestore";
 import moment from "moment";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -44,6 +44,18 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
     });
 
     setIsAnonym(!isAnonym);
+  };
+
+  // ドキュメントを削除する関数
+  const handleDeleteMessage = async () => {
+    const result = window.confirm("本当に削除しますか?");
+
+    if (result) {
+      await deleteDoc(messagesRef);
+
+      const channel = store.channelStore.selectedChannel;
+      store.messageStore.loadMessages(channel!.id);
+    }
   };
 
   // マウスオーバーでメニュ－アイコンを表示する
@@ -92,6 +104,7 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
               isLoginUser={isLoginUser}
               isAnonym={isAnonym}
               handleChangeAnonym={handleChangeAnonym}
+              handleDeleteMessage={handleDeleteMessage}
             />
           )}
         </StyledPopper>

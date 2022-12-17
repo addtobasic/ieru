@@ -16,12 +16,14 @@ interface ChatMessagesItemHoverProps {
   isLoginUser: boolean;
   isAnonym: boolean;
   handleChangeAnonym: () => void;
+  handleDeleteMessage: () => void;
 }
 
 const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
   isLoginUser,
   isAnonym,
   handleChangeAnonym,
+  handleDeleteMessage,
 }) => {
   // moreアイコンを押したときにメニューを表示する
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -80,6 +82,7 @@ const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
           handleChangeAnonym={handleChangeAnonym}
           isLoginUser={isLoginUser}
           handleMenuClose={handleMenuClose}
+          handleDeleteMessage={handleDeleteMessage}
         />
       </Popper>
     </>
