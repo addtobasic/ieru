@@ -157,6 +157,8 @@ class ChannelStore {
 
     await addDoc(collection(db, "channels"), {
       name: channelName,
+      createdUser: user.displayName,
+      createdUserPhotoUrl: user.photoURL,
       timestamp: serverTimestamp(),
     });
   };
