@@ -10,6 +10,8 @@ import React from "react";
 
 import { useStore } from "stores/store";
 
+import ChatHeaderInfo from "./ChatHeaderInfo";
+
 const drawerWidth = 240;
 
 interface ChatHeaderProps {
@@ -35,26 +37,31 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ open, handleDrawerOpen }) => {
       open={open}
     >
       <Toolbar>
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          onClick={handleDrawerOpen}
-          edge="start"
-          sx={[
-            { mr: 2, ...(open && { display: "none" }) },
-            {
-              "&:hover": {
-                backgroundColor: "var(--ieru-color-hover)",
-              },
-            },
-          ]}
-        >
-          <MenuIcon />
-        </IconButton>
-        <TagIcon />
-        <Typography ml={0.5} mb={0.3} variant="h6" noWrap component="div">
-          {selectedChannel?.name}
-        </Typography>
+        {selectedChannel !== null && (
+          <>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={[
+                { mr: 2, ...(open && { display: "none" }) },
+                {
+                  "&:hover": {
+                    backgroundColor: "var(--ieru-color-hover)",
+                  },
+                },
+              ]}
+            >
+              <MenuIcon />
+            </IconButton>
+            <TagIcon />
+            <Typography ml={0.5} mb={0.3} variant="h6" noWrap component="div">
+              {selectedChannel?.name}
+            </Typography>
+            <ChatHeaderInfo />
+          </>
+        )}
       </Toolbar>
     </AppBar>
   );
