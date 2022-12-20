@@ -56,7 +56,14 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ open, handleDrawerOpen }) => {
               <MenuIcon />
             </IconButton>
             <TagIcon />
-            <Typography ml={0.5} mb={0.3} variant="h6" noWrap component="div">
+            <Typography
+              ml={0.5}
+              mb={0.3}
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ flexGrow: 1 }}
+            >
               {selectedChannel?.name}
             </Typography>
             <ChatHeaderInfo />
