@@ -119,6 +119,8 @@ class ChannelStore {
       const channel = {
         id: doc.id,
         name: doc.data().name,
+        createdUser: doc.data().createdUser,
+        createdUserPhotoUrl: doc.data().createdUserPhotoUrl,
         timestamp: new Date(doc.data().timestamp?.toDate()),
       } as Channel;
 
@@ -157,6 +159,8 @@ class ChannelStore {
 
     await addDoc(collection(db, "channels"), {
       name: channelName,
+      createdUser: user.displayName,
+      createdUserPhotoUrl: user.photoURL,
       timestamp: serverTimestamp(),
     });
   };
