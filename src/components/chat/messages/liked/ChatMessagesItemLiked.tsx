@@ -57,12 +57,10 @@ const ChatMessagesItemLiked: React.FC<ChatMessagesItemLikedProps> = ({
 
   return (
     <StyledDiv>
-      <StyledButtonDiv>
+      <StyledButtonDiv onMouseEnter={handleHover} onMouseLeave={handleHover}>
         <IconButton
           size="small"
           onClick={handleChangeLike}
-          onMouseEnter={handleHover}
-          onMouseLeave={handleHover}
           sx={{
             color: likedBy?.includes(displayImage || "")
               ? "var(--like-color)"
@@ -111,6 +109,7 @@ const StyledButtonDiv = styled("div")({
     display: "flex",
     alignItems: "center",
     color: "var(--black-icon)",
+    // backgroundColor: "red",
 
     "&:hover": {
       color: "var(--like-color)",

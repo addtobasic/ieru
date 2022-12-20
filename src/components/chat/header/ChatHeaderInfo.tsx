@@ -12,7 +12,7 @@ const ChatHeaderInfo: React.FC = () => {
 
   return (
     <StyledBox>
-      <Box pt={1.3}>
+      <Box pt={1.6}>
         <Typography variant="body2">チャンネル作成者</Typography>
       </Box>
       <Box pt={0.5}>
@@ -20,8 +20,8 @@ const ChatHeaderInfo: React.FC = () => {
           <StyledSpan>
             <StyledImage
               src={selectedChannel?.createdUserPhotoUrl || ""}
-              width={30}
-              height={30}
+              width={35}
+              height={35}
             />
           </StyledSpan>
         </Tooltip>
