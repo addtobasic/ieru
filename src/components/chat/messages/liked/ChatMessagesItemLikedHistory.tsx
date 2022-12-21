@@ -22,7 +22,12 @@ const ChatMessagesItemLikedHistory: React.FC<ChatMessagesItemLikedHistoryProps> 
     <Popper open={open} anchorEl={anchorEl} placement="bottom-end">
       <StyledBox isLikedNumEqualZero={likedBy?.length === 0}>
         {likedBy?.map((element) => (
-          <Tooltip title={element.likedUser} key={element.likedPhotoUrl}>
+          <Tooltip
+            title={element.likedUser}
+            key={element.likedPhotoUrl}
+            placement="top"
+            disableInteractive
+          >
             <StyledSpan>
               <StyledImage src={element.likedPhotoUrl} width={35} height={35} />
             </StyledSpan>
