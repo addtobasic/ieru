@@ -70,46 +70,43 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   };
 
   return (
-    <>
-      <StyledContainer
-        onMouseEnter={handlePopoverOpen}
-        onMouseLeave={handlePopoverClose}
-      >
-        <StyledImageDiv>
-          <StyledImage
-            src={isAnonym ? anonymusPng : photoURL}
-            width={50}
-            height={50}
-            objectFit="contain"
-            alt="user"
-          />
-        </StyledImageDiv>
-        <StyledContent>
-          <StyledInfo>
-            {isAnonym ? "Anonymous Comment" : user}
-            <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
-          </StyledInfo>
-          <StyledMessage>{message.message}</StyledMessage>
-        </StyledContent>
-
-        <ChatMessagesItemLiked
-          likedBy={likedBy}
-          setLikedBy={setLikedBy}
-          displayImage={displayImage}
-          messagesRef={messagesRef}
+    <StyledContainer
+      onMouseEnter={handlePopoverOpen}
+      onMouseLeave={handlePopoverClose}
+    >
+      <StyledImageDiv>
+        <StyledImage
+          src={isAnonym ? anonymusPng : photoURL}
+          width={50}
+          height={50}
+          objectFit="contain"
+          alt="user"
         />
-        <StyledPopper>
-          {isHover && (
-            <ChatMessagesItemHover
-              isLoginUser={isLoginUser}
-              isAnonym={isAnonym}
-              handleChangeAnonym={handleChangeAnonym}
-              handleDeleteMessage={handleDeleteMessage}
-            />
-          )}
-        </StyledPopper>
-      </StyledContainer>
-    </>
+      </StyledImageDiv>
+      <StyledContent>
+        <StyledInfo>
+          {isAnonym ? "Anonymous Comment" : user}
+          <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
+        </StyledInfo>
+        <StyledMessage>{message.message}</StyledMessage>
+      </StyledContent>
+      <ChatMessagesItemLiked
+        likedBy={likedBy}
+        setLikedBy={setLikedBy}
+        displayImage={displayImage}
+        messagesRef={messagesRef}
+      />
+      <StyledPopper>
+        {isHover && (
+          <ChatMessagesItemHover
+            isLoginUser={isLoginUser}
+            isAnonym={isAnonym}
+            handleChangeAnonym={handleChangeAnonym}
+            handleDeleteMessage={handleDeleteMessage}
+          />
+        )}
+      </StyledPopper>
+    </StyledContainer>
   );
 };
 
@@ -117,7 +114,6 @@ export default ChatMessagesItem;
 
 const StyledContainer = styled("div")({
   "": {
-    position: "relative",
     display: "flex",
     padding: "1rem 1.5rem",
     marginTop: "0.8rem",
