@@ -28,6 +28,7 @@
     "react/function-component-definition": "off",
     "react/jsx-no-useless-fragment": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "react-hooks/exhaustive-deps": "off",
     "lines-between-class-members": "off",
     "no-unused-vars": "off",
     "no-unused-expressions": "off",
