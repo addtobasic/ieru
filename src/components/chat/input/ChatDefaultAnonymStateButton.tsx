@@ -1,6 +1,8 @@
-import { styled } from "@mui/material/styles";
+import { styled , useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import React from "react";
+
+import { ColorModeContext } from "../../../pages/index";
 
 interface ChatDefaultAnonymStateButtonProps {
   isDefaultAnonym: boolean;
@@ -15,7 +17,11 @@ const ChatAnonymState: React.FC<ChatDefaultAnonymStateButtonProps> = ({
   isDefaultAnonym,
   setIsDefaultAnonym,
 }) => {
+  const theme = useTheme();
+  const colorMode = React.useContext(ColorModeContext);
+
   const handleChangeDefaultAnonym = () => {
+    colorMode.toggleColorMode();
     setIsDefaultAnonym(!isDefaultAnonym);
   };
 
@@ -26,6 +32,7 @@ const ChatAnonymState: React.FC<ChatDefaultAnonymStateButtonProps> = ({
         onClick={handleChangeDefaultAnonym}
         type="button"
       >
+        {theme.palette.mode} mode
         <Typography>{isDefaultAnonym ? "匿名ON" : "匿名OFF"}</Typography>
       </StyledDefaultAnonymizeButton>
     </>
