@@ -1,6 +1,6 @@
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import { doc, onSnapshot, updateDoc, deleteDoc } from "firebase/firestore";
+import { deleteDoc, doc, onSnapshot, updateDoc } from "firebase/firestore";
 import moment from "moment";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -114,6 +114,7 @@ export default ChatMessagesItem;
 
 const StyledContainer = styled("div")({
   "": {
+    position: "relative",
     display: "flex",
     padding: "1rem 1.5rem",
     marginTop: "0.8rem",
