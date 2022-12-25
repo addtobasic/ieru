@@ -22,6 +22,11 @@ body {
   --black-icon: #757575;
   --like-color: #f91880;
 
+  /* Dark Mode */
+  --ieru-color-dark: #0a192a;
+  --text-dark: #66b2ff;
+  --sidebar-separate-color-dark: #0472e4;
+
   padding: 0;
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI",

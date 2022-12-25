@@ -33,12 +33,23 @@ const HomePage = () => {
       createTheme({
         palette: {
           mode,
-          primary: {
-            main: "#1491fa",
-          },
-          secondary: {
-            main: "#757575",
-          },
+          ...(mode === "light"
+            ? {
+                primary: {
+                  main: "#1491fa",
+                },
+                secondary: {
+                  main: "#757575",
+                },
+              }
+            : {
+                primary: {
+                  main: "#1491fa",
+                },
+                secondary: {
+                  main: "#757575",
+                },
+              }),
         },
 
         typography: {
