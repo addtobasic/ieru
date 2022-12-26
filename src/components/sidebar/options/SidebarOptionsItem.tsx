@@ -41,12 +41,6 @@ const SidebarOptionItem: React.FC<SidebarOptionsItemProps> = ({
   );
 };
 
-const StyledContainer = styled("div")({
-  "": {
-    "&:hover": {
-      backgroundColor: "var(--ieru-color-hover)",
-    },
-  },
-});
+const StyledContainer = styled("div")({});
 
 export default SidebarOptionItem;

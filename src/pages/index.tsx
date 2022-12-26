@@ -68,14 +68,23 @@ const HomePage = () => {
             styleOverrides: {
               root: {
                 ":hover": {
-                  backgroundColor: "var(--ieru-color-hover)",
+                  backgroundColor:
+                    mode === "light"
+                      ? "var(--ieru-color-hover)"
+                      : "var(--ieru-color-hover-dark)",
                 },
                 "&.Mui-selected": {
                   "&:hover": {
-                    backgroundColor: "var(--ieru-color-hover)",
+                    backgroundColor:
+                      mode === "light"
+                        ? "var(--ieru-color-hover)"
+                        : "var(--ieru-color-hover-dark)",
                   },
 
-                  backgroundColor: "var(--ieru-color-hover)",
+                  backgroundColor:
+                    mode === "light"
+                      ? "var(--ieru-color-hover)"
+                      : "var(--ieru-color-hover-dark)",
                 },
               },
             },
