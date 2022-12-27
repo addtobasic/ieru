@@ -112,7 +112,7 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
 
 export default ChatMessagesItem;
 
-const StyledContainer = styled("div")({
+const StyledContainer = styled("div")(({ theme }) => ({
   "": {
     position: "relative",
     display: "flex",
@@ -126,10 +126,13 @@ const StyledContainer = styled("div")({
     },
 
     "&:hover": {
-      backgroundColor: "var(--white-hover)",
+      backgroundColor:
+        theme.palette.mode === "light"
+          ? "var(--light-hover)"
+          : "var(--dark-hover)",
     },
   },
-});
+}));
 
 const StyledImageDiv = styled("div")({
   "": {
@@ -150,23 +153,23 @@ const StyledContent = styled("div")({
   },
 });
 
-const StyledInfo = styled(Typography)({
+const StyledInfo = styled(Typography)(({ theme }) => ({
   "": {
     fontSize: "17px",
     fontWeight: "500",
-    color: "var(--black)",
+    color: theme.palette.mode === "light" ? "var(--black)" : "var(--white)",
   },
-});
+}));
 
-const StyledMessage = styled(Typography)({
+const StyledMessage = styled(Typography)(({ theme }) => ({
   "": {
     maxWidth: "95%",
     fontSize: "17px",
-    color: "var(--black)",
+    color: theme.palette.mode === "light" ? "var(--black)" : "var(--white)",
     wordBreak: "break-all",
     whiteSpace: "pre-wrap",
   },
-});
+}));
 
 const StyledDate = styled("span")({
   "": {

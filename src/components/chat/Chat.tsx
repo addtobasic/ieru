@@ -13,6 +13,7 @@ interface ChatProps {
 
 const Chat: FC<ChatProps> = ({ open }) => {
   const { selectedChannel } = useStore().channelStore;
+
   if (!selectedChannel) {
     return null;
   }
@@ -27,4 +28,12 @@ const Chat: FC<ChatProps> = ({ open }) => {
 
 export default observer(Chat);
 
-const StyledContainer = styled("section")({});
+const StyledContainer = styled("section")(({ theme }) =>
+  theme.palette.mode === "light"
+    ? {
+        backgroundColor: "var(--white)",
+      }
+    : {
+        backgroundColor: "var(--ieru-color-dark)",
+      }
+);
