@@ -1,7 +1,7 @@
 import FormControl from "@mui/material/FormControl";
 import InputAdornment from "@mui/material/InputAdornment";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import { styled } from "@mui/material/styles";
+import { styled, useTheme } from "@mui/material/styles";
 import { observer } from "mobx-react-lite";
 import React, { FC, useState } from "react";
 
@@ -21,6 +21,7 @@ const ChatInput: FC<ChatInputProps> = ({ open }) => {
   const { sendMessage } = useStore().messageStore;
   const [input, setInput] = useState("");
   const [isDefaultAnonym, setIsDefaultAnonym] = useState(false);
+  const theme = useTheme();
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
@@ -61,7 +62,10 @@ const ChatInput: FC<ChatInputProps> = ({ open }) => {
               type="text"
               value={input}
               sx={{
-                color: "var(--black)",
+                color:
+                  theme.palette.mode === "light"
+                    ? "var(--black)"
+                    : "var(--white)",
               }}
               endAdornment={
                 <InputAdornment position="end">
@@ -105,11 +109,14 @@ const StyledContent = styled("div")({
   },
 });
 
-const StyledDiv = styled("div")({
+const StyledDiv = styled("div")(({ theme }) => ({
   "": {
     padding: "10px",
-    backgroundColor: "var(--white)",
+    backgroundColor:
+      theme.palette.mode === "light"
+        ? "var(--white)"
+        : "var(--ieru-color-dark)",
   },
-});
+}));
 
 export default observer(ChatInput);
