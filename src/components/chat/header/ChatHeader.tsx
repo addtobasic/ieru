@@ -28,19 +28,18 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ open, handleDrawerOpen }) => {
   const { selectedChannel } = useStore().channelStore;
 
   return (
-    <AppBar
-      sx={{
-        backgroundColor: "var(--ieru-color)",
-      }}
-      position="fixed"
-      theme={theme}
-      open={open}
-    >
-      <Toolbar>
+    <AppBar position="fixed" theme={theme} open={open}>
+      <Toolbar
+        sx={{
+          backgroundColor:
+            theme.palette.mode === "light"
+              ? "var(--ieru-color)"
+              : "var(--ieru-color-dark)",
+        }}
+      >
         {selectedChannel !== null && (
           <>
             <IconButton
-              color="inherit"
               aria-label="open drawer"
               onClick={handleDrawerOpen}
               edge="start"
@@ -48,21 +47,32 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ open, handleDrawerOpen }) => {
                 { mr: 2, ...(open && { display: "none" }) },
                 {
                   "&:hover": {
-                    backgroundColor: "var(--ieru-color-hover)",
+                    backgroundColor:
+                      theme.palette.mode === "light"
+                        ? "var(--ieru-color-hover)"
+                        : "var(--ieru-color-hover-dark)",
                   },
                 },
               ]}
             >
               <MenuIcon />
             </IconButton>
-            <TagIcon />
+            <StyledIcon>
+              <TagIcon />
+            </StyledIcon>
             <Typography
               ml={0.5}
               mb={0.3}
               variant="h6"
               noWrap
               component="div"
-              sx={{ flexGrow: 1 }}
+              sx={{
+                flexGrow: 1,
+                color:
+                  theme.palette.mode === "light"
+                    ? "var(--white)"
+                    : "var(--text-dark)",
+              }}
             >
               {selectedChannel?.name}
             </Typography>
@@ -90,5 +100,18 @@ const AppBar = styled(MuiAppBar, {
     }),
   }),
 }));
+
+const StyledIcon = styled("div")(({ theme }) =>
+  theme.palette.mode === "light"
+    ? {
+        paddingTop: "0.1rem",
+        color: "var(--white-icon)",
+      }
+    : {
+        paddingTop: "0.1rem",
+
+        color: "var(--text-dark)",
+      }
+);
 
 export default observer(ChatHeader);

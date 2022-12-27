@@ -36,8 +36,9 @@ const ChatSendButton: FC<ChatSendButtonProps> = ({
     <Stack direction="row" spacing={1}>
       {input !== "" ? (
         <IconButton
-          color="primary"
           sx={{
+            color: "var(--ieru-color)",
+
             "&:hover": {
               color: "#008ae6",
             },
@@ -47,7 +48,11 @@ const ChatSendButton: FC<ChatSendButtonProps> = ({
           <SendIcon />
         </IconButton>
       ) : (
-        <IconButton color="secondary">
+        <IconButton
+          sx={{
+            color: "var(--black-icon)",
+          }}
+        >
           <SendIcon />
         </IconButton>
       )}

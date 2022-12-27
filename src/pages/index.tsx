@@ -38,16 +38,10 @@ const HomePage = () => {
                 primary: {
                   main: "#1491fa",
                 },
-                secondary: {
-                  main: "#757575",
-                },
               }
             : {
                 primary: {
-                  main: "#1491fa",
-                },
-                secondary: {
-                  main: "#757575",
+                  main: "#0a192a",
                 },
               }),
         },
