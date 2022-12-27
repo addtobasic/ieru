@@ -2,7 +2,7 @@ import TagIcon from "@mui/icons-material/Tag";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { styled } from "@mui/material/styles";
+import { styled, useTheme } from "@mui/material/styles";
 import { observer } from "mobx-react-lite";
 import * as React from "react";
 
@@ -13,6 +13,7 @@ import SidebarOptions from "../options/SidebarOptions";
 const SidebarChannels = () => {
   const { channels, selectChannel } = useStore().channelStore;
   const [selectedIndex, setSelectedIndex] = React.useState<number | null>(null);
+  const theme = useTheme();
 
   const handleListItemClick = (index: number) => {
     setSelectedIndex(index);
@@ -31,9 +32,15 @@ const SidebarChannels = () => {
             onClick={() => handleListItemClick(index)}
           >
             <ListItemIcon
-              sx={{
-                color: "var(--white)",
-              }}
+              sx={
+                theme.palette.mode === "light"
+                  ? {
+                      color: "var(--white)",
+                    }
+                  : {
+                      color: "var(--text-dark)",
+                    }
+              }
             >
               <TagIcon />
             </ListItemIcon>

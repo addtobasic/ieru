@@ -15,17 +15,26 @@ const SidebarHeader: React.FC<SideBarHeaderProps> = ({ handleDrawerClose }) => {
   return (
     <DrawerHeader theme={theme}>
       <IconButton
-        sx={[
-          {
-            "&:hover": {
-              backgroundColor: "var(--ieru-color-hover)",
-            },
+        sx={{
+          "&:hover": {
+            backgroundColor:
+              theme.palette.mode === "light"
+                ? "var(--ieru-color-hover)"
+                : "var(--ieru-color-hover-dark)",
           },
-        ]}
+        }}
         onClick={handleDrawerClose}
       >
         {theme.direction === "ltr" ? (
-          <ChevronLeftIcon sx={{ color: "var(--white)" }} />
+          <ChevronLeftIcon
+            sx={
+              theme.palette.mode === "light"
+                ? { color: "var(--white)" }
+                : {
+                    color: "var(--text-dark)",
+                  }
+            }
+          />
         ) : (
           <ChevronRightIcon />
         )}

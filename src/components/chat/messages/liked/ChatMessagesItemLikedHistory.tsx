@@ -47,12 +47,15 @@ const StyledImage = styled(Image)({
 
 const StyledBox = styled(Box, {
   shouldForwardProp: (prop) => prop !== "isLikedNumEqualZero",
-})<isLikedNumEqualZeroProps>(({ isLikedNumEqualZero }) => ({
+})<isLikedNumEqualZeroProps>(({ isLikedNumEqualZero, theme }) => ({
   "": {
     display: "flex",
     flexWrap: "wrap",
     maxWidth: "220px",
-    backgroundColor: "var(--white)",
+    backgroundColor:
+      theme.palette.mode === "light"
+        ? "var(--white)"
+        : "var(--ieru-color-dark)",
     border: isLikedNumEqualZero ? "none" : "2px solid var(--ieru-color)",
     borderRadius: "0.5rem",
   },

@@ -36,6 +36,7 @@
     "no-alert": "off",
     "no-use-before-define": "off",
     "no-unsafe-optional-chaining": "off",
+    "no-nested-ternary": "off",
     "import/no-cycle": "off",
     "import/extensions": [
       "error",

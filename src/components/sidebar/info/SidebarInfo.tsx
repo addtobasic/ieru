@@ -59,31 +59,58 @@ const StyledContainer = styled("div")({
   },
 });
 
-const StyledButton = styled("button")({
-  "": {
-    display: "flex",
-    alignItems: "center",
-    height: "3.5rem",
-    marginLeft: "1rem",
-    cursor: "pointer",
-    backgroundColor: "var(--ieru-color)",
-    border: "none",
-    borderRadius: "1rem",
-    outline: "none",
+const StyledButton = styled("button")(({ theme }) =>
+  theme.palette.mode === "light"
+    ? {
+        display: "flex",
+        alignItems: "center",
+        height: "3.5rem",
+        marginLeft: "1rem",
+        cursor: "pointer",
+        backgroundColor: "var(--ieru-color)",
+        border: "none",
+        borderRadius: "1rem",
+        outline: "none",
 
-    "&:hover": {
-      backgroundColor: "var(--ieru-color-hover)",
-    },
-  },
-});
+        "&:hover": {
+          backgroundColor: "var(--ieru-color-hover)",
+        },
+      }
+    : {
+        display: "flex",
+        alignItems: "center",
+        height: "3.5rem",
+        marginLeft: "1rem",
+        cursor: "pointer",
+        backgroundColor: "var(--ieru-color-dark)",
+        border: "none",
+        borderRadius: "1rem",
+        outline: "none",
 
-const StyledName = styled(Typography)({
-  "": {
-    marginLeft: "0.5rem",
-    fontSize: "16px",
-    fontWeight: "500",
-    color: "var(--white)",
-  },
-});
+        "&:hover": {
+          backgroundColor: "var(--ieru-color-hover-dark)",
+        },
+      }
+);
+
+const StyledName = styled(Typography)(({ theme }) =>
+  theme.palette.mode === "light"
+    ? {
+        "": {
+          marginLeft: "0.5rem",
+          fontSize: "16px",
+          fontWeight: "500",
+          color: "var(--white)",
+        },
+      }
+    : {
+        "": {
+          marginLeft: "0.5rem",
+          fontSize: "16px",
+          fontWeight: "500",
+          color: "var(--text-dark)",
+        },
+      }
+);
 
 export default SidebarInfo;

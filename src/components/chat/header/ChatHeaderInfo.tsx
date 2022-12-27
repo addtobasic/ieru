@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { styled } from "@mui/material/styles";
+import { styled, useTheme } from "@mui/material/styles";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
@@ -9,11 +9,22 @@ import { useStore } from "stores/store";
 
 const ChatHeaderInfo: React.FC = () => {
   const { selectedChannel } = useStore().channelStore;
+  const theme = useTheme();
 
   return (
     <StyledBox>
       <Box pt={1.6}>
-        <Typography variant="body2">チャンネル作成者</Typography>
+        <Typography
+          variant="body2"
+          sx={{
+            color:
+              theme.palette.mode === "light"
+                ? "var(--white)"
+                : "var(--text-dark)",
+          }}
+        >
+          チャンネル作成者
+        </Typography>
       </Box>
       <Box pt={0.5}>
         <Tooltip title={selectedChannel?.createdUser}>

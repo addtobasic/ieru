@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
-import { styled } from "@mui/material/styles";
+import { styled, useTheme } from "@mui/material/styles";
 import * as React from "react";
 
 import Chat from "components/chat/Chat";
@@ -16,6 +16,7 @@ const drawerWidth = 240;
 
 const PersistentDrawerLeft: React.FC = () => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
+  const theme = useTheme();
 
   const handleDrawerOpen = () => {
     setIsDrawerOpen(true);
@@ -30,16 +31,31 @@ const PersistentDrawerLeft: React.FC = () => {
       <CssBaseline />
       <ChatHeader open={isDrawerOpen} handleDrawerOpen={handleDrawerOpen} />
       <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          "& .MuiDrawer-paper": {
-            color: "var(--white)",
-            backgroundColor: "var(--ieru-color)",
-            width: drawerWidth,
-            boxSizing: "border-box",
-          },
-        }}
+        sx={
+          theme.palette.mode === "light"
+            ? {
+                width: drawerWidth,
+                flexShrink: 0,
+
+                "& .MuiDrawer-paper": {
+                  color: "var(--white)",
+                  backgroundColor: "var(--ieru-color)",
+                  width: drawerWidth,
+                  boxSizing: "border-box",
+                },
+              }
+            : {
+                width: drawerWidth,
+                flexShrink: 0,
+
+                "& .MuiDrawer-paper": {
+                  color: "var(--text-dark)",
+                  backgroundColor: "var(--ieru-color-dark)",
+                  width: drawerWidth,
+                  boxSizing: "border-box",
+                },
+              }
+        }
         variant="persistent"
         anchor="left"
         open={isDrawerOpen}

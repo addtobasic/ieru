@@ -91,25 +91,36 @@ const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
 
 export default ChatMessagesItemHover;
 
-const StyledButton = styled("div")<{ position?: string }>(({ position }) => ({
-  "": {
-    display: "flex",
-    padding: "0.2rem",
-    color: "var(--black-icon)",
-    cursor: "pointer",
-    backgroundColor: "white",
+const StyledButton = styled("div")<{ position?: string }>(
+  ({ position, theme }) => ({
+    "": {
+      display: "flex",
+      padding: "0.2rem",
+      color:
+        theme.palette.mode === "light"
+          ? "var(--black-icon)"
+          : "var(--white-icon)",
+      cursor: "pointer",
+      backgroundColor:
+        theme.palette.mode === "light"
+          ? "var(--white)"
+          : "var(--ieru-color-dark)",
 
-    ...(position === "left" && {
-      borderRadius: "15% 0 0 15%",
-    }),
+      ...(position === "left" && {
+        borderRadius: "15% 0 0 15%",
+      }),
 
-    ...(position === "right" && {
-      borderRadius: "0 15% 15% 0",
-    }),
+      ...(position === "right" && {
+        borderRadius: "0 15% 15% 0",
+      }),
 
-    "&:hover": {
-      color: "var(--ieru-color-hover)",
-      backgroundColor: "var(--white-hover)",
+      "&:hover": {
+        color: "var(--ieru-color-hover)",
+        backgroundColor:
+          theme.palette.mode === "light"
+            ? "var(--light-hover)"
+            : "var(--dark-hover)",
+      },
     },
-  },
-}));
+  })
+);
