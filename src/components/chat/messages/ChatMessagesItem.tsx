@@ -20,6 +20,8 @@ interface ChatMessagesItemProps {
 const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   const [isAnonym, setIsAnonym] = useState(message.isAnonym);
   const [likedBy, setLikedBy] = useState(message.likedBy);
+  const [goodBy, setGoodBy] = useState(message.goodBy);
+  const [badBy, setBadBy] = useState(message.badBy);
   const { photoURL, user, timestamp } = message;
   const displayImage = useStore().userStore.user?.photoURL;
 
@@ -101,6 +103,12 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
           <ChatMessagesItemHover
             isLoginUser={isLoginUser}
             isAnonym={isAnonym}
+            goodBy={goodBy}
+            setGoodBy={setGoodBy}
+            badBy={badBy}
+            setBadBy={setBadBy}
+            displayImage={displayImage}
+            messagesRef={messagesRef}
             handleChangeAnonym={handleChangeAnonym}
             handleDeleteMessage={handleDeleteMessage}
           />
