@@ -36,6 +36,8 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
     onSnapshot(messagesRef, (doc) => {
       setIsAnonym(doc.data()?.isAnonym);
       setLikedBy(doc.data()?.likedBy);
+      setGoodBy(doc.data()?.goodBy);
+      setBadBy(doc.data()?.badBy);
     });
   }, []);
 
