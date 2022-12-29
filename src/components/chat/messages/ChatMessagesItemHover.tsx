@@ -147,12 +147,26 @@ const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
         size="small"
         aria-label="small button group"
       >
-        <Tooltip title="いいね" placement="top" onClick={handleChangeGood}>
+        <Tooltip
+          title="いいね"
+          placement="top"
+          onClick={handleChangeGood}
+          sx={{
+            color: pressedGood ? "var(--ieru-color)" : "none",
+          }}
+        >
           <StyledButton position="left">
             <ThumbUpAltIcon />
           </StyledButton>
         </Tooltip>
-        <Tooltip title="よくないね" placement="top" onClick={handleChangeBad}>
+        <Tooltip
+          title="よくないね"
+          placement="top"
+          onClick={handleChangeBad}
+          sx={{
+            color: pressedBad ? "var(--ieru-color)" : "none",
+          }}
+        >
           <StyledButton>
             <ThumbDownAltIcon />
           </StyledButton>
@@ -213,7 +227,6 @@ const StyledButton = styled("div")<{ position?: string }>(
       }),
 
       "&:hover": {
-        color: "var(--ieru-color-hover)",
         backgroundColor:
           theme.palette.mode === "light"
             ? "var(--light-hover)"
