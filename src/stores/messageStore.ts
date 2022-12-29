@@ -113,6 +113,8 @@ class MessageStore {
         photoURL: doc.data().photoURL,
         isAnonym: doc.data().isAnonym,
         likedBy: doc.data().likedBy,
+        goodBy: doc.data().goodBy,
+        badBy: doc.data().badBy,
         timestamp: doc.data().timestamp?.toDate(),
       } as Message;
 
@@ -138,6 +140,8 @@ class MessageStore {
       photoURL: user.photoURL,
       isAnonym: isDefaultAnonym,
       likedBy: [],
+      goodBy: [],
+      badBy: [],
       timestamp: serverTimestamp(),
     });
 

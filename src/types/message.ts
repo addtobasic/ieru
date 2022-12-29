@@ -1,3 +1,5 @@
+import { BadBy } from "./badBy";
+import { GoodBy } from "./goodBy";
 import { LikedBy } from "./likedBy";
 
 export interface Message {
@@ -7,5 +9,7 @@ export interface Message {
   photoURL: string;
   isAnonym: boolean;
   likedBy: LikedBy[];
+  goodBy: GoodBy[];
+  badBy: BadBy[];
   timestamp: Date;
 }
