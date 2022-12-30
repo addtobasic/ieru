@@ -40,17 +40,8 @@ const ChatMessagesItemLiked: React.FC<ChatMessagesItemLikedProps> = ({
 
   // firestoreのいいねのデータを更新する関数
   const handleChangeLike = async () => {
-    if (likedBy === undefined) {
-      await updateDoc(messagesRef, {
-        likedBy: {
-          likedUser: user?.displayName,
-          likedPhotoUrl: displayImage,
-        },
-      });
-    }
-
     // いいねをすでに押していたらいいねを取り消す
-    else if (pressedLike !== undefined) {
+    if (pressedLike !== undefined) {
       await updateDoc(messagesRef, {
         likedBy: likedBy.filter((likeData) => likeData !== pressedLike),
       });
