@@ -17,6 +17,11 @@ interface ChatMessagesItemProps {
   message: Message;
 }
 
+interface ChatMessagesItemStyledMessagesProps {
+  // goodBy: GoodBy[];
+  // badBy: BadBy[];
+}
+
 const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   const [isAnonym, setIsAnonym] = useState(message.isAnonym);
   const [likedBy, setLikedBy] = useState(message.likedBy);
@@ -92,7 +97,9 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
           {isAnonym ? "Anonymous Comment" : user}
           <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
         </StyledInfo>
-        <StyledMessage>{message.message}</StyledMessage>
+        <StyledMessage styled-data={goodBy.length - badBy.length}>
+          {message.message}
+        </StyledMessage>
       </StyledContent>
       <ChatMessagesItemLiked
         likedBy={likedBy}
@@ -171,15 +178,26 @@ const StyledInfo = styled(Typography)(({ theme }) => ({
   },
 }));
 
-const StyledMessage = styled(Typography)(({ theme }) => ({
-  "": {
-    maxWidth: "95%",
-    fontSize: "17px",
-    color: theme.palette.mode === "light" ? "var(--black)" : "var(--white)",
-    wordBreak: "break-all",
-    whiteSpace: "pre-wrap",
-  },
-}));
+const StyledMessage = styled(Typography)<ChatMessagesItemStyledMessagesProps>(
+  ({ theme }) => ({
+    "": {
+      maxWidth: "95%",
+      wordBreak: "break-all",
+      whiteSpace: "pre-wrap",
+
+      // いいねの数によってコメントの色を変える
+      "&[styled-data='0']": {
+        fontSize: "17px",
+        color: theme.palette.mode === "light" ? "var(--black)" : "var(--white)",
+      },
+
+      "&[styled-data='1']": {
+        fontSize: "20px",
+        color: "red",
+      },
+    },
+  })
+);
 
 const StyledDate = styled("span")({
   "": {
