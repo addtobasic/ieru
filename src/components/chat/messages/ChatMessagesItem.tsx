@@ -7,6 +7,8 @@ import React, { useEffect, useState } from "react";
 
 import { db } from "config/firebase";
 import { store, useStore } from "stores/store";
+import { BadBy } from "types/badBy";
+import { GoodBy } from "types/goodBy";
 import { Message } from "types/message";
 
 import anonymusPng from "../../../../public/images/anonymus.png";
@@ -15,11 +17,6 @@ import ChatMessagesItemLiked from "./liked/ChatMessagesItemLiked";
 
 interface ChatMessagesItemProps {
   message: Message;
-}
-
-interface ChatMessagesItemStyledMessagesProps {
-  // goodBy: GoodBy[];
-  // badBy: BadBy[];
 }
 
 const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
@@ -67,6 +64,16 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
     }
   };
 
+  // メッセージのスタイルの種類を決定する関数
+  const decideMessageStyle = (goodBy: GoodBy[], badBy: BadBy[]) => {
+    if (goodBy === undefined || badBy === undefined) return 0;
+
+    const goodNum = goodBy.length;
+    const badNum = badBy.length;
+
+    return goodNum - badNum;
+  };
+
   // マウスオーバーでメニュ－アイコンを表示する
   const [isHover, setIsHover] = useState(false);
 
@@ -97,7 +104,7 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
           {isAnonym ? "Anonymous Comment" : user}
           <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
         </StyledInfo>
-        <StyledMessage styled-data={goodBy.length - badBy.length}>
+        <StyledMessage styled-data={decideMessageStyle(goodBy, badBy)}>
           {message.message}
         </StyledMessage>
       </StyledContent>
@@ -178,26 +185,53 @@ const StyledInfo = styled(Typography)(({ theme }) => ({
   },
 }));
 
-const StyledMessage = styled(Typography)<ChatMessagesItemStyledMessagesProps>(
-  ({ theme }) => ({
-    "": {
-      maxWidth: "95%",
-      wordBreak: "break-all",
-      whiteSpace: "pre-wrap",
+const StyledMessage = styled(Typography)(({ theme }) => ({
+  "": {
+    maxWidth: "95%",
+    wordBreak: "break-all",
+    whiteSpace: "pre-wrap",
 
-      // いいねの数によってコメントの色を変える
-      "&[styled-data='0']": {
-        fontSize: "17px",
-        color: theme.palette.mode === "light" ? "var(--black)" : "var(--white)",
-      },
-
-      "&[styled-data='1']": {
-        fontSize: "20px",
-        color: "red",
-      },
+    // いいねの数によってメッセージの装飾を変える
+    "&[styled-data='-3']": {
+      fontSize: "13px",
+      color: theme.palette.mode === "light" ? "var(--black)" : "var(--white)",
+      opacity: "0.8",
     },
-  })
-);
+
+    "&[styled-data='-2']": {
+      fontSize: "15px",
+      color: theme.palette.mode === "light" ? "var(--black)" : "var(--white)",
+      opacity: "0.8",
+    },
+
+    "&[styled-data='-1']": {
+      fontSize: "15px",
+      color: theme.palette.mode === "light" ? "var(--black)" : "var(--white)",
+    },
+
+    "&[styled-data='0']": {
+      fontSize: "17px",
+      color: theme.palette.mode === "light" ? "var(--black)" : "var(--white)",
+    },
+
+    "&[styled-data='1']": {
+      fontSize: "21px",
+      color: theme.palette.mode === "light" ? "var(--black)" : "var(--white)",
+    },
+
+    "&[styled-data='2']": {
+      fontSize: "21px",
+      fontWeight: "700",
+      color: "red",
+    },
+
+    "&[styled-data='3']": {
+      fontSize: "25px",
+      fontWeight: "700",
+      color: "red",
+    },
+  },
+}));
 
 const StyledDate = styled("span")({
   "": {
