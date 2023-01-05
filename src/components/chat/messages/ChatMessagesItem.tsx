@@ -195,18 +195,19 @@ const StyledMessage = styled(Typography)(({ theme }) => ({
     "&[styled-data='-3']": {
       fontSize: "13px",
       color: theme.palette.mode === "light" ? "var(--black)" : "var(--white)",
-      opacity: "0.8",
+      opacity: "0",
     },
 
     "&[styled-data='-2']": {
       fontSize: "15px",
       color: theme.palette.mode === "light" ? "var(--black)" : "var(--white)",
-      opacity: "0.8",
+      opacity: "0.2",
     },
 
     "&[styled-data='-1']": {
       fontSize: "15px",
       color: theme.palette.mode === "light" ? "var(--black)" : "var(--white)",
+      opacity: "0.6",
     },
 
     "&[styled-data='0']": {
@@ -222,13 +223,13 @@ const StyledMessage = styled(Typography)(({ theme }) => ({
     "&[styled-data='2']": {
       fontSize: "21px",
       fontWeight: "700",
-      color: "red",
+      color: "var(--styled-message-2)",
     },
 
     "&[styled-data='3']": {
       fontSize: "25px",
       fontWeight: "700",
-      color: "red",
+      color: "var(--styled-message-3)",
     },
   },
 }));
