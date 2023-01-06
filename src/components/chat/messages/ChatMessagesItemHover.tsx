@@ -67,17 +67,8 @@ const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
 
   // firestoreのgoodのデータを更新する関数
   const handleChangeGood = async () => {
-    if (goodBy === undefined) {
-      await updateDoc(messagesRef, {
-        goodBy: {
-          goodUser: user?.displayName,
-          goodPhotoUrl: user?.photoURL,
-        },
-      });
-    }
-
     // goodをすでに押していたらgoodを取り消す
-    else if (pressedGood !== undefined) {
+    if (pressedGood !== undefined) {
       await updateDoc(messagesRef, {
         goodBy: goodBy.filter((goodData) => goodData !== pressedGood),
       });
@@ -103,17 +94,8 @@ const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
 
   // firestoreのbadのデータを更新する関数
   const handleChangeBad = async () => {
-    if (badBy === undefined) {
-      await updateDoc(messagesRef, {
-        badBy: {
-          badUser: user?.displayName,
-          badPhotoUrl: user?.photoURL,
-        },
-      });
-    }
-
     // goodをすでに押していたらgoodを取り消す
-    else if (pressedBad !== undefined) {
+    if (pressedBad !== undefined) {
       await updateDoc(messagesRef, {
         badBy: badBy.filter((badData) => badData !== pressedBad),
       });
