@@ -1,5 +1,4 @@
 import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -55,12 +54,6 @@ const ChatMessagesItemMenu: FC<ChatMessagesItemMenuProps> = ({
                 ) : (
                   <VisibilityOffIcon fontSize="small" />
                 )}
-              </ListItemIcon>
-            </MenuItem>
-            <MenuItem>
-              <ListItemText>チャットの修正</ListItemText>
-              <ListItemIcon>
-                <EditIcon fontSize="small" />
               </ListItemIcon>
             </MenuItem>
             <MenuItem onClick={handleDeleteMessage}>
