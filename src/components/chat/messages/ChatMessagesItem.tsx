@@ -68,10 +68,12 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   const decideMessageStyle = (goodBy: GoodBy[], badBy: BadBy[]) => {
     if (goodBy === undefined || badBy === undefined) return 0;
 
-    const goodNum = goodBy.length;
-    const badNum = badBy.length;
+    const diff = goodBy.length - badBy.length;
 
-    return goodNum - badNum;
+    if (diff <= -3) return -3;
+    if (diff >= 3) return 3;
+
+    return diff;
   };
 
   // マウスオーバーでメニュ－アイコンを表示する
