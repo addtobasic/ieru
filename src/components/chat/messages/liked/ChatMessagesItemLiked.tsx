@@ -1,7 +1,7 @@
 import FavoriteOutlinedIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorder";
 import IconButton from "@mui/material/IconButton";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { updateDoc } from "firebase/firestore";
 import React from "react";
@@ -27,7 +27,6 @@ const ChatMessagesItemLiked: React.FC<ChatMessagesItemLikedProps> = ({
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const { user } = useStore().userStore;
-  const theme = useTheme();
 
   const handleHover = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -75,9 +74,7 @@ const ChatMessagesItemLiked: React.FC<ChatMessagesItemLikedProps> = ({
             color:
               pressedLike?.likedPhotoUrl === displayImage
                 ? "var(--like-color)"
-                : theme.palette.mode === "light"
-                ? "var(---color)"
-                : "var(--white-icon)",
+                : "var(---color)",
           }}
         >
           {pressedLike?.likedPhotoUrl === displayImage ? (
@@ -92,9 +89,7 @@ const ChatMessagesItemLiked: React.FC<ChatMessagesItemLikedProps> = ({
             color:
               pressedLike?.likedPhotoUrl === displayImage
                 ? "var(--like-color)"
-                : theme.palette.mode === "light"
-                ? "var(---color)"
-                : "var(--white-icon)",
+                : "var(---color)",
           }}
         >
           {likedBy?.length}
@@ -120,14 +115,17 @@ const StyledDiv = styled("div")({
   },
 });
 
-const StyledButtonDiv = styled("div")({
+const StyledButtonDiv = styled("div")(({ theme }) => ({
   "": {
     display: "flex",
     alignItems: "center",
-    color: "var(--black-icon)",
+    color:
+      theme.palette.mode === "light"
+        ? "var(--black-icon)"
+        : "var(--white-icon)",
 
     "&:hover": {
       color: "var(--like-color)",
     },
   },
-});
+}));
