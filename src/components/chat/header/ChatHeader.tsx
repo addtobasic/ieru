@@ -37,26 +37,30 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ open, handleDrawerOpen }) => {
               : "var(--ieru-color-dark)",
         }}
       >
+        <IconButton
+          aria-label="open drawer"
+          onClick={handleDrawerOpen}
+          edge="start"
+          sx={[
+            { mr: 2, ...(open && { display: "none" }) },
+            {
+              color:
+                theme.palette.mode === "light"
+                  ? "var(--white-icon)"
+                  : "var(--text-dark)",
+              "&:hover": {
+                backgroundColor:
+                  theme.palette.mode === "light"
+                    ? "var(--ieru-color-hover)"
+                    : "var(--ieru-color-hover-dark)",
+              },
+            },
+          ]}
+        >
+          <MenuIcon />
+        </IconButton>
         {selectedChannel !== null && (
           <>
-            <IconButton
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              sx={[
-                { mr: 2, ...(open && { display: "none" }) },
-                {
-                  "&:hover": {
-                    backgroundColor:
-                      theme.palette.mode === "light"
-                        ? "var(--ieru-color-hover)"
-                        : "var(--ieru-color-hover-dark)",
-                  },
-                },
-              ]}
-            >
-              <MenuIcon />
-            </IconButton>
             <StyledIcon>
               <TagIcon />
             </StyledIcon>
