@@ -1,4 +1,4 @@
-import { styled } from "@mui/material/styles";
+import { styled, useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { deleteDoc, doc, onSnapshot, updateDoc } from "firebase/firestore";
 import moment from "moment";
@@ -11,7 +11,8 @@ import { BadBy } from "types/badBy";
 import { GoodBy } from "types/goodBy";
 import { Message } from "types/message";
 
-import anonymusPng from "../../../../public/images/anonymus.png";
+import anonymusPngDark from "../../../../public/images/anonymus-dark.png";
+import anonymusPngLight from "../../../../public/images/anonymus.png";
 import ChatMessagesItemHover from "./ChatMessagesItemHover";
 import ChatMessagesItemLiked from "./liked/ChatMessagesItemLiked";
 
@@ -26,6 +27,7 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
   const [badBy, setBadBy] = useState(message.badBy);
   const { photoURL, user, timestamp } = message;
   const displayImage = useStore().userStore.user?.photoURL;
+  const theme = useTheme();
 
   // コメントのユーザーの画像のURLとログインユーザーの画像のURLが一致した場合にアイコンを表示する
   const isLoginUser = displayImage === photoURL;
@@ -93,13 +95,23 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
       onMouseLeave={handlePopoverClose}
     >
       <StyledImageDiv>
-        <StyledImage
-          src={isAnonym ? anonymusPng : photoURL}
-          width={50}
-          height={50}
-          objectFit="contain"
-          alt="user"
-        />
+        {theme.palette.mode === "light" ? (
+          <StyledImage
+            src={isAnonym ? anonymusPngLight : photoURL}
+            width={50}
+            height={50}
+            objectFit="contain"
+            alt="user"
+          />
+        ) : (
+          <StyledImage
+            src={isAnonym ? anonymusPngDark : photoURL}
+            width={50}
+            height={50}
+            objectFit="contain"
+            alt="user"
+          />
+        )}
       </StyledImageDiv>
       <StyledContent>
         <StyledInfo>
