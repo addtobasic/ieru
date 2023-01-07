@@ -44,6 +44,10 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ open, handleDrawerOpen }) => {
           sx={[
             { mr: 2, ...(open && { display: "none" }) },
             {
+              color:
+                theme.palette.mode === "light"
+                  ? "var(--white-icon)"
+                  : "var(--text-dark)",
               "&:hover": {
                 backgroundColor:
                   theme.palette.mode === "light"
