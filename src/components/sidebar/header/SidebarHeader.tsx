@@ -1,5 +1,4 @@
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import { styled, useTheme } from "@mui/material/styles";
 import React from "react";
@@ -25,19 +24,15 @@ const SidebarHeader: React.FC<SideBarHeaderProps> = ({ handleDrawerClose }) => {
         }}
         onClick={handleDrawerClose}
       >
-        {theme.direction === "ltr" ? (
-          <ChevronLeftIcon
-            sx={
-              theme.palette.mode === "light"
-                ? { color: "var(--white)" }
-                : {
-                    color: "var(--text-dark)",
-                  }
-            }
-          />
-        ) : (
-          <ChevronRightIcon />
-        )}
+        <MenuIcon
+          sx={
+            theme.palette.mode === "light"
+              ? { color: "var(--white)" }
+              : {
+                  color: "var(--text-dark)",
+                }
+          }
+        />
       </IconButton>
     </DrawerHeader>
   );
@@ -47,7 +42,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   "": {
     display: "flex",
     alignItems: "center",
-    justifyContent: "flex-end",
+    justifyContent: "flex",
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,

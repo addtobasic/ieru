@@ -177,6 +177,8 @@ const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
           isLoginUser={isLoginUser}
           handleMenuClose={handleMenuClose}
           handleDeleteMessage={handleDeleteMessage}
+          handleChangeGood={handleChangeGood}
+          handleChangeBad={handleChangeBad}
         />
       </Popper>
     </>
