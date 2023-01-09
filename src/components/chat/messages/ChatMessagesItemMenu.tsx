@@ -10,7 +10,6 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Paper from "@mui/material/Paper";
-import * as React from "react";
 import { FC } from "react";
 
 interface ChatMessagesItemMenuProps {
@@ -19,6 +18,8 @@ interface ChatMessagesItemMenuProps {
   isLoginUser: boolean;
   handleMenuClose: any;
   handleDeleteMessage: () => void;
+  handleChangeGood: () => void;
+  handleChangeBad: () => void;
 }
 
 const ChatMessagesItemMenu: FC<ChatMessagesItemMenuProps> = ({
@@ -27,17 +28,19 @@ const ChatMessagesItemMenu: FC<ChatMessagesItemMenuProps> = ({
   isLoginUser,
   handleMenuClose,
   handleDeleteMessage,
+  handleChangeGood,
+  handleChangeBad,
 }) => (
   <Paper sx={{ width: 200, maxWidth: "100%" }}>
     <ClickAwayListener onClickAway={handleMenuClose}>
       <MenuList>
-        <MenuItem>
+        <MenuItem onClick={handleChangeGood}>
           <ListItemText>いいね</ListItemText>
           <ListItemIcon>
             <ThumbUpAltIcon fontSize="small" />
           </ListItemIcon>
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={handleChangeBad}>
           <ListItemText>よくないね</ListItemText>
           <ListItemIcon>
             <ThumbDownAltIcon fontSize="small" />
