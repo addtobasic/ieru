@@ -83,6 +83,32 @@ const HomePage = () => {
               },
             },
           },
+          MuiOutlinedInput: {
+            styleOverrides: {
+              root: {
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor:
+                    mode === "light"
+                      ? "var(--input-form-color)"
+                      : "var(--input-form-color-dark)",
+                },
+
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor:
+                    mode === "light"
+                      ? "var(--input-form-color)"
+                      : "var(--input-form-color-dark)",
+                },
+
+                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor:
+                    mode === "light"
+                      ? "var(--input-form-color)"
+                      : "var(--input-form-color-dark)",
+                },
+              },
+            },
+          },
         },
       }),
     [mode]
