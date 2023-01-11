@@ -2,7 +2,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import { styled, useTheme } from "@mui/material/styles";
 import React from "react";
-// import SidebarHeaderInfo from "./SidebarHeaderInfo";
+
+import SidebarHeaderInfo from "./SidebarHeaderInfo";
 
 interface SideBarHeaderProps {
   handleDrawerClose: () => void;
@@ -34,6 +35,7 @@ const SidebarHeader: React.FC<SideBarHeaderProps> = ({ handleDrawerClose }) => {
           }
         />
       </IconButton>
+      <SidebarHeaderInfo />
     </DrawerHeader>
   );
 };
