@@ -1,51 +1,13 @@
-import FiberMenualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import { styled } from "@mui/material/styles";
 
-import { useStore } from "stores/store";
+const SidebarHeaderInfo = () => <StyledGroupTitle>SecHack365</StyledGroupTitle>;
 
-const SidebarHeaderInfo = () => {
-  const { user } = useStore().userStore;
-
-  return (
-    <StyledContainer>
-      <StyledGroupTitle>test group</StyledGroupTitle>
-      <StyledDisplayName>
-        <StyledStatus />
-        {user?.displayName}
-      </StyledDisplayName>
-    </StyledContainer>
-  );
-};
-const StyledContainer = styled("div")({
+const StyledGroupTitle = styled("div")(({ theme }) => ({
   "": {
-    flex: 1,
-  },
-});
-
-const StyledGroupTitle = styled("h2")({
-  "": {
-    marginBottom: "0.25rem",
-    fontSize: "1rem",
+    fontSize: "1.1rem",
     fontWeight: 900,
+    padding: theme.spacing(0, 3),
   },
-});
-
-const StyledDisplayName = styled("h3")({
-  "": {
-    display: "flex",
-    alignItems: "center",
-    fontSize: "0.9rem",
-    fontWeight: 400,
-  },
-});
-
-const StyledStatus = styled(FiberMenualRecordIcon)({
-  "&&&": {
-    marginTop: "1px",
-    fontSize: "0.875rem",
-    color: "green",
-    margintRight: "2px",
-  },
-});
+}));
 
 export default SidebarHeaderInfo;
