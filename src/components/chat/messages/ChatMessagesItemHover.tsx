@@ -130,7 +130,7 @@ const ChatMessagesItemHover: FC<ChatMessagesItemHoverProps> = ({
         aria-label="small button group"
       >
         <Tooltip
-          title="いいね"
+          title="すごくいいね"
           placement="top"
           onClick={handleChangeGood}
           sx={{
