@@ -35,7 +35,7 @@ const ChatMessagesItemMenu: FC<ChatMessagesItemMenuProps> = ({
     <ClickAwayListener onClickAway={handleMenuClose}>
       <MenuList>
         <MenuItem onClick={handleChangeGood}>
-          <ListItemText>いいね</ListItemText>
+          <ListItemText>すごくいいね</ListItemText>
           <ListItemIcon>
             <ThumbUpAltIcon fontSize="small" />
           </ListItemIcon>
@@ -60,7 +60,7 @@ const ChatMessagesItemMenu: FC<ChatMessagesItemMenuProps> = ({
               </ListItemIcon>
             </MenuItem>
             <MenuItem onClick={handleDeleteMessage}>
-              <ListItemText>チャットの削除</ListItemText>
+              <ListItemText>メッセージの削除</ListItemText>
               <ListItemIcon>
                 <DeleteIcon fontSize="small" />
               </ListItemIcon>
