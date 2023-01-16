@@ -15,6 +15,7 @@ import anonymusPngDark from "../../../../public/images/anonymus-dark.png";
 import anonymusPngLight from "../../../../public/images/anonymus.png";
 import ChatMessagesItemHover from "./ChatMessagesItemHover";
 import ChatMessagesItemLiked from "./liked/ChatMessagesItemLiked";
+import TextRenderer from "./TextRenderer";
 
 interface ChatMessagesItemProps {
   message: Message;
@@ -119,7 +120,7 @@ const ChatMessagesItem: React.FC<ChatMessagesItemProps> = ({ message }) => {
           <StyledDate>{moment(timestamp).format("lll")}</StyledDate>
         </StyledInfo>
         <StyledMessage styled-data={decideMessageStyle(goodBy, badBy)}>
-          {message.message}
+          <TextRenderer text={message.message} />
         </StyledMessage>
       </StyledContent>
       <ChatMessagesItemLiked
