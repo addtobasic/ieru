@@ -66,7 +66,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ open, handleDrawerOpen }) => {
             </StyledIcon>
             <Typography
               ml={0.5}
-              mb={0.3}
+              mb={0.2}
               variant="h6"
               noWrap
               component="div"
@@ -108,11 +108,11 @@ const AppBar = styled(MuiAppBar, {
 const StyledIcon = styled("div")(({ theme }) =>
   theme.palette.mode === "light"
     ? {
-        paddingTop: "0.1rem",
+        paddingTop: "0.3rem",
         color: "var(--white-icon)",
       }
     : {
-        paddingTop: "0.1rem",
+        paddingTop: "0.3rem",
 
         color: "var(--text-dark)",
       }
