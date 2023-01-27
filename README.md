@@ -1,16 +1,19 @@
 # ieru
-心理的安全性を考慮したチャットツール. [SecHack365](https://sechack365.nict.go.jp/document/)を通して作成した成果物です.
+心理的安全性を高め発言のハードルを下げるチャットツール.
 
 url : [https://ieru.life](https://ieru.life)
 
 # Setup
-config/firebase.ts に習ってfirebaseの環境変数を設定します.
 
 ```bash
 $ git clone https://github.com/addtobasic/ieru.git
 $ cd ieru
 $ yarn install
 ```
+
+
+上のコマンドを実行した後にconfig/firebase.ts に習って.env.localを作成し, firebaseの環境変数を設定をします.
+
 # Start
 
 ```bash
@@ -20,4 +23,4 @@ $ yarn dev
 This page is hosted by Vercel.
 
 # License
-The source code is licensed MIT.
+The source code is licensed Apache 2.0 license.
