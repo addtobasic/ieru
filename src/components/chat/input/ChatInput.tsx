@@ -17,7 +17,6 @@ interface ChatInputProps {
 const drawerWidth = 240;
 
 const ChatInput: FC<ChatInputProps> = ({ open }) => {
-  const { selectedChannel } = useStore().channelStore;
   const { sendMessage } = useStore().messageStore;
   const [input, setInput] = useState("");
   const [isDefaultAnonym, setIsDefaultAnonym] = useState(false);
@@ -56,7 +55,7 @@ const ChatInput: FC<ChatInputProps> = ({ open }) => {
               maxRows={10}
               onChange={handleChangeInput}
               onKeyDown={handleSendMessage}
-              placeholder={`Message #${selectedChannel?.name || ""}`}
+              placeholder="Enterで改行, Ctrl+Enterで送信"
               id="outlined-adornment-password"
               type="text"
               value={input}
