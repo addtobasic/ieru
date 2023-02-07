@@ -14,7 +14,7 @@ interface ChatInputProps {
   open: boolean;
 }
 
-const drawerWidth = 240;
+const drawerWidth = 260;
 
 const ChatInput: FC<ChatInputProps> = ({ open }) => {
   const { sendMessage } = useStore().messageStore;

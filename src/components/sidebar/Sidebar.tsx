@@ -12,7 +12,7 @@ import SidebarChannels from "./channels/SidebarChannels";
 import SidebarHeader from "./header/SidebarHeader";
 import SidebarInfo from "./info/SidebarInfo";
 
-const drawerWidth = 240;
+const drawerWidth = 260;
 
 const PersistentDrawerLeft: React.FC = () => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
