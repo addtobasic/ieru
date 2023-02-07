@@ -44,7 +44,15 @@ const SidebarChannels = () => {
             >
               <TagIcon />
             </ListItemIcon>
-            <ListItemText primary={channel.name} />
+            <ListItemText
+              disableTypography
+              primary={channel.name}
+              sx={{
+                overflow: "hidden",
+                whiteSpace: "nowrap",
+                textOverflow: "ellipsis",
+              }}
+            />
           </ListItemButton>
         </StyledContainer>
       ))}

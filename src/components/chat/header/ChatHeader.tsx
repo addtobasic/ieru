@@ -12,7 +12,7 @@ import { useStore } from "stores/store";
 
 import ChatHeaderInfo from "./ChatHeaderInfo";
 
-const drawerWidth = 240;
+const drawerWidth = 260;
 
 interface ChatHeaderProps {
   open: boolean;
