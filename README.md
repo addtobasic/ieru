@@ -1,8 +1,11 @@
 # ieru
+
+![ieru_logo](public/meta/og-image.png)
+
 心理的安全性を高め発言のハードルを下げるチャットツール.
 
-url : [https://ieru.life](https://ieru.life)
-ポスターURL [https://sechack365.nict.go.jp/achievement/2022/index.html#exc01](https://sechack365.nict.go.jp/achievement/2022/index.html#exc01)
+- サービスURL : [https://ieru.life](https://ieru.life)
+- ポスターURL [https://sechack365.nict.go.jp/achievement/2022/index.html#exc01](https://sechack365.nict.go.jp/achievement/2022/index.html#exc01)
 
 # Setup
 
@@ -11,7 +14,6 @@ $ git clone https://github.com/addtobasic/ieru.git
 $ cd ieru
 $ yarn install
 ```
-
 
 上のコマンドを実行した後にconfig/firebase.ts に習って.env.localを作成し, firebaseの環境変数を設定をします.
 
