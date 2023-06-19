@@ -2,6 +2,7 @@
 心理的安全性を高め発言のハードルを下げるチャットツール.
 
 url : [https://ieru.life](https://ieru.life)
+ポスターURL [https://sechack365.nict.go.jp/achievement/2022/index.html#exc01](https://sechack365.nict.go.jp/achievement/2022/index.html#exc01)
 
 # Setup
 
